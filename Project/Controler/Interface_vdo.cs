@@ -138,7 +138,7 @@ namespace Droid_video
                     LaunchShowLibrary();
                     break;
                 case "screenFull":
-                    LaunchScreenFull();
+                    LaunchFullScreen();
                     break;
                 case "screen169":
                     LaunchFullScreen();
@@ -146,7 +146,12 @@ namespace Droid_video
                 case "screen15":
                     LaunchDisableFullScreen();
                     break;
-			}
+                case "browseSubtitle":
+                    LaunchBrowseSubtitle();
+                    break;
+
+
+            }
 		}
 
         public RibbonTab BuildToolBar()
@@ -162,6 +167,7 @@ namespace Droid_video
             
             _sheet = new Panel();
             _sheet.Controls.Add(_panelVideo);
+            _sheet.Disposed += _sheet_Disposed;
             //}
         }
         #endregion
@@ -171,13 +177,14 @@ namespace Droid_video
         {
             _videoFrame.OpenFile();
         }
-        private void LaunchScreenFull()
+        private void LaunchFullScreen()
         {
             try
             {
                 _panelVideo.Dock = DockStyle.None;
                 _sheet.Controls.Remove(_panelVideo);
 
+                if (_formFrame != null) _formFrame.Dispose();
                 _formFrame = new Form();
                 _formFrame.FormBorderStyle = FormBorderStyle.None;
                 _formFrame.StartPosition = FormStartPosition.CenterParent;
@@ -190,6 +197,8 @@ namespace Droid_video
                 _formFrame.FormClosing += _formFrame_FormClosing;
 
                 _panelVideo.Dock = DockStyle.Fill;
+                _videoFrame.FullScreen = true;
+
                 _formFrame.ShowDialog();
             }
             catch (Exception exp8401)
@@ -197,21 +206,9 @@ namespace Droid_video
                 Log.write("[ CRT : 8401 ] Error during the full screen frame execution.\nPlease close the video sheet and relaunch it.\nYou can send the following message to support teams :\n\n" + exp8401.Message);
             }
         }
-        
-        private void LaunchFullScreen()
-        {
-            _panelVideo.Dock = DockStyle.None;
-            if (_formFrame != null && !_formFrame.IsDisposed)
-            {
-                _formFrame.Controls.Remove(_panelVideo);
-                _formFrame.Dispose();
-            }
-
-            _sheet.Controls.Add(_panelVideo);
-            _panelVideo.Dock = DockStyle.Fill;
-        }
         private void LaunchDisableFullScreen()
         {
+            _videoFrame.FullScreen = false;
             _panelVideo.Dock = DockStyle.None;
             if (_formFrame != null && !_formFrame.IsDisposed)
             {
@@ -242,6 +239,15 @@ namespace Droid_video
             {
             }
         }
+        private void LaunchBrowseSubtitle()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Subtitles Files (.srt)|*.srt|All Files (*.*)|*.*";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                _videoFrame.Subtitles = new Subtitle(ofd.FileName);
+            }
+        }
         #endregion
 
         #region Methods	private
@@ -252,6 +258,7 @@ namespace Droid_video
             _panelVideo.Dock = DockStyle.Fill;
             BuildVideoFrame();
             _panelVideo.Visible = true;
+            
         }
         private void BuildVideoFrame()
         {
@@ -261,15 +268,9 @@ namespace Droid_video
                 _videoFrame.FullScreenRequested += _videoFrame_FullScreenRequested;
                 _videoFrame.FullScreenExit += _videoFrame_FullScreenExit;
                 _videoFrame.Dock = DockStyle.Fill;
-                
-                //_videoFrame.Left = 0;
-                //_videoFrame.Width = _panelVideo.Width;
-                //_videoFrame.Height = (_videoFrame.Width * 9) / 16;
-                //_videoFrame.Top = (_panelVideo.Height / 2) - (_videoFrame.Height / 2);
 
                 _panelVideo.Controls.Add(_videoFrame);
                 _panelVideo.BackColor = Color.WhiteSmoke;
-                //_panelVideo.Resize += _panelVideo_Resize;
             }
             catch (Exception exp8400)
             {
@@ -289,15 +290,19 @@ namespace Droid_video
         }
         private void _videoFrame_FullScreenRequested()
         {
-            LaunchScreenFull();
+            LaunchFullScreen();
         }
         private void f_Disposed(object sender, EventArgs e)
         {
-            LaunchFullScreen();
+            LaunchDisableFullScreen();
         }
         private void _formFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
-            LaunchFullScreen();
+            LaunchDisableFullScreen();
+        }
+        private void _sheet_Disposed(object sender, EventArgs e)
+        {
+            _videoFrame.Dispose();
         }
         #endregion
     }

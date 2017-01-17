@@ -107,8 +107,6 @@
         public System.Windows.Forms.ImageList imageList16;
         public System.Windows.Forms.ImageList imageListTreeView;
         public System.Windows.Forms.ImageList imageListVideo;
-
-
     }
 }
 

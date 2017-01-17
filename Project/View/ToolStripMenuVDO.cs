@@ -31,10 +31,11 @@ namespace Droid_video
         private RibbonButton _rb_speed_forward;
         private RibbonButton _rb_speed_back;
 
-        private RibbonPanel _panelWindows;
-        private RibbonButton _rb_show_explorer;
-        private RibbonButton _rb_show_reading;
-        private RibbonButton _rb_show_library;
+        private RibbonPanel _panelSubtile;
+        private RibbonButton _rb_browseSubtitle;
+        private RibbonTextBox _txt_automaticDownload;
+        private RibbonLabel _label_AutomaticDownload;
+        private RibbonButton _rb_subtitleList;
         #endregion
 
         #region Properties
@@ -80,54 +81,61 @@ namespace Droid_video
         private void buildButton()
         {
             _rb_open_video = new RibbonButton("Open");
-            _rb_open_video.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("openVideo")];
-            _rb_open_video.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("openVideo")];
+            _rb_open_video.Image = Tools4Libraries.Resources.ResourceIconSet32Default.folder;
+            _rb_open_video.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.folder;
             _rb_open_video.Click += new EventHandler(rb_open_video_Click);
 
             _rb_full_screeen = new RibbonButton("Full");
-            _rb_full_screeen.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("screenFull")];
-            _rb_full_screeen.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("screenFull")];
+            _rb_full_screeen.Image = Tools4Libraries.Resources.ResourceIconSet32Default.resize_picture;
+            _rb_full_screeen.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.resize_picture;
             _rb_full_screeen.Click += new EventHandler(rb_full_screeen_Click);
 
             _rb_16_9 = new RibbonButton("Horizontal");
-            _rb_16_9.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("screen169")];
-            _rb_16_9.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("screen169")];
+            _rb_16_9.Image = Tools4Libraries.Resources.ResourceIconSet32Default.size_horizontal;
+            _rb_16_9.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.size_horizontal;
             _rb_16_9.Click += new EventHandler(rb_16_9_Click);
 
             _rb_15 = new RibbonButton("Vertical");
-            _rb_15.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("screen15")];
-            _rb_15.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("screen15")];
+            _rb_15.Image = Tools4Libraries.Resources.ResourceIconSet32Default.size_vertical;
+            _rb_15.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.size_vertical;
             _rb_15.Click += new EventHandler(rb_15_Click);
 
             _rb_play_pause = new RibbonButton("Play");
-            _rb_play_pause.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("navPlay")];
-            _rb_play_pause.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("navPlay")];
+            _rb_play_pause.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
+            _rb_play_pause.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
             _rb_play_pause.Click += new EventHandler(rb_play_pause_Click);
 
             _rb_stop = new RibbonButton("Stop");
-            _rb_stop.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("navStop")];
-            _rb_stop.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("navStop")];
+            _rb_stop.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_stop;
+            _rb_stop.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.control_stop;
             _rb_stop.Click += new EventHandler(rb_stop_Click);
 
             _rb_speed_forward = new RibbonButton("Forward");
-            _rb_speed_forward.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("navForward")];
-            _rb_speed_forward.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("navForward")];
+            _rb_speed_forward.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_fastforward;
+            _rb_speed_forward.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.control_fastforward;
             _rb_speed_forward.Click += new EventHandler(rb_speed_forward_Click);
 
             _rb_speed_back = new RibbonButton("Rewind");
-            _rb_speed_back.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("navRewind")];
-            _rb_speed_back.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("navRewind")];
+            _rb_speed_back.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_rewind;
+            _rb_speed_back.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.control_rewind;
             _rb_speed_back.Click += new EventHandler(rb_speed_back_Click);
 
-            _rb_show_explorer = new RibbonButton("Exlorer");
-            _rb_show_explorer.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("showExplorer")];
-            _rb_show_explorer.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("showExplorer")];
-            _rb_show_explorer.Click += new EventHandler(rb_show_explorer_Click);
+            _rb_browseSubtitle = new RibbonButton("Browse");
+            _rb_browseSubtitle.Image = Tools4Libraries.Resources.ResourceIconSet32Default.folder_find;
+            _rb_browseSubtitle.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.folder_find;
+            _rb_browseSubtitle.Click += _rb_browseSubtitle_Click;
 
-            _rb_show_library = new RibbonButton("Library");
-            _rb_show_library.Image = _gui.imageList32.Images[_gui.imageList32.Images.IndexOfKey("showLibrary")];
-            _rb_show_library.SmallImage = _gui.imageList16.Images[_gui.imageList16.Images.IndexOfKey("showLibrary")];
-            _rb_show_library.Click += new EventHandler(rb_show_library_Click);
+            _label_AutomaticDownload = new RibbonLabel();
+            _label_AutomaticDownload.Text = "Select your language : ";
+
+            _txt_automaticDownload = new RibbonTextBox();
+            _txt_automaticDownload.Image = Tools4Libraries.Resources.ResourceIconSet16Default.find;
+            _txt_automaticDownload.TextBoxText = "French";
+
+            _rb_subtitleList = new RibbonButton("Subtitle");
+            _rb_subtitleList.Style = RibbonButtonStyle.DropDownListItem;
+            _rb_subtitleList.MaxSizeMode = RibbonElementSizeMode.Medium;
+            _rb_subtitleList.Image = Tools4Libraries.Resources.ResourceIconSet16Default.text_document;
         }
         private void buildPanel()
         {
@@ -139,12 +147,7 @@ namespace Droid_video
             _panelScreen.Items.Add(_rb_15);
             _panelScreen.Items.Add(_rb_16_9);
             _panelScreen.Items.Add(_rb_full_screeen);
-            this.Panels.Add(_panelScreen);
-
-            _panelWindows = new RibbonPanel("Windows");
-            _panelWindows.Items.Add(_rb_show_explorer);
-            _panelWindows.Items.Add(_rb_show_library);
-            this.Panels.Add(_panelWindows);
+            this.Panels.Add(_panelScreen); 
 
             _panelNavigation = new RibbonPanel("Navigation");
             _panelNavigation.Items.Add(_rb_speed_back);
@@ -152,6 +155,13 @@ namespace Droid_video
             _panelNavigation.Items.Add(_rb_play_pause);
             _panelNavigation.Items.Add(_rb_speed_forward);
             this.Panels.Add(_panelNavigation);
+
+            _panelSubtile = new RibbonPanel("Subtitles");
+            _panelSubtile.Items.Add(_rb_browseSubtitle);
+            _panelSubtile.Items.Add(_label_AutomaticDownload);
+            _panelSubtile.Items.Add(_txt_automaticDownload);
+            _panelSubtile.Items.Add(_rb_subtitleList);
+            this.Panels.Add(_panelSubtile);
         }
         #endregion
 
@@ -204,6 +214,11 @@ namespace Droid_video
         void rb_full_screeen_Click(object sender, EventArgs e)
         {
             ToolBarEventArgs action = new ToolBarEventArgs("screenFull");
+            OnAction(action);
+        }
+        private void _rb_browseSubtitle_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("browseSubtitle");
             OnAction(action);
         }
         #endregion

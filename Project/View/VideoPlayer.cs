@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Vlc.DotNet.Forms;
 using Tools4Libraries.Slider;
+using System.Text.RegularExpressions;
 
 namespace Droid_video
 {
@@ -40,13 +41,33 @@ namespace Droid_video
         private Point _mousePosition;
         private DateTime _lastTimeMouseMove;
         private Panel _panelSound;
+        private bool _fullScreen;
+
+        private WebBrowser _textBoxSubtitle;
+        private Subtitle _sutbtitles;
+        private UserControl _subtitlesUserControl;
+        private int _subtitlesRows;
+        private int _minSubTop = 105;
+        private string _subText;
 
         public event VideoPlayerEventHandler FullScreenRequested;
         public event VideoPlayerEventHandler FullScreenExit;
+        public VideoPlayerEventHandler HideSubtitlePanel;
+        public VideoPlayerEventHandler DisplaySubtitlePanel;
         private DateTime _lastFrameMove;
         #endregion
 
         #region Properties
+        public bool FullScreen
+        {
+            get { return _fullScreen; }
+            set { _fullScreen = value; }
+        }
+        public Subtitle Subtitles
+        {
+            get { return _sutbtitles; }
+            set { _sutbtitles = value; }
+        }
         #endregion
 
         #region Constructor
@@ -73,6 +94,9 @@ namespace Droid_video
         {
             switch (key)
             {
+                case '0':
+                    Pause();
+                    break;
                 case (char)Keys.Escape:
                     if (FullScreenExit != null) FullScreenExit();
                     break;
@@ -145,6 +169,10 @@ namespace Droid_video
             _hidding = false;
             _showing = false;
             _quickAccessHidden = false;
+            _subtitlesUserControl.Visible = false;
+
+            HideSubtitlePanel = new VideoPlayerEventHandler(HideSubtitle);
+            DisplaySubtitlePanel = new VideoPlayerEventHandler(ShowSubtitle);
 
             #region VLCControl
             this._vlcControl = new VlcControl();
@@ -203,6 +231,7 @@ namespace Droid_video
             _panelSound.Controls.Add(_trackBarSound);
             #endregion
 
+            #region Timers
             _showPanel = new Timer();
             _showPanel.Interval = 1;
             _showPanel.Tick += _showPanel_Tick;
@@ -215,7 +244,9 @@ namespace Droid_video
             _detectMouseMovement.Interval = 3000;
             _detectMouseMovement.Tick += _detectMouseMovement_Tick;
             _detectMouseMovement.Start();
+            #endregion
 
+            #region Event
             this.MouseMove += MouseMoveEvent;
             this._panelControl.MouseMove += MouseMoveEvent;
             this._panelSound.MouseMove += MouseMoveEvent;
@@ -224,6 +255,8 @@ namespace Droid_video
             this._panelControl.KeyPress += KeyPressEvent;
             this._panelSound.KeyPress += KeyPressEvent;
 
+            this.Resize += VideoPlayer_Resize;
+            #endregion
         }
         private void InitializeComponent()
         {
@@ -235,13 +268,16 @@ namespace Droid_video
             this.label2 = new System.Windows.Forms.Label();
             this._panelControl = new System.Windows.Forms.Panel();
             this._panelQuickControls = new System.Windows.Forms.Panel();
+            this._panelSound = new System.Windows.Forms.Panel();
             this.buttonMute = new System.Windows.Forms.Button();
             this.buttonUp30 = new System.Windows.Forms.Button();
             this.buttonMinus10 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this._panelSound = new System.Windows.Forms.Panel();
+            this._textBoxSubtitle = new System.Windows.Forms.WebBrowser();
+            this._subtitlesUserControl = new System.Windows.Forms.UserControl();
             this._panelControl.SuspendLayout();
             this._panelQuickControls.SuspendLayout();
+            this._subtitlesUserControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // myBtnPlayPause
@@ -328,6 +364,15 @@ namespace Droid_video
             this._panelQuickControls.Size = new System.Drawing.Size(460, 39);
             this._panelQuickControls.TabIndex = 10;
             // 
+            // _panelSound
+            // 
+            this._panelSound.BackColor = System.Drawing.Color.Transparent;
+            this._panelSound.Dock = System.Windows.Forms.DockStyle.Right;
+            this._panelSound.Location = new System.Drawing.Point(363, 0);
+            this._panelSound.Name = "_panelSound";
+            this._panelSound.Size = new System.Drawing.Size(97, 39);
+            this._panelSound.TabIndex = 10;
+            // 
             // buttonMute
             // 
             this.buttonMute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -352,7 +397,7 @@ namespace Droid_video
             this.buttonUp30.Size = new System.Drawing.Size(32, 32);
             this.buttonUp30.TabIndex = 8;
             this.buttonUp30.UseVisualStyleBackColor = true;
-            this.buttonUp30.Click += new System.EventHandler(this.button2_Click);
+            this.buttonUp30.Click += new System.EventHandler(this.buttonUp30_Click);
             // 
             // buttonMinus10
             // 
@@ -366,30 +411,77 @@ namespace Droid_video
             this.buttonMinus10.Size = new System.Drawing.Size(32, 32);
             this.buttonMinus10.TabIndex = 7;
             this.buttonMinus10.UseVisualStyleBackColor = true;
-            this.buttonMinus10.Click += new System.EventHandler(this.button1_Click);
+            this.buttonMinus10.Click += new System.EventHandler(this.buttonMinus10_Click);
             // 
-            // _panelSound
+            // _textBoxSubtitle
             // 
-            this._panelSound.BackColor = System.Drawing.Color.Transparent;
-            this._panelSound.Dock = System.Windows.Forms.DockStyle.Right;
-            this._panelSound.Location = new System.Drawing.Point(363, 0);
-            this._panelSound.Name = "_panelSound";
-            this._panelSound.Size = new System.Drawing.Size(97, 39);
-            this._panelSound.TabIndex = 10;
+            this._textBoxSubtitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._textBoxSubtitle.Location = new System.Drawing.Point(0, 0);
+            this._textBoxSubtitle.Name = "_textBoxSubtitle";
+            this._textBoxSubtitle.ScrollBarsEnabled = false;
+            this._textBoxSubtitle.Size = new System.Drawing.Size(612, 72);
+            this._textBoxSubtitle.TabIndex = 0;
+            // 
+            // _subtitlesUserControl
+            // 
+            this._subtitlesUserControl.BackColor = System.Drawing.Color.Transparent;
+            this._subtitlesUserControl.Controls.Add(this._textBoxSubtitle);
+            this._subtitlesUserControl.Location = new System.Drawing.Point(194, 384);
+            this._subtitlesUserControl.Name = "_subtitlesUserControl";
+            this._subtitlesUserControl.Size = new System.Drawing.Size(612, 72);
+            this._subtitlesUserControl.TabIndex = 0;
             // 
             // VideoPlayer
             // 
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this._subtitlesUserControl);
             this.Controls.Add(this._panelControl);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Name = "VideoPlayer";
             this.Size = new System.Drawing.Size(989, 517);
+            this.SizeChanged += new System.EventHandler(this.VideoPlayer_SizeChanged);
             this._panelControl.ResumeLayout(false);
             this._panelQuickControls.ResumeLayout(false);
             this._panelQuickControls.PerformLayout();
+            this._subtitlesUserControl.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
+        }
+        private void SetSubtitle(TimeSpan now)
+        {
+            string text;
+            try
+            {
+                if (_sutbtitles != null)
+                { 
+                    text = _sutbtitles.GetText(now);
+                    _subText = text;
+                    _subtitlesRows = Regex.Split(text, "</br>").Length - 1;
+                    _subtitlesUserControl.Invoke(DisplaySubtitlePanel);
+                }
+                else
+                {
+                    _subtitlesUserControl.Invoke(HideSubtitlePanel);
+                }
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+        }
+        private void ShowSubtitle()
+        {
+            //int top = _panelControl.Top - _subtitlesUserControl.Height - 5;
+            //if (top > this.Height - _subtitlesUserControl.Height - _minSubTop) top = this.Height - _subtitlesUserControl.Height - _minSubTop;
+
+            _subtitlesUserControl.Height = _subtitlesRows * 24;
+            _subtitlesUserControl.Top = this.Height - _minSubTop;
+            _textBoxSubtitle.DocumentText = _subText;
+            _subtitlesUserControl.Visible = true;
+        }
+        private void HideSubtitle()
+        {
+            _subtitlesUserControl.Visible = false;
         }
         #endregion
 
@@ -431,6 +523,7 @@ namespace Droid_video
         private void OnButtonStopClicked(object sender, EventArgs e)
         {
             Stop();
+            myBtnPlayPause.Focus();
         }
         private void OnVlcMediaLengthChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs e)
         {
@@ -443,18 +536,21 @@ namespace Droid_video
             myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)position).ToString("T"));
             if (!_mouseDown) _trackBar.InvokeIfRequired(l => l.Value = (int)_vlcControl.Time);
             _trackBarSound.Value = _vlcControl.Audio.Volume;
+            SetSubtitle(new TimeSpan((long)position));
         }
         private void _trackBar_MouseDown(object sender, MouseEventArgs e)
         {
             _lastFrameMove = DateTime.Now;
             _mouseDown = true;
             _vlcControl.Time = _trackBar.Value;
+            myBtnPlayPause.Focus();
         }
         private void _trackBar_MouseUp(object sender, MouseEventArgs e)
         {
             _lastFrameMove = DateTime.Now;
             _mouseDown = false;
             _vlcControl.Time = _trackBar.Value;
+            myBtnPlayPause.Focus();
         }
         private void _trackBar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -468,24 +564,29 @@ namespace Droid_video
             {
                 _trackBar.ToolTipActive = false;
             }
+            myBtnPlayPause.Focus();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonMinus10_Click(object sender, EventArgs e)
         {
             _vlcControl.Time = _vlcControl.Time - 10000;
+            myBtnPlayPause.Focus();
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonUp30_Click(object sender, EventArgs e)
         {
             _vlcControl.Time = _vlcControl.Time + 30000;
+            myBtnPlayPause.Focus();
         }
         private void buttonMute_Click(object sender, EventArgs e)
         {
             _vlcControl.Audio.ToggleMute();
             if (_vlcControl.Audio.IsMute) this.buttonMute.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet16Default.sound_mute;
             else this.buttonMute.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet16Default.sound_none;
+            myBtnPlayPause.Focus();
         }
         private void _panelControl_Resize(object sender, EventArgs e)
         {
             _panelQuickControls.Left = (_panelControl.Width / 2) - (_panelQuickControls.Width / 2);
+            myBtnPlayPause.Focus();
         }
         private void _showPanel_Tick(object sender, EventArgs e)
         {
@@ -543,7 +644,7 @@ namespace Droid_video
         }
         private void _detectMouseMovement_Tick(object sender, EventArgs e)
         {
-            if (_openned && (Cursor.Position.X <= this.Top ||
+            if (_fullScreen && (Cursor.Position.X <= this.Top ||
                 Cursor.Position.Y <= this.Left ||
                 Cursor.Position.X >= this.Left + this.Width - 10 ||
                 Cursor.Position.Y >= this.Top + this.Height - 10))
@@ -554,6 +655,20 @@ namespace Droid_video
             {
                 ShowQuickControl();
             }
+        }
+        private void VideoPlayer_SizeChanged(object sender, EventArgs e)
+        {
+            _subtitlesUserControl.Left = (_vlcControl.Width / 2) - (_subtitlesUserControl.Width / 2);
+            _subtitlesUserControl.Top = _panelControl.Top - _subtitlesUserControl.Height - 5;
+        }
+
+        private void VideoPlayer_Resize(object sender, EventArgs e)
+        {
+            //int top = _panelControl.Top - _subtitlesUserControl.Height - 5;
+            //if (top > this.Height - _subtitlesUserControl.Height - _minSubTop) top = this.Height - _subtitlesUserControl.Height - _minSubTop;
+
+            _subtitlesUserControl.Left = (_vlcControl.Width / 2) - (_subtitlesUserControl.Width / 2);
+            _subtitlesUserControl.Top = this.Height - _minSubTop;
         }
         #endregion
     }
