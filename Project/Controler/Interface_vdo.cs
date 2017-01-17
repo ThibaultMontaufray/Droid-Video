@@ -23,17 +23,17 @@ namespace Droid_video
         private Panel _panelVideo;
         private VideoPlayer _videoFrame;
         private Form _formFrame;
-
-        private string _currentVideoPath;
+        
         private bool _explorerShown;
         private bool _libraryShown;
-		#endregion
-		
-		#region Properties
-        public string CurrentVideoPath
+        private Video _currentVideo;
+        #endregion
+
+        #region Properties
+        public Video CurrentVideo
         {
-            get { return _currentVideoPath; }
-            set { _currentVideoPath = value; }
+            get { return _currentVideo; }
+            set { _currentVideo = value; }
         }
         public new ToolStripMenuVDO Tsm
 		{
@@ -48,7 +48,7 @@ namespace Droid_video
 		public override bool Openned
 		{
 			get { return _openned; }
-		}
+        }
         #endregion
 
         #region Constructor
@@ -245,8 +245,17 @@ namespace Droid_video
             ofd.Filter = "Subtitles Files (.srt)|*.srt|All Files (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                _videoFrame.Subtitles = new Subtitle(ofd.FileName);
+                _currentVideo.Subtitle = new Subtitle(ofd.FileName);
+                _currentVideo.Path = ofd.FileName;
             }
+        }
+        private void LaunchGetSubtitlesLanguages()
+        {
+
+        }
+        private void LaunchGetSubtitle()
+        {
+
         }
         #endregion
 
@@ -264,7 +273,7 @@ namespace Droid_video
         {
             try
             {
-                _videoFrame = new VideoPlayer();
+                _videoFrame = new VideoPlayer(this);
                 _videoFrame.FullScreenRequested += _videoFrame_FullScreenRequested;
                 _videoFrame.FullScreenExit += _videoFrame_FullScreenExit;
                 _videoFrame.Dock = DockStyle.Fill;

@@ -24,7 +24,6 @@ namespace Droid_video
         private Tools4Libraries.Slider.SliderTrackBar _trackBar;
         private Tools4Libraries.Slider.SliderTrackBar _trackBarSound;
         private Panel _panelControl;
-        private string _videoPath;
         private SaveFileDialog saveFileDialog1;
         private bool _openned;
         private Button buttonUp30;
@@ -42,9 +41,9 @@ namespace Droid_video
         private DateTime _lastTimeMouseMove;
         private Panel _panelSound;
         private bool _fullScreen;
+        private Interface_vdo _intVdo;
 
         private WebBrowser _textBoxSubtitle;
-        private Subtitle _sutbtitles;
         private UserControl _subtitlesUserControl;
         private int _subtitlesRows;
         private int _minSubTop = 105;
@@ -63,16 +62,12 @@ namespace Droid_video
             get { return _fullScreen; }
             set { _fullScreen = value; }
         }
-        public Subtitle Subtitles
-        {
-            get { return _sutbtitles; }
-            set { _sutbtitles = value; }
-        }
         #endregion
 
         #region Constructor
-        public VideoPlayer()
+        public VideoPlayer(Interface_vdo intvdo)
         {
+            _intVdo = intvdo;
             InitializeComponent();
             Init();
         }
@@ -84,7 +79,8 @@ namespace Droid_video
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                _videoPath = ofd.FileName;
+                _intVdo.CurrentVideo = new Video();
+                _intVdo.CurrentVideo.Path = ofd.FileName;
                 _openned = false;
                 _trackBar.Enabled = true;
                 Play();
@@ -111,12 +107,12 @@ namespace Droid_video
         }
         public void Play()
         {
-            if (!string.IsNullOrEmpty(_videoPath))
+            if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Path))
             {
                 if (!_openned)
                 {
                     _trackBar.Value = 0;
-                    _vlcControl.Play(new Uri(_videoPath));
+                    _vlcControl.Play(new Uri(_intVdo.CurrentVideo.Path));
                     _openned = true;
                 }
                 else
@@ -452,9 +448,9 @@ namespace Droid_video
             string text;
             try
             {
-                if (_sutbtitles != null)
+                if (_intVdo.CurrentVideo.Subtitle != null)
                 { 
-                    text = _sutbtitles.GetText(now);
+                    text = _intVdo.CurrentVideo.Subtitle.GetText(now);
                     _subText = text;
                     _subtitlesRows = Regex.Split(text, "</br>").Length - 1;
                     _subtitlesUserControl.Invoke(DisplaySubtitlePanel);

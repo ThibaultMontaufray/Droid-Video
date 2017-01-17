@@ -51,6 +51,9 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Droid_web">
+      <HintPath>..\..\Droid-Web\Project\lib\4.5.1\Droid_web.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.QuartzTypeLib">
       <HintPath>.\Interop.QuartzTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -100,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Controler\ControlExtensions.cs" />
     <Compile Include="Controler\Subtitle.cs" />
+    <Compile Include="Model\Video.cs" />
     <Compile Include="View\Demo.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -30,7 +30,7 @@ namespace UnitTestProject
             try
             {
                 Interface_vdo intVdo = new Interface_vdo(new System.Collections.Generic.List<string>());
-                var v1 = intVdo.CurrentVideoPath;
+                var v1 = intVdo.CurrentVideo.Path;
 
                 Assert.IsTrue(true);
             }
