@@ -79,7 +79,7 @@ namespace Droid_video
         }
         private void B_exit_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.Close();
         }
         private void B_open_Click(object sender, EventArgs e)
         {

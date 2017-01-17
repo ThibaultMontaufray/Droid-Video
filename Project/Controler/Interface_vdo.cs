@@ -21,15 +21,8 @@ namespace Droid_video
         
         private Panel _sheet;
         private Panel _panelVideo;
-        private Panel _panelExplorer;
-        private Panel _panelFiles;
         private VideoPlayer _videoFrame;
         private Form _formFrame;
-        private SplitContainer _splitMain;
-        private SplitContainer _splitExplore;
-        private ExplorerTree _explorertree;
-        private Microsoft.VisualBasic.Compatibility.VB6.FileListBox _fileListBox;
-        private ComboBox _comboListFile;
 
         private string _currentVideoPath;
         private bool _explorerShown;
@@ -127,13 +120,7 @@ namespace Droid_video
 		}
 		public override void Resize()
         {
-            _splitMain.Width = _tsm.CurrentTabPage.Width;
-            _splitMain.Height = _tsm.CurrentTabPage.Height;
 
-            if (!_libraryShown && !_explorerShown) _splitMain.SplitterDistance = 1;
-            else _splitMain.SplitterDistance = 250;
-
-            if (_splitExplore.Height - 200 > 0) _splitExplore.SplitterDistance = 200;
         }
 		public override void GlobalAction(object sender, EventArgs e)
 		{
@@ -154,10 +141,10 @@ namespace Droid_video
                     LaunchScreenFull();
                     break;
                 case "screen169":
-                    LaunchScreen169();
+                    LaunchFullScreen();
                     break;
                 case "screen15":
-                    LaunchScreen15();
+                    LaunchDisableFullScreen();
                     break;
 			}
 		}
@@ -172,23 +159,9 @@ namespace Droid_video
             //if (_tsm.CurrentTabPage != null)
             //{
             BuildPanelVideo();
-            BuildPanelExplorer();
-            BuildPanelFiles();
-
-            _splitExplore = new SplitContainer();
-            _splitExplore.Dock = DockStyle.Fill;
-            _splitExplore.Panel1.Controls.Add(_panelExplorer);
-            _splitExplore.Panel2.Controls.Add(_panelFiles);
-            _splitExplore.Orientation = Orientation.Horizontal;
-
-            _splitMain = new SplitContainer();
-            _splitMain.Dock = DockStyle.Fill;
-            _splitMain.SplitterDistance = 250;
-            _splitMain.Panel2.Controls.Add(_splitExplore);
-            _splitMain.Panel1.Controls.Add(_panelVideo);
-
+            
             _sheet = new Panel();
-            _sheet.Controls.Add(_splitMain);
+            _sheet.Controls.Add(_panelVideo);
             //}
         }
         #endregion
@@ -203,8 +176,7 @@ namespace Droid_video
             try
             {
                 _panelVideo.Dock = DockStyle.None;
-                
-                _splitMain.Panel2.Controls.Remove(_panelVideo);
+                _sheet.Controls.Remove(_panelVideo);
 
                 _formFrame = new Form();
                 _formFrame.FormBorderStyle = FormBorderStyle.None;
@@ -226,28 +198,28 @@ namespace Droid_video
             }
         }
         
-        private void LaunchScreen169()
+        private void LaunchFullScreen()
         {
             _panelVideo.Dock = DockStyle.None;
-            if (_formFrame != null || !_formFrame.IsDisposed)
+            if (_formFrame != null && !_formFrame.IsDisposed)
             {
                 _formFrame.Controls.Remove(_panelVideo);
                 _formFrame.Dispose();
             }
 
-            _splitMain.Panel1.Controls.Add(_panelVideo);
+            _sheet.Controls.Add(_panelVideo);
             _panelVideo.Dock = DockStyle.Fill;
         }
-        private void LaunchScreen15()
+        private void LaunchDisableFullScreen()
         {
             _panelVideo.Dock = DockStyle.None;
-            if (_formFrame != null || !_formFrame.IsDisposed)
+            if (_formFrame != null && !_formFrame.IsDisposed)
             {
                 _formFrame.Controls.Remove(_panelVideo);
                 _formFrame.Dispose();
             }
 
-            _splitMain.Panel2.Controls.Add(_panelVideo);
+            _sheet.Controls.Add(_panelVideo);
             _panelVideo.Dock = DockStyle.Fill;
         }
         private void LaunchShowExplorer()
@@ -296,55 +268,13 @@ namespace Droid_video
                 //_videoFrame.Top = (_panelVideo.Height / 2) - (_videoFrame.Height / 2);
 
                 _panelVideo.Controls.Add(_videoFrame);
-                _panelVideo.BackColor = Color.Black;
+                _panelVideo.BackColor = Color.WhiteSmoke;
                 //_panelVideo.Resize += _panelVideo_Resize;
             }
             catch (Exception exp8400)
             {
                 Log.write("[ CRT : 8400 ] Cannot create the video frame. \n" + exp8400.Message);
             }
-        }
-        private void BuildPanelExplorer()
-        {
-            _panelExplorer = new Panel();
-            _panelExplorer.Visible = false;
-            _panelExplorer.Dock = DockStyle.Fill;
-            _panelExplorer.BackColor = Color.WhiteSmoke;
-
-            _explorertree = new ExplorerTree();
-            _explorertree.PathChanged += new ExplorerTree.PathChangedEventHandler(explorertree_PathChanged);
-            _explorertree.Dock = DockStyle.Fill;
-            _panelExplorer.Controls.Add(_explorertree);
-            _panelExplorer.Visible = true;
-        }
-        private void BuildPanelFiles()
-        {
-            _panelFiles = new Panel();
-            _panelFiles.Dock = DockStyle.Fill;
-            _panelFiles.BackColor = Color.WhiteSmoke;
-
-            _fileListBox = new Microsoft.VisualBasic.Compatibility.VB6.FileListBox();
-            _fileListBox.FormattingEnabled = true;
-            _fileListBox.Pattern = "*.*";
-            _fileListBox.Dock = DockStyle.Fill;
-            _panelFiles.Controls.Add(_fileListBox);
-
-            _comboListFile = new ComboBox();
-            _comboListFile.Items.AddRange(new object[] 
-            {
-                "*.*",
-                "*.avi;*.mkv;*.mov;*.mp4",
-                "*.avi;*.mkv;*.mov;*.mp4;*.str;*.txt"
-            });
-            _comboListFile.Text = _comboListFile.Items[0].ToString();
-            _comboListFile.Dock = DockStyle.Top;
-            _comboListFile.TextChanged += new EventHandler(comboListFile_TextChanged);
-            _panelFiles.Controls.Add(_comboListFile);
-
-        }
-        private void LoadPanelFiles()
-        {
-            _fileListBox.Path = _explorertree.SelectedPath;
         }
         #endregion
 
@@ -355,7 +285,7 @@ namespace Droid_video
         }
         private void _videoFrame_FullScreenExit()
         {
-            LaunchScreen169();
+            LaunchFullScreen();
         }
         private void _videoFrame_FullScreenRequested()
         {
@@ -363,19 +293,11 @@ namespace Droid_video
         }
         private void f_Disposed(object sender, EventArgs e)
         {
-            LaunchScreen169();
-        }
-        private void comboListFile_TextChanged(object sender, EventArgs e)
-        {
-            _fileListBox.Pattern = _comboListFile.Text;  
-        }
-        private void explorertree_PathChanged(object sender, EventArgs e)
-        {
-            LoadPanelFiles();
+            LaunchFullScreen();
         }
         private void _formFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
-            LaunchScreen169();
+            LaunchFullScreen();
         }
         #endregion
     }
