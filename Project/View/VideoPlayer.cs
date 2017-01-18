@@ -18,9 +18,8 @@ namespace Droid_video
         private Vlc.DotNet.Forms.VlcControl _vlcControl;
         private System.Windows.Forms.Button myBtnPlayPause;
         private System.Windows.Forms.Button myBtnStop;
-        private System.Windows.Forms.Label myLblMediaLength;
+        private System.Windows.Forms.Label myLblMediaRest;
         private System.Windows.Forms.Label myLblVlcPosition;
-        private System.Windows.Forms.Label label2;
         private Tools4Libraries.Slider.SliderTrackBar _trackBar;
         private Tools4Libraries.Slider.SliderTrackBar _trackBarSound;
         private Panel _panelControl;
@@ -259,9 +258,8 @@ namespace Droid_video
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoPlayer));
             this.myBtnPlayPause = new System.Windows.Forms.Button();
             this.myBtnStop = new System.Windows.Forms.Button();
-            this.myLblMediaLength = new System.Windows.Forms.Label();
+            this.myLblMediaRest = new System.Windows.Forms.Label();
             this.myLblVlcPosition = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this._panelControl = new System.Windows.Forms.Panel();
             this._panelQuickControls = new System.Windows.Forms.Panel();
             this._panelSound = new System.Windows.Forms.Panel();
@@ -282,7 +280,7 @@ namespace Droid_video
             this.myBtnPlayPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnPlayPause.BackgroundImage")));
             this.myBtnPlayPause.FlatAppearance.BorderSize = 0;
             this.myBtnPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.myBtnPlayPause.Location = new System.Drawing.Point(29, 4);
+            this.myBtnPlayPause.Location = new System.Drawing.Point(163, 4);
             this.myBtnPlayPause.Name = "myBtnPlayPause";
             this.myBtnPlayPause.Size = new System.Drawing.Size(32, 32);
             this.myBtnPlayPause.TabIndex = 1;
@@ -295,47 +293,38 @@ namespace Droid_video
             this.myBtnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnStop.BackgroundImage")));
             this.myBtnStop.FlatAppearance.BorderSize = 0;
             this.myBtnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.myBtnStop.Location = new System.Drawing.Point(67, 4);
+            this.myBtnStop.Location = new System.Drawing.Point(201, 4);
             this.myBtnStop.Name = "myBtnStop";
             this.myBtnStop.Size = new System.Drawing.Size(32, 32);
             this.myBtnStop.TabIndex = 2;
             this.myBtnStop.UseVisualStyleBackColor = true;
             this.myBtnStop.Click += new System.EventHandler(this.OnButtonStopClicked);
             // 
-            // myLblMediaLength
+            // myLblMediaRest
             // 
-            this.myLblMediaLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.myLblMediaLength.AutoSize = true;
-            this.myLblMediaLength.Location = new System.Drawing.Point(230, 14);
-            this.myLblMediaLength.Name = "myLblMediaLength";
-            this.myLblMediaLength.Size = new System.Drawing.Size(49, 13);
-            this.myLblMediaLength.TabIndex = 3;
-            this.myLblMediaLength.Text = "00:00:00";
+            this.myLblMediaRest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.myLblMediaRest.AutoSize = true;
+            this.myLblMediaRest.Location = new System.Drawing.Point(937, 17);
+            this.myLblMediaRest.Name = "myLblMediaRest";
+            this.myLblMediaRest.Size = new System.Drawing.Size(49, 13);
+            this.myLblMediaRest.TabIndex = 3;
+            this.myLblMediaRest.Text = "00:00:00";
             // 
             // myLblVlcPosition
             // 
-            this.myLblVlcPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.myLblVlcPosition.AutoSize = true;
-            this.myLblVlcPosition.Location = new System.Drawing.Point(157, 14);
+            this.myLblVlcPosition.Location = new System.Drawing.Point(3, 17);
             this.myLblVlcPosition.Name = "myLblVlcPosition";
             this.myLblVlcPosition.Size = new System.Drawing.Size(49, 13);
             this.myLblVlcPosition.TabIndex = 4;
             this.myLblVlcPosition.Text = "00:00:00";
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(212, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "/";
-            // 
             // _panelControl
             // 
             this._panelControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this._panelControl.Controls.Add(this._panelQuickControls);
+            this._panelControl.Controls.Add(this.myLblVlcPosition);
+            this._panelControl.Controls.Add(this.myLblMediaRest);
             this._panelControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this._panelControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this._panelControl.Location = new System.Drawing.Point(0, 462);
@@ -349,11 +338,8 @@ namespace Droid_video
             this._panelQuickControls.Controls.Add(this._panelSound);
             this._panelQuickControls.Controls.Add(this.myBtnPlayPause);
             this._panelQuickControls.Controls.Add(this.buttonMute);
-            this._panelQuickControls.Controls.Add(this.myLblMediaLength);
             this._panelQuickControls.Controls.Add(this.buttonUp30);
-            this._panelQuickControls.Controls.Add(this.label2);
             this._panelQuickControls.Controls.Add(this.buttonMinus10);
-            this._panelQuickControls.Controls.Add(this.myLblVlcPosition);
             this._panelQuickControls.Controls.Add(this.myBtnStop);
             this._panelQuickControls.Location = new System.Drawing.Point(307, 13);
             this._panelQuickControls.Name = "_panelQuickControls";
@@ -388,7 +374,7 @@ namespace Droid_video
             this.buttonUp30.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonUp30.BackgroundImage")));
             this.buttonUp30.FlatAppearance.BorderSize = 0;
             this.buttonUp30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUp30.Location = new System.Drawing.Point(285, 1);
+            this.buttonUp30.Location = new System.Drawing.Point(239, 3);
             this.buttonUp30.Name = "buttonUp30";
             this.buttonUp30.Size = new System.Drawing.Size(32, 32);
             this.buttonUp30.TabIndex = 8;
@@ -402,7 +388,7 @@ namespace Droid_video
             this.buttonMinus10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonMinus10.FlatAppearance.BorderSize = 0;
             this.buttonMinus10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMinus10.Location = new System.Drawing.Point(112, 2);
+            this.buttonMinus10.Location = new System.Drawing.Point(125, 4);
             this.buttonMinus10.Name = "buttonMinus10";
             this.buttonMinus10.Size = new System.Drawing.Size(32, 32);
             this.buttonMinus10.TabIndex = 7;
@@ -437,8 +423,8 @@ namespace Droid_video
             this.Size = new System.Drawing.Size(989, 517);
             this.SizeChanged += new System.EventHandler(this.VideoPlayer_SizeChanged);
             this._panelControl.ResumeLayout(false);
+            this._panelControl.PerformLayout();
             this._panelQuickControls.ResumeLayout(false);
-            this._panelQuickControls.PerformLayout();
             this._subtitlesUserControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -523,8 +509,9 @@ namespace Droid_video
         }
         private void OnVlcMediaLengthChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs e)
         {
-            myLblMediaLength.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan((long)e.NewLength).Ticks).ToString("T"));
+            myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan((long)e.NewLength).Ticks).ToString("T"));
             _trackBar.InvokeIfRequired(l => l.Maximum = ((int)(e.NewLength / 10000)));
+            _intVdo.CurrentVideo.Length = (long)e.NewLength;
         }
         private void OnVlcPositionChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs e)
         {
@@ -532,6 +519,9 @@ namespace Droid_video
             myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)position).ToString("T"));
             if (!_mouseDown) _trackBar.InvokeIfRequired(l => l.Value = (int)_vlcControl.Time);
             _trackBarSound.Value = _vlcControl.Audio.Volume;
+            _intVdo.CurrentVideo.Position = (long)position;
+
+            myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - _intVdo.CurrentVideo.Position).Ticks).ToString("T"));
             SetSubtitle(new TimeSpan((long)position));
         }
         private void _trackBar_MouseDown(object sender, MouseEventArgs e)

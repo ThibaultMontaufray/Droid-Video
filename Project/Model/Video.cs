@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Droid_web;
 
 namespace Droid_video
 {
@@ -24,7 +25,10 @@ namespace Droid_video
         private string _episod;
         private bool _vo;
         private string _format;
-        
+        private long _length;
+        private long _position;
+        private List<string> _listSubtitleLanguages;
+
         private List<string[]> _lang;
         private string[] _langFr = { "fr", "Fr", "FR", "french", "FRENCH", "French" };
         private string[] _langEn = { "en", "En", "EN", "english", "ENGLISH", "English" };
@@ -37,6 +41,16 @@ namespace Droid_video
         #endregion
 
         #region Properties
+        public long Length
+        {
+            get { return _length; }
+            set { _length = value; }
+        }
+        public long Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
         public string Episod
         {
             get { return _episod; }
@@ -106,6 +120,10 @@ namespace Droid_video
             get { return _format; }
             set { _format = value; }
         }
+        public List<string> DownloadableSubtilteLanguages
+        {
+            get { return _listSubtitleLanguages; }
+        }
         #endregion
 
         #region Constructor
@@ -146,6 +164,7 @@ namespace Droid_video
             DetectSeries(ref filePart);
             DetectSource(ref filePart);
             DetectInfo(ref filePart);
+            DetectSubtitles();
         }
         private void DetectLanguage(ref List<string> filePart)
         {
@@ -335,6 +354,17 @@ namespace Droid_video
             catch (Exception exp)
             {
                 Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
+            }
+        }
+        private void DetectSubtitles()
+        {
+            try
+            {
+                _listSubtitleLanguages = ParserSubtitle.Languages(_cleanName);
+            }
+            catch (Exception exp)
+            {
+                Tools4Libraries.Log.write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
             }
         }
         #endregion

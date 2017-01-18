@@ -249,10 +249,6 @@ namespace Droid_video
                 _currentVideo.Path = ofd.FileName;
             }
         }
-        private void LaunchGetSubtitlesLanguages()
-        {
-
-        }
         private void LaunchGetSubtitle()
         {
 
