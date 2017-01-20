@@ -24,18 +24,18 @@ namespace Droid_video
         private RibbonButton _rb_full_screeen;
         private RibbonButton _rb_16_9;
         private RibbonButton _rb_15;
-
-        private RibbonPanel _panelNavigation;
-        private RibbonButton _rb_play_pause;
-        private RibbonButton _rb_stop;
-        private RibbonButton _rb_speed_forward;
-        private RibbonButton _rb_speed_back;
-
+        
         private RibbonPanel _panelSubtile;
         private RibbonButton _rb_browseSubtitle;
         private RibbonTextBox _txt_automaticDownload;
         private RibbonLabel _label_AutomaticDownload;
+        private RibbonButton _rb_disableSubtitle;
         private RibbonButton _rb_subtitleList;
+
+        private RibbonPanel _panelInfo;
+        private RibbonLabel _lblInfo1; // depend of what data available we have
+        private RibbonLabel _lblInfo2;
+        private RibbonLabel _lblInfo3;
         #endregion
 
         #region Properties
@@ -75,6 +75,65 @@ namespace Droid_video
         {
             if (ActionAppened != null) ActionAppened(this, e);
         }
+        public void UpdateVideoDetails()
+        {
+            RibbonButton rbSubLang;
+            List<string> data = new List<string>();
+            
+            if (_intVdo.CurrentVideo != null)
+            {
+                _rb_subtitleList.DropDownItems.Clear();
+                if (_intVdo.CurrentVideo.DownloadableSubtilteLanguages != null)
+                { 
+                    foreach (string subtitleLanguage in _intVdo.CurrentVideo.DownloadableSubtilteLanguages)
+                    {
+                        rbSubLang = new RibbonButton(subtitleLanguage);
+                        rbSubLang.Name = subtitleLanguage;
+                        rbSubLang.Click += RbSubLang_Click;
+                        _rb_subtitleList.DropDownItems.Add(rbSubLang);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.NameClean)) data.Add(string.Format("Video : {0}", _intVdo.CurrentVideo.NameClean));
+                if (_intVdo.CurrentVideo.Date != null) data.Add(string.Format("Release : {0}", _intVdo.CurrentVideo.Date));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Language)) data.Add(string.Format("Language : {0}", _intVdo.CurrentVideo.Language));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.SubtitleLanguage)) data.Add(string.Format("Subtitle : {0}", _intVdo.CurrentVideo.SubtitleLanguage));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Season)) data.Add(string.Format("Season {0} - Episod {1}", _intVdo.CurrentVideo.Season, _intVdo.CurrentVideo.Episod));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Format)) data.Add(string.Format("Format : {0}", _intVdo.CurrentVideo.Format));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Source)) data.Add(string.Format("Source : {0}", _intVdo.CurrentVideo.Source));
+
+                if (data.Count > 2)
+                {
+                    _lblInfo1.Text = data[0];
+                    _lblInfo2.Text = data[1];
+                    _lblInfo3.Text = data[2];
+                }
+                else if (data.Count == 2)
+                {
+                    _lblInfo1.Text = data[0];
+                    _lblInfo2.Text = data[1];
+                    _lblInfo3.Text = string.Empty;
+                }
+                else if (data.Count == 1)
+                {
+                    _lblInfo1.Text = data[0];
+                    _lblInfo2.Text = string.Format("Path : ", _intVdo.CurrentVideo.Path);
+                    _lblInfo3.Text = string.Empty;
+                }
+                else
+                {
+                    _lblInfo1.Text = string.Format("Path : ", _intVdo.CurrentVideo.Path);
+                    _lblInfo2.Text = string.Empty;
+                    _lblInfo3.Text = string.Empty;
+                }
+            }
+            else
+            {
+                _lblInfo1.Text = "Video : ";
+                _lblInfo2.Text = "Release : ";
+                _lblInfo3.Text = "Language : ";
+            }
+        }
         #endregion
 
         #region Methods private
@@ -99,43 +158,24 @@ namespace Droid_video
             _rb_15.Image = Tools4Libraries.Resources.ResourceIconSet32Default.size_vertical;
             _rb_15.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.size_vertical;
             _rb_15.Click += new EventHandler(rb_15_Click);
-
-            _rb_play_pause = new RibbonButton("Play");
-            _rb_play_pause.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
-            _rb_play_pause.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
-            _rb_play_pause.Click += new EventHandler(rb_play_pause_Click);
-
-            _rb_stop = new RibbonButton("Stop");
-            _rb_stop.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_stop;
-            _rb_stop.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.control_stop;
-            _rb_stop.Click += new EventHandler(rb_stop_Click);
-
-            _rb_speed_forward = new RibbonButton("Forward");
-            _rb_speed_forward.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_fastforward;
-            _rb_speed_forward.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.control_fastforward;
-            _rb_speed_forward.Click += new EventHandler(rb_speed_forward_Click);
-
-            _rb_speed_back = new RibbonButton("Rewind");
-            _rb_speed_back.Image = Tools4Libraries.Resources.ResourceIconSet32Default.control_rewind;
-            _rb_speed_back.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.control_rewind;
-            _rb_speed_back.Click += new EventHandler(rb_speed_back_Click);
-
-            _rb_browseSubtitle = new RibbonButton("Browse");
+            
+            _rb_browseSubtitle = new RibbonButton("Select subtitle");
             _rb_browseSubtitle.Image = Tools4Libraries.Resources.ResourceIconSet32Default.folder_find;
             _rb_browseSubtitle.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.folder_find;
             _rb_browseSubtitle.Click += _rb_browseSubtitle_Click;
 
-            _label_AutomaticDownload = new RibbonLabel();
-            _label_AutomaticDownload.Text = "Select your language : ";
+            _rb_disableSubtitle = new RibbonButton("Disable subtitle");
+            _rb_disableSubtitle.Image = Tools4Libraries.Resources.ResourceIconSet32Default.tab_delete;
+            _rb_disableSubtitle.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.tab_delete;
+            _rb_disableSubtitle.Click += _rb_disableSubtitle_Click;
 
-            _txt_automaticDownload = new RibbonTextBox();
-            _txt_automaticDownload.Image = Tools4Libraries.Resources.ResourceIconSet16Default.find;
-            _txt_automaticDownload.TextBoxText = "French";
+            _rb_subtitleList = new RibbonButton("Download subtitle");
+            _rb_subtitleList.Style = RibbonButtonStyle.DropDown;
+            _rb_subtitleList.Image = Tools4Libraries.Resources.ResourceIconSet32Default.page_world;
+            _rb_subtitleList.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.page_world;
+            _rb_subtitleList.Click += RbSubLang_Click;
 
-            _rb_subtitleList = new RibbonButton("Subtitle");
-            _rb_subtitleList.Style = RibbonButtonStyle.DropDownListItem;
-            _rb_subtitleList.MaxSizeMode = RibbonElementSizeMode.Medium;
-            _rb_subtitleList.Image = Tools4Libraries.Resources.ResourceIconSet16Default.text_document;
+            BuildPanelDetail();
         }
         private void buildPanel()
         {
@@ -148,20 +188,31 @@ namespace Droid_video
             _panelScreen.Items.Add(_rb_16_9);
             _panelScreen.Items.Add(_rb_full_screeen);
             this.Panels.Add(_panelScreen); 
-
-            _panelNavigation = new RibbonPanel("Navigation");
-            _panelNavigation.Items.Add(_rb_speed_back);
-            _panelNavigation.Items.Add(_rb_stop);
-            _panelNavigation.Items.Add(_rb_play_pause);
-            _panelNavigation.Items.Add(_rb_speed_forward);
-            this.Panels.Add(_panelNavigation);
-
+            
             _panelSubtile = new RibbonPanel("Subtitles");
             _panelSubtile.Items.Add(_rb_browseSubtitle);
-            _panelSubtile.Items.Add(_label_AutomaticDownload);
-            _panelSubtile.Items.Add(_txt_automaticDownload);
             _panelSubtile.Items.Add(_rb_subtitleList);
+            _panelSubtile.Items.Add(_rb_disableSubtitle);
             this.Panels.Add(_panelSubtile);
+
+            _panelInfo = new RibbonPanel("Details");
+            _panelInfo.Items.Add(_lblInfo1);
+            _panelInfo.Items.Add(_lblInfo2);
+            _panelInfo.Items.Add(_lblInfo3);
+            this.Panels.Add(_panelInfo);
+        }
+        private void BuildPanelDetail()
+        {
+            _lblInfo1 = new RibbonLabel();
+            _lblInfo1.LabelWidth = 200;
+
+            _lblInfo2 = new RibbonLabel();
+            _lblInfo2.LabelWidth = 200;
+
+            _lblInfo3 = new RibbonLabel();
+            _lblInfo3.LabelWidth = 200;
+
+            UpdateVideoDetails();
         }
         #endregion
 
@@ -169,36 +220,6 @@ namespace Droid_video
         void rb_open_video_Click(object sender, EventArgs e)
         {
             ToolBarEventArgs action = new ToolBarEventArgs("openVideo");
-            OnAction(action);
-        }
-        void rb_show_library_Click(object sender, EventArgs e)
-        {
-            ToolBarEventArgs action = new ToolBarEventArgs("showLibrary");
-            OnAction(action);
-        }
-        void rb_show_explorer_Click(object sender, EventArgs e)
-        {
-            ToolBarEventArgs action = new ToolBarEventArgs("showExplorer");
-            OnAction(action);
-        }
-        void rb_speed_back_Click(object sender, EventArgs e)
-        {
-            ToolBarEventArgs action = new ToolBarEventArgs("speedBack");
-            OnAction(action);
-        }
-        void rb_speed_forward_Click(object sender, EventArgs e)
-        {
-            ToolBarEventArgs action = new ToolBarEventArgs("speedForward");
-            OnAction(action);
-        }
-        void rb_stop_Click(object sender, EventArgs e)
-        {
-            ToolBarEventArgs action = new ToolBarEventArgs("stop");
-            OnAction(action);
-        }
-        void rb_play_pause_Click(object sender, EventArgs e)
-        {
-            ToolBarEventArgs action = new ToolBarEventArgs("playPause");
             OnAction(action);
         }
         void rb_15_Click(object sender, EventArgs e)
@@ -219,6 +240,18 @@ namespace Droid_video
         private void _rb_browseSubtitle_Click(object sender, EventArgs e)
         {
             ToolBarEventArgs action = new ToolBarEventArgs("browseSubtitle");
+            OnAction(action);
+        }
+        private void RbSubLang_Click(object sender, EventArgs e)
+        {
+            _intVdo.CurrentVideo.SubtitleRequested = ((RibbonButton)sender).Name;
+            ToolBarEventArgs action = new ToolBarEventArgs("subtitleDownloadRequest");
+            OnAction(action);
+        }
+
+        private void _rb_disableSubtitle_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("disableSubtitle");
             OnAction(action);
         }
         #endregion

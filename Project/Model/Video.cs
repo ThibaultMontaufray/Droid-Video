@@ -16,19 +16,20 @@ namespace Droid_video
         private string _cleanName;
         private List<string> _videoSubtitleLanguages;
         private List<string> _subtitlePath;
-        private Subtitle _subtitle;
-        private int _date;
+        private SubtitleFile _subtitle;
+        private int? _date;
         private string _source;
         private string _info;
         private string _language;
+        private string _subtitleLanguage;
         private string _season;
         private string _episod;
         private bool _vo;
         private string _format;
         private long _length;
         private long _position;
-        private List<string> _listSubtitleLanguages;
-
+        private string _subtitleRequested;
+        
         private List<string[]> _lang;
         private string[] _langFr = { "fr", "Fr", "FR", "french", "FRENCH", "French" };
         private string[] _langEn = { "en", "En", "EN", "english", "ENGLISH", "English" };
@@ -41,6 +42,16 @@ namespace Droid_video
         #endregion
 
         #region Properties
+        public string SubtitleRequested
+        {
+            get { return _subtitleRequested; }
+            set { _subtitleRequested = value; }
+        }
+        public string SubtitleLanguage
+        {
+            get { return _subtitleLanguage; }
+            set { _subtitleLanguage = value; }
+        }
         public long Length
         {
             get { return _length; }
@@ -76,12 +87,12 @@ namespace Droid_video
             get { return _source; }
             set { _source = value; }
         }
-        public int Date
+        public int? Date    
         {
             get { return _date; }
             set { _date = value; }
         }
-        public Subtitle Subtitle
+        public SubtitleFile Subtitle
         {
             get { return _subtitle; }
             set { _subtitle = value; }
@@ -90,11 +101,6 @@ namespace Droid_video
         {
             get { return _subtitlePath; }
             set { _subtitlePath = value; }
-        }
-        public List<string> SubtitleLanguages
-        {
-            get { return _videoSubtitleLanguages; }
-            set { _videoSubtitleLanguages = value; }
         }
         public string NameClean
         {
@@ -122,7 +128,8 @@ namespace Droid_video
         }
         public List<string> DownloadableSubtilteLanguages
         {
-            get { return _listSubtitleLanguages; }
+            get { return _videoSubtitleLanguages; }
+            set { _videoSubtitleLanguages = value; }
         }
         #endregion
 
@@ -141,6 +148,8 @@ namespace Droid_video
         {
             _vo = false;
 
+            _videoSubtitleLanguages = new List<string>();
+
             _lang = new List<string[]>();
             _lang.Add(_langFr);
             _lang.Add(_langEn);
@@ -156,17 +165,16 @@ namespace Droid_video
             List<string> filePart = new List<string>();
             _language = string.Empty;
             _format = System.IO.Path.GetExtension(_path);
-            _cleanName = System.IO.Path.GetFileName(_path);
-            _cleanName = _cleanName.Replace(_format, string.Empty);
+            _cleanName = System.IO.Path.GetFileNameWithoutExtension(_path);
 
-            DetectDate(ref filePart);
+            DetectLanguage(ref filePart);
             DetectDate(ref filePart);
             DetectSeries(ref filePart);
             DetectSource(ref filePart);
             DetectInfo(ref filePart);
             DetectSubtitles();
         }
-        private void DetectLanguage(ref List<string> filePart)
+        private void DetectDate(ref List<string> filePart)
         {
             try { 
                 string tmpStr;
@@ -195,10 +203,10 @@ namespace Droid_video
                 Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
             }
         }
-        private void DetectDate(ref List<string> filePart)
+        private void DetectLanguage(ref List<string> filePart)
         {
             try { 
-                filePart.Add(_path);
+                filePart.Add(_cleanName);
                 foreach (string[] lang in _lang)
                 {
                     foreach (string item in lang)
@@ -230,40 +238,40 @@ namespace Droid_video
                         if (_cleanName.Contains(string.Format(".VOST{0}.", item)))
                         {
                             filePart = Regex.Split(_cleanName, string.Format(".VOST{0}.", item)).ToList();
-                            _language = lang[lang.Length - 1];
+                            _subtitleLanguage = lang[lang.Length - 1];
                             _vo = true;
                             break;
                         }
                         if (_cleanName.Contains(string.Format(".vost{0}.", item)))
                         {
                             filePart = Regex.Split(_cleanName, string.Format(".vost{0}.", item)).ToList();
-                            _language = lang[lang.Length - 1];
+                            _subtitleLanguage = lang[lang.Length - 1];
                             _vo = true;
                             break;
                         }
                         if (_cleanName.Contains(string.Format(".VoSt{0}.", item)))
                         {
                             filePart = Regex.Split(_cleanName, string.Format(".VoSt{0}.", item)).ToList();
-                            _language = lang[lang.Length - 1];
+                            _subtitleLanguage = lang[lang.Length - 1];
                             _vo = true;
                             break;
                         }
                         if (_cleanName.Contains(string.Format(".sub{0}.", item)))
                         {
                             filePart = Regex.Split(_cleanName, string.Format(".sub{0}.", item)).ToList();
-                            _language = lang[lang.Length - 1];
+                            _subtitleLanguage = lang[lang.Length - 1];
                             break;
                         }
                         if (_cleanName.Contains(string.Format(".SUB{0}.", item)))
                         {
                             filePart = Regex.Split(_cleanName, string.Format(".SUB{0}.", item)).ToList();
-                            _language = lang[lang.Length - 1];
+                            _subtitleLanguage = lang[lang.Length - 1];
                             break;
                         }
                         if (_cleanName.Contains(string.Format(".Sub{0}.", item)))
                         {
                             filePart = Regex.Split(_cleanName, string.Format(".Sub{0}.", item)).ToList();
-                            _language = lang[lang.Length - 1];
+                            _subtitleLanguage = lang[lang.Length - 1];
                             break;
                         }
                     }
@@ -310,9 +318,9 @@ namespace Droid_video
             try { 
                 string tmpStr;
                 List<string> newFilePart = new List<string>();
+                tmpStr = string.Empty;
                 foreach (string part in filePart)
                 {
-                    tmpStr = string.Empty;
                     foreach (string s in part.Split(']'))
                     {
                         if (s.StartsWith("["))
@@ -322,6 +330,7 @@ namespace Droid_video
                         else if (s.Contains("["))
                         {
                             _source = s.Split('[')[1].Trim();
+                            tmpStr += s.Split('[')[0].Trim();
                         }
                         else
                         {
@@ -354,13 +363,21 @@ namespace Droid_video
             catch (Exception exp)
             {
                 Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
+                _cleanName = System.IO.Path.GetFileName(_path);
             }
         }
-        private void DetectSubtitles()
+        private async void DetectSubtitles()
         {
+            string search = string.Empty;
             try
             {
-                _listSubtitleLanguages = ParserSubtitle.Languages(_cleanName);
+                search = _cleanName;
+                if (!string.IsNullOrEmpty(_season))
+                {
+                    search += string.Format(" S{0}E{1}", _season, _episod);
+                }
+                Task<List<string>> retList =  SubtitleDownloader.SearchLanguagesAvailable(_path);
+                _videoSubtitleLanguages = await retList;
             }
             catch (Exception exp)
             {

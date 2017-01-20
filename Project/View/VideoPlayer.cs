@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Vlc.DotNet.Forms;
+using Vlc.DotNet.Core;
 using Tools4Libraries.Slider;
 using System.Text.RegularExpressions;
 
@@ -647,7 +648,6 @@ namespace Droid_video
             _subtitlesUserControl.Left = (_vlcControl.Width / 2) - (_subtitlesUserControl.Width / 2);
             _subtitlesUserControl.Top = _panelControl.Top - _subtitlesUserControl.Height - 5;
         }
-
         private void VideoPlayer_Resize(object sender, EventArgs e)
         {
             //int top = _panelControl.Top - _subtitlesUserControl.Height - 5;

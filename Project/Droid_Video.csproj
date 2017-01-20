@@ -22,13 +22,14 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>lib\4.0\</OutputPath>
+    <OutputPath>lib\4.5.1\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <NoWarn>1591</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -51,6 +52,10 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Droid_web">
       <HintPath>..\..\Droid-Web\Project\lib\4.5.1\Droid_web.dll</HintPath>
     </Reference>
@@ -59,13 +64,23 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>packages\NLog.4.4.1\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OSDBnet, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\OSDBnet.0.4.0.0\lib\net40\OSDBnet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.Ribbon, Version=3.5.8.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\officeribbon.3.5.8.4\lib\net20\System.Windows.Forms.Ribbon.dll</HintPath>
@@ -101,8 +116,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controler\Comparers\ExactEqualyComparer.cs" />
+    <Compile Include="Controler\Comparers\IgnoreCaseComparer.cs" />
+    <Compile Include="Controler\Comparers\SeasonEpisode.cs" />
+    <Compile Include="Controler\Comparers\SeasonEpisodeComparer.cs" />
+    <Compile Include="Controler\Comparers\SeasonEpisodeLastComparer.cs" />
+    <Compile Include="Controler\Comparers\SplitLastComparer.cs" />
     <Compile Include="Controler\ControlExtensions.cs" />
-    <Compile Include="Controler\Subtitle.cs" />
+    <Compile Include="Controler\SubtitleFile.cs" />
+    <Compile Include="Controler\SubtitleDownloader.cs" />
     <Compile Include="Model\Video.cs" />
     <Compile Include="View\Demo.cs">
       <SubType>Form</SubType>

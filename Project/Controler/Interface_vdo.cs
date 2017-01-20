@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Tools4Libraries;
+using System.Threading.Tasks;
 
 namespace Droid_video
 {
@@ -149,8 +150,12 @@ namespace Droid_video
                 case "browseSubtitle":
                     LaunchBrowseSubtitle();
                     break;
-
-
+                case "subtitleDownloadRequest":
+                    LaunchDownloadSubtitle();
+                    break;
+                case "disableSubtitle":
+                    LaunchDisableSubtitle();
+                    break;
             }
 		}
 
@@ -173,9 +178,31 @@ namespace Droid_video
         #endregion
 
         #region Methods Launcher
+        private void LaunchDisableSubtitle()
+        {
+            _currentVideo.Subtitle = null;
+        }
+        private async void LaunchDownloadSubtitle()
+        {
+            try
+            {
+                Task<string> taskSubtitle = SubtitleDownloader.SearchSubtitle(_currentVideo.Path, _currentVideo.SubtitleRequested);
+                string subtitle = await taskSubtitle;
+                if (!string.IsNullOrEmpty(subtitle))
+                { 
+                    _currentVideo.Subtitle = new SubtitleFile(subtitle);
+                }
+            }
+            catch (Exception exp)
+            {
+                Log.write("[ CRT : 0123 ] Cannot download subtitle files \n\n" + exp.Message);
+            }
+        }
         private void LaunchOpenVideo()
         {
+            _videoFrame.Pause();
             _videoFrame.OpenFile();
+            _tsm.UpdateVideoDetails();
         }
         private void LaunchFullScreen()
         {
@@ -245,7 +272,7 @@ namespace Droid_video
             ofd.Filter = "Subtitles Files (.srt)|*.srt|All Files (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                _currentVideo.Subtitle = new Subtitle(ofd.FileName);
+                _currentVideo.Subtitle = new SubtitleFile(ofd.FileName);
                 _currentVideo.Path = ofd.FileName;
             }
         }
