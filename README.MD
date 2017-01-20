@@ -1,4 +1,4 @@
-# Video library : play video movies and automatic download subtitles [![Official Site](https://img.shields.io/badge/site-servodroid.com-orange.svg)](http://servodroid.com)
+# Video library [![Official Site](https://img.shields.io/badge/site-servodroid.com-orange.svg)](http://servodroid.com)
 
 Video player with some cool options like automatic detection of subtitles available
 
