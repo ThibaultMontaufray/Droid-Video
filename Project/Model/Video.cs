@@ -27,8 +27,9 @@ namespace Droid_video
         private bool _vo;
         private string _format;
         private long _length;
-        private long _position;
+        private long _time;
         private string _subtitleRequested;
+        private double _audioAdjustment;
         
         private List<string[]> _lang;
         private string[] _langFr = { "fr", "Fr", "FR", "french", "FRENCH", "French" };
@@ -42,6 +43,11 @@ namespace Droid_video
         #endregion
 
         #region Properties
+        public double AudioAdjustment
+        {
+            get { return _audioAdjustment; }
+            set { _audioAdjustment = value; }
+        }
         public string SubtitleRequested
         {
             get { return _subtitleRequested; }
@@ -57,10 +63,10 @@ namespace Droid_video
             get { return _length; }
             set { _length = value; }
         }
-        public long Position
+        public long Time
         {
-            get { return _position; }
-            set { _position = value; }
+            get { return _time; }
+            set { _time = value; }
         }
         public string Episod
         {

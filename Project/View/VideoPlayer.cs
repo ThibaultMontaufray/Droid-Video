@@ -7,6 +7,9 @@ using Vlc.DotNet.Forms;
 using Vlc.DotNet.Core;
 using Tools4Libraries.Slider;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
+using Tools4Libraries;
+using System.Configuration;
 
 namespace Droid_video
 {
@@ -44,6 +47,7 @@ namespace Droid_video
         private Panel _panelSound;
         private bool _fullScreen;
         private Interface_vdo _intVdo;
+        private Process _vlcProcess;
 
         private WebBrowser _textBoxSubtitle;
         private UserControl _subtitlesUserControl;
@@ -83,6 +87,11 @@ namespace Droid_video
         #endregion
 
         #region Methods public
+        public new void Dispose()
+        {
+            _vlcProcess.Kill();
+            base.Dispose();
+        }
         public void OpenFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -153,11 +162,35 @@ namespace Droid_video
         {
             _showPanel.Start();
         }
+        public void LoadPosition()
+        {
+            try
+            {
+                long time = _intVdo.GetMovieAdvancement(_intVdo.CurrentVideo.Path);
+                if (time < _vlcControl.Length && time > 200)
+                {
+                    Pause();
+                    _vlcControl.SuspendLayout();
+                    _vlcControl.Time = time;
+                    _vlcControl.ResumeLayout();
+                    Pause();
+                }
+            }
+            catch (Exception exp)
+            {
+                Log.write("[ ERR : 0123 ] Cannot load the position of the movie \n\n" + exp.Message);
+            }
+        }
         #endregion
 
         #region Methods protected
         protected override void Dispose(bool disposing)
         {
+            _intVdo.SaveMovieProgression();
+
+            Properties.Settings.Default.volume = _trackBarSound.Value;
+            Properties.Settings.Default.Save();
+
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -173,6 +206,7 @@ namespace Droid_video
             _intVdo.CurrentVideo.Path = path;
             _openned = false;
             _trackBar.Enabled = true;
+
             Play();
         }
         private void Init()
@@ -203,11 +237,12 @@ namespace Droid_video
             this._vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
             this._vlcControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
             this._vlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
+            this._vlcControl.Stopped += _vlcControl_Stopped;
             ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).EndInit();
             this.Controls.Add(_vlcControl);
 
-            var currentProcess = System.Diagnostics.Process.GetCurrentProcess();
-            IntPtr hWnd = currentProcess.MainWindowHandle;
+            _vlcProcess = Process.GetCurrentProcess();
+            IntPtr hWnd = _vlcProcess.MainWindowHandle;
             if (hWnd != IntPtr.Zero)
             {
                 ShowWindow(hWnd, 0); // 0 = SW_HIDE
@@ -249,6 +284,18 @@ namespace Droid_video
             _trackBarSound.UseSeeking = false;
             _trackBarSound.ValueChanged += _trackBarSound_ValueChanged;
             _panelSound.Controls.Add(_trackBarSound);
+
+            try
+            {
+                ConfigurationManager.RefreshSection("appSettings");
+                _trackBarSound.Value = Properties.Settings.Default.volume;
+            }
+            catch (Exception exp)
+            {
+                _trackBarSound.Value = 50;
+                Log.write("[ WRN : 0000 ] Cannot load volume default. \n" + exp.Message);
+
+            }
             #endregion
 
             #region Timers
@@ -454,7 +501,7 @@ namespace Droid_video
             this._panelControl.PerformLayout();
             this._panelQuickControls.ResumeLayout(false);
             this.ResumeLayout(false);
-
+            this.MouseWheel += VideoPlayer_MouseWheel;
         }
         private void HideVldConsol()
         {
@@ -495,6 +542,13 @@ namespace Droid_video
         private void HideSubtitle()
         {
             _subtitlesUserControl.Visible = false;
+        }
+        private void VolumeScroll(int delta)
+        {
+            delta = _trackBarSound.Value + (delta / 120);
+            if (delta > _trackBarSound.Maximum) _trackBarSound.Value = _trackBarSound.Maximum;
+            else if (delta < _trackBarSound.Minimum) _trackBarSound.Value = _trackBarSound.Minimum;
+            else _trackBarSound.Value = delta;
         }
         #endregion
 
@@ -546,14 +600,13 @@ namespace Droid_video
         }
         private void OnVlcPositionChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs e)
         {
-            var position = _vlcControl.GetCurrentMedia().Duration.Ticks * e.NewPosition;
-            myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)position).ToString("T"));
+            var time = _vlcControl.GetCurrentMedia().Duration.Ticks * e.NewPosition;
+            myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)time).ToString("T"));
             if (!_mouseDown) _trackBar.InvokeIfRequired(l => l.Value = (int)_vlcControl.Time);
-            _trackBarSound.Value = _vlcControl.Audio.Volume;
-            _intVdo.CurrentVideo.Position = (long)position;
+            _intVdo.CurrentVideo.Time = _vlcControl.Time;
 
-            myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - _intVdo.CurrentVideo.Position).Ticks).ToString("T"));
-            SetSubtitle(new TimeSpan((long)position));
+            myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - (long)_intVdo.CurrentVideo.Time).Ticks).ToString("T"));
+            SetSubtitle(new TimeSpan((long)time));
         }
         private void _trackBar_MouseDown(object sender, MouseEventArgs e)
         {
@@ -685,6 +738,14 @@ namespace Droid_video
 
             _subtitlesUserControl.Left = (_vlcControl.Width / 2) - (_subtitlesUserControl.Width / 2);
             _subtitlesUserControl.Top = this.Height - _minSubTop;
+        }
+        private void VideoPlayer_MouseWheel(object sender, MouseEventArgs e)
+        {
+            VolumeScroll(e.Delta);
+        }
+        private void _vlcControl_Stopped(object sender, VlcMediaPlayerStoppedEventArgs e)
+        {
+            _intVdo.SaveMovieProgression();
         }
         #endregion
     }

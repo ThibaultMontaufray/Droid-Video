@@ -22,5 +22,28 @@ namespace Droid_video.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int volume {
+            get {
+                return ((int)(this["volume"]));
+            }
+            set {
+                this["volume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection movies {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["movies"]));
+            }
+            set {
+                this["movies"] = value;
+            }
+        }
     }
 }

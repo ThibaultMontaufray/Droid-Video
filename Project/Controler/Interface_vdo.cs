@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using Tools4Libraries;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Droid_video
 {
@@ -28,9 +29,15 @@ namespace Droid_video
         private bool _explorerShown;
         private bool _libraryShown;
         private Video _currentVideo;
+        private List<string> _moviesProgression;
         #endregion
 
         #region Properties
+        public List<string> MoviesProgression
+        {
+            get { return _moviesProgression; }
+            set { _moviesProgression = value; }
+        }
         public Video CurrentVideo
         {
             get { return _currentVideo; }
@@ -55,10 +62,7 @@ namespace Droid_video
         #region Constructor
         public Interface_vdo()
         {
-            _explorerShown = true;
-            _libraryShown = false;
-            BuildToolBar();
-            BuildPanel();
+            Init();
         }
         public Interface_vdo(List<String> lts)
         {
@@ -80,6 +84,7 @@ namespace Droid_video
             {
                 _videoFrame.OpenFile(o as string);
                 _tsm.UpdateVideoDetails();
+                AddMovieAdvancement();
             }
 			return false;
 		}
@@ -159,6 +164,11 @@ namespace Droid_video
                 case "disableSubtitle":
                     LaunchDisableSubtitle();
                     break;
+                case "relaunchVideo":
+                    LaunchSetOldPosition();
+                    break;
+                case "moveVideo":
+                    break;
             }
 		}
 
@@ -177,6 +187,79 @@ namespace Droid_video
             _sheet.Controls.Add(_panelVideo);
             _sheet.Disposed += _sheet_Disposed;
             //}
+        }
+        public long GetMovieAdvancement(string movieTitle)
+        {
+            string[] tab;
+            string instMovie;
+
+            try
+            {
+                foreach (var movie in _moviesProgression)
+                {
+                    tab = movie.Split('#');
+                    instMovie = tab[0];
+                    if (instMovie.Equals(movieTitle) && tab.Length > 2)
+                    {
+                        return long.Parse(tab[2]);
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+                Log.write("[ ERR : 0000 ] User settings have been modified out of the program ! \n\n" + exp.Message);
+            }
+
+            return 0;
+        }
+        public void SaveMovieProgression()
+        {
+            string thisMovie = string.Format("{0}#{1}#{2}", CurrentVideo.Path, DateTime.Now, CurrentVideo.Time);
+            string instMovie;
+            DateTime date;
+            List<string> finalList = new List<string>();
+            foreach (var movie in _moviesProgression)
+            {
+                instMovie = movie.Split('#')[0];
+                if (File.Exists(instMovie))
+                { 
+                    if (instMovie.Equals(CurrentVideo.Path))
+                    {
+                        if (((CurrentVideo.Time * 100) / CurrentVideo.Length) < 95)
+                        {
+                            finalList.Add(thisMovie);
+                        }
+                    }
+                    else
+                    {
+                        if (DateTime.TryParse(movie.Split('#')[1], out date))
+                        {
+                            if (date >= DateTime.Now.AddMonths(-2))
+                            { 
+                                finalList.Add(movie);
+                            }
+                        }
+                    }
+                }
+            }
+            _moviesProgression = finalList;
+
+            Properties.Settings.Default.movies = new System.Collections.Specialized.StringCollection();
+            foreach (var movie in _moviesProgression)
+            {
+                Properties.Settings.Default.movies.Add(movie);
+            }
+            Properties.Settings.Default.Save();
+        }
+        public bool IsMovieProgressionAvailable()
+        {
+            string moviePath;
+            foreach (var movie in _moviesProgression)
+            {
+                moviePath = movie.Split('#')[0];
+                if (moviePath.Equals(CurrentVideo.Path)) return true;
+            }
+            return false;
         }
         #endregion
 
@@ -206,6 +289,7 @@ namespace Droid_video
             if (_videoFrame.IsPlaying) _videoFrame.Pause();
             _videoFrame.OpenFile();
             _tsm.UpdateVideoDetails();
+            AddMovieAdvancement();
         }
         private void LaunchFullScreen()
         {
@@ -279,13 +363,60 @@ namespace Droid_video
                 _currentVideo.Path = ofd.FileName;
             }
         }
-        private void LaunchGetSubtitle()
+        private void LaunchSetOldPosition()
         {
-
+            _videoFrame.LoadPosition();
         }
         #endregion
 
         #region Methods	private
+        private void Init()
+        {
+            _explorerShown = true;
+            _libraryShown = false;
+
+            LoadMoviesAdvancement();
+            BuildToolBar();
+            BuildPanel();
+        }
+        private void AddMovieAdvancement()
+        {
+            bool done = false;
+            string thisMovie = string.Format("{0}#{1}#{2}", CurrentVideo.Path, DateTime.Now, CurrentVideo.Time);
+            string instMovie;
+            List<string> finalList = new List<string>();
+            foreach (var movie in _moviesProgression)
+            {
+                instMovie = movie.Split('#')[0];
+                if (instMovie.Equals(CurrentVideo.Path))
+                {
+                    if (CurrentVideo.Length == 0 || ((CurrentVideo.Time / CurrentVideo.Length) * 100) > 95)
+                    {
+                        finalList.Add(thisMovie);
+                        done = true;
+                    }
+                }
+                else
+                {
+                    finalList.Add(movie);
+                }
+            }
+            if (!done)
+            {
+                _moviesProgression.Add(thisMovie);
+            }
+        }
+        private void LoadMoviesAdvancement()
+        {
+            _moviesProgression = new List<string>();
+            if (Properties.Settings.Default.movies != null)
+            {
+                foreach (var movie in Properties.Settings.Default.movies)
+                {
+                    _moviesProgression.Add(movie);
+                }
+            }
+        }
         private void BuildPanelVideo()
         {
             _panelVideo = new Panel();

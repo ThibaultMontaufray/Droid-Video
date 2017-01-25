@@ -19,7 +19,7 @@ namespace Droid_video
         #region Properties
         #endregion
 
-        #region Constructor
+        #region Constructor / Destructor
         public Demo(string[] args)
         {
             InitializeComponent();
@@ -45,7 +45,6 @@ namespace Droid_video
         private void InitRibbon()
         {
             Ribbon rb = new Ribbon();
-            rb.Tabs.Add(_intVdo.Tsm);
             rb.Height = 150;
             rb.ThemeColor = RibbonTheme.Black;
             rb.OrbDropDown.Width = 150;
@@ -54,6 +53,7 @@ namespace Droid_video
             rb.QuickAccessToolbar.MenuButtonVisible = false;
             rb.QuickAccessToolbar.Visible = false;
             rb.QuickAccessToolbar.MinSizeMode = RibbonElementSizeMode.Compact;
+            rb.Tabs.Add(_intVdo.Tsm);
 
             //rb.QuickAccessToolbar.Visible = false;
 
