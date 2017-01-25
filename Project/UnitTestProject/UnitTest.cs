@@ -16,7 +16,7 @@ namespace UnitTestProject
         {
             try
             {
-                Demo vf = new Demo();
+                Demo vf = new Demo(null);
                 Assert.IsTrue(true);
             }
             catch (System.Exception exp)

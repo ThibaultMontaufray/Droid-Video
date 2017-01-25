@@ -63,6 +63,16 @@ namespace Droid_video.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap transparent {
+            get {
+                object obj = ResourceManager.GetObject("transparent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap video_bg {
             get {
                 object obj = ResourceManager.GetObject("video_bg", resourceCulture);

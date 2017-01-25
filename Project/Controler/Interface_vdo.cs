@@ -76,8 +76,11 @@ namespace Droid_video
         #region Methods Public
         public override bool Open(object o)
 		{
-            //stream = s;
-            //openned = LoadData();
+            if (o is string)
+            {
+                _videoFrame.OpenFile(o as string);
+                _tsm.UpdateVideoDetails();
+            }
 			return false;
 		}
 		public override void Print()
@@ -200,7 +203,7 @@ namespace Droid_video
         }
         private void LaunchOpenVideo()
         {
-            _videoFrame.Pause();
+            if (_videoFrame.IsPlaying) _videoFrame.Pause();
             _videoFrame.OpenFile();
             _tsm.UpdateVideoDetails();
         }

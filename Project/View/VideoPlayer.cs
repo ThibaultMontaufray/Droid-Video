@@ -14,6 +14,8 @@ namespace Droid_video
     public class VideoPlayer : UserControl
     {
         #region Attributes
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         private System.ComponentModel.IContainer components = null;
 
         private Vlc.DotNet.Forms.VlcControl _vlcControl;
@@ -62,6 +64,13 @@ namespace Droid_video
             get { return _fullScreen; }
             set { _fullScreen = value; }
         }
+        public bool IsPlaying
+        {
+            get
+            {
+                return _vlcControl.IsPlaying;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -79,12 +88,12 @@ namespace Droid_video
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                _intVdo.CurrentVideo = new Video();
-                _intVdo.CurrentVideo.Path = ofd.FileName;
-                _openned = false;
-                _trackBar.Enabled = true;
-                Play();
+                Open(ofd.FileName);
             }
+        }
+        public void OpenFile(string path)
+        {
+            Open(path);
         }
         public void KeyEvent(char key)
         {
@@ -158,6 +167,14 @@ namespace Droid_video
         #endregion
 
         #region Methods private
+        private void Open(string path)
+        {
+            _intVdo.CurrentVideo = new Video();
+            _intVdo.CurrentVideo.Path = path;
+            _openned = false;
+            _trackBar.Enabled = true;
+            Play();
+        }
         private void Init()
         {
             _openned = false;
@@ -188,6 +205,13 @@ namespace Droid_video
             this._vlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
             ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).EndInit();
             this.Controls.Add(_vlcControl);
+
+            var currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+            IntPtr hWnd = currentProcess.MainWindowHandle;
+            if (hWnd != IntPtr.Zero)
+            {
+                ShowWindow(hWnd, 0); // 0 = SW_HIDE
+            }
             #endregion
 
             #region TrackBar
@@ -257,76 +281,51 @@ namespace Droid_video
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoPlayer));
-            this.myBtnPlayPause = new System.Windows.Forms.Button();
-            this.myBtnStop = new System.Windows.Forms.Button();
-            this.myLblMediaRest = new System.Windows.Forms.Label();
-            this.myLblVlcPosition = new System.Windows.Forms.Label();
-            this._panelControl = new System.Windows.Forms.Panel();
-            this._panelQuickControls = new System.Windows.Forms.Panel();
-            this._panelSound = new System.Windows.Forms.Panel();
-            this.buttonMute = new System.Windows.Forms.Button();
-            this.buttonUp30 = new System.Windows.Forms.Button();
-            this.buttonMinus10 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this._textBoxSubtitle = new System.Windows.Forms.WebBrowser();
             this._subtitlesUserControl = new System.Windows.Forms.UserControl();
+            this._panelControl = new System.Windows.Forms.Panel();
+            this._panelQuickControls = new System.Windows.Forms.Panel();
+            this._panelSound = new System.Windows.Forms.Panel();
+            this.myBtnPlayPause = new System.Windows.Forms.Button();
+            this.buttonMute = new System.Windows.Forms.Button();
+            this.buttonUp30 = new System.Windows.Forms.Button();
+            this.buttonMinus10 = new System.Windows.Forms.Button();
+            this.myBtnStop = new System.Windows.Forms.Button();
+            this.myLblVlcPosition = new System.Windows.Forms.Label();
+            this.myLblMediaRest = new System.Windows.Forms.Label();
+            this._subtitlesUserControl.SuspendLayout();
             this._panelControl.SuspendLayout();
             this._panelQuickControls.SuspendLayout();
-            this._subtitlesUserControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // myBtnPlayPause
+            // _textBoxSubtitle
             // 
-            this.myBtnPlayPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.myBtnPlayPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnPlayPause.BackgroundImage")));
-            this.myBtnPlayPause.FlatAppearance.BorderSize = 0;
-            this.myBtnPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.myBtnPlayPause.Location = new System.Drawing.Point(163, 4);
-            this.myBtnPlayPause.Name = "myBtnPlayPause";
-            this.myBtnPlayPause.Size = new System.Drawing.Size(32, 32);
-            this.myBtnPlayPause.TabIndex = 1;
-            this.myBtnPlayPause.UseVisualStyleBackColor = true;
-            this.myBtnPlayPause.Click += new System.EventHandler(this.OnButtonPlayPauseClicked);
+            this._textBoxSubtitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._textBoxSubtitle.Location = new System.Drawing.Point(0, 0);
+            this._textBoxSubtitle.Name = "_textBoxSubtitle";
+            this._textBoxSubtitle.ScrollBarsEnabled = false;
+            this._textBoxSubtitle.Size = new System.Drawing.Size(612, 72);
+            this._textBoxSubtitle.TabIndex = 0;
             // 
-            // myBtnStop
+            // _subtitlesUserControl
             // 
-            this.myBtnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.myBtnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnStop.BackgroundImage")));
-            this.myBtnStop.FlatAppearance.BorderSize = 0;
-            this.myBtnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.myBtnStop.Location = new System.Drawing.Point(201, 4);
-            this.myBtnStop.Name = "myBtnStop";
-            this.myBtnStop.Size = new System.Drawing.Size(32, 32);
-            this.myBtnStop.TabIndex = 2;
-            this.myBtnStop.UseVisualStyleBackColor = true;
-            this.myBtnStop.Click += new System.EventHandler(this.OnButtonStopClicked);
-            // 
-            // myLblMediaRest
-            // 
-            this.myLblMediaRest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.myLblMediaRest.AutoSize = true;
-            this.myLblMediaRest.Location = new System.Drawing.Point(937, 17);
-            this.myLblMediaRest.Name = "myLblMediaRest";
-            this.myLblMediaRest.Size = new System.Drawing.Size(49, 13);
-            this.myLblMediaRest.TabIndex = 3;
-            this.myLblMediaRest.Text = "00:00:00";
-            // 
-            // myLblVlcPosition
-            // 
-            this.myLblVlcPosition.AutoSize = true;
-            this.myLblVlcPosition.Location = new System.Drawing.Point(3, 17);
-            this.myLblVlcPosition.Name = "myLblVlcPosition";
-            this.myLblVlcPosition.Size = new System.Drawing.Size(49, 13);
-            this.myLblVlcPosition.TabIndex = 4;
-            this.myLblVlcPosition.Text = "00:00:00";
+            this._subtitlesUserControl.BackColor = System.Drawing.Color.Transparent;
+            this._subtitlesUserControl.BackgroundImage = global::Droid_video.Properties.Resources.transparent;
+            this._subtitlesUserControl.Controls.Add(this._textBoxSubtitle);
+            this._subtitlesUserControl.Location = new System.Drawing.Point(194, 384);
+            this._subtitlesUserControl.Name = "_subtitlesUserControl";
+            this._subtitlesUserControl.Size = new System.Drawing.Size(612, 72);
+            this._subtitlesUserControl.TabIndex = 0;
             // 
             // _panelControl
             // 
-            this._panelControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._panelControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._panelControl.BackColor = System.Drawing.Color.Transparent;
             this._panelControl.Controls.Add(this._panelQuickControls);
             this._panelControl.Controls.Add(this.myLblVlcPosition);
             this._panelControl.Controls.Add(this.myLblMediaRest);
-            this._panelControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this._panelControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this._panelControl.Location = new System.Drawing.Point(0, 462);
             this._panelControl.Name = "_panelControl";
@@ -355,6 +354,19 @@ namespace Droid_video
             this._panelSound.Name = "_panelSound";
             this._panelSound.Size = new System.Drawing.Size(97, 39);
             this._panelSound.TabIndex = 10;
+            // 
+            // myBtnPlayPause
+            // 
+            this.myBtnPlayPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.myBtnPlayPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnPlayPause.BackgroundImage")));
+            this.myBtnPlayPause.FlatAppearance.BorderSize = 0;
+            this.myBtnPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.myBtnPlayPause.Location = new System.Drawing.Point(163, 4);
+            this.myBtnPlayPause.Name = "myBtnPlayPause";
+            this.myBtnPlayPause.Size = new System.Drawing.Size(32, 32);
+            this.myBtnPlayPause.TabIndex = 1;
+            this.myBtnPlayPause.UseVisualStyleBackColor = true;
+            this.myBtnPlayPause.Click += new System.EventHandler(this.OnButtonPlayPauseClicked);
             // 
             // buttonMute
             // 
@@ -396,23 +408,37 @@ namespace Droid_video
             this.buttonMinus10.UseVisualStyleBackColor = true;
             this.buttonMinus10.Click += new System.EventHandler(this.buttonMinus10_Click);
             // 
-            // _textBoxSubtitle
+            // myBtnStop
             // 
-            this._textBoxSubtitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._textBoxSubtitle.Location = new System.Drawing.Point(0, 0);
-            this._textBoxSubtitle.Name = "_textBoxSubtitle";
-            this._textBoxSubtitle.ScrollBarsEnabled = false;
-            this._textBoxSubtitle.Size = new System.Drawing.Size(612, 72);
-            this._textBoxSubtitle.TabIndex = 0;
+            this.myBtnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.myBtnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnStop.BackgroundImage")));
+            this.myBtnStop.FlatAppearance.BorderSize = 0;
+            this.myBtnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.myBtnStop.Location = new System.Drawing.Point(201, 4);
+            this.myBtnStop.Name = "myBtnStop";
+            this.myBtnStop.Size = new System.Drawing.Size(32, 32);
+            this.myBtnStop.TabIndex = 2;
+            this.myBtnStop.UseVisualStyleBackColor = true;
+            this.myBtnStop.Click += new System.EventHandler(this.OnButtonStopClicked);
             // 
-            // _subtitlesUserControl
+            // myLblVlcPosition
             // 
-            this._subtitlesUserControl.BackColor = System.Drawing.Color.Transparent;
-            this._subtitlesUserControl.Controls.Add(this._textBoxSubtitle);
-            this._subtitlesUserControl.Location = new System.Drawing.Point(194, 384);
-            this._subtitlesUserControl.Name = "_subtitlesUserControl";
-            this._subtitlesUserControl.Size = new System.Drawing.Size(612, 72);
-            this._subtitlesUserControl.TabIndex = 0;
+            this.myLblVlcPosition.AutoSize = true;
+            this.myLblVlcPosition.Location = new System.Drawing.Point(3, 17);
+            this.myLblVlcPosition.Name = "myLblVlcPosition";
+            this.myLblVlcPosition.Size = new System.Drawing.Size(49, 13);
+            this.myLblVlcPosition.TabIndex = 4;
+            this.myLblVlcPosition.Text = "00:00:00";
+            // 
+            // myLblMediaRest
+            // 
+            this.myLblMediaRest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.myLblMediaRest.AutoSize = true;
+            this.myLblMediaRest.Location = new System.Drawing.Point(937, 17);
+            this.myLblMediaRest.Name = "myLblMediaRest";
+            this.myLblMediaRest.Size = new System.Drawing.Size(49, 13);
+            this.myLblMediaRest.TabIndex = 3;
+            this.myLblMediaRest.Text = "00:00:00";
             // 
             // VideoPlayer
             // 
@@ -423,11 +449,15 @@ namespace Droid_video
             this.Name = "VideoPlayer";
             this.Size = new System.Drawing.Size(989, 517);
             this.SizeChanged += new System.EventHandler(this.VideoPlayer_SizeChanged);
+            this._subtitlesUserControl.ResumeLayout(false);
             this._panelControl.ResumeLayout(false);
             this._panelControl.PerformLayout();
             this._panelQuickControls.ResumeLayout(false);
-            this._subtitlesUserControl.ResumeLayout(false);
             this.ResumeLayout(false);
+
+        }
+        private void HideVldConsol()
+        {
 
         }
         private void SetSubtitle(TimeSpan now)

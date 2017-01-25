@@ -20,10 +20,11 @@ namespace Droid_video
         #endregion
 
         #region Constructor
-        public Demo()
+        public Demo(string[] args)
         {
             InitializeComponent();
             Init();
+            LoadArgs(args);
         }
         #endregion
 
@@ -69,7 +70,13 @@ namespace Droid_video
 
             this.Controls.Add(rb);
         }
-
+        private void LoadArgs(string[] args)
+        {
+            if (args.Length > 0 && !string.IsNullOrEmpty(args[0]))
+            {
+                _intVdo.Open(args[0]);
+            }
+        }
         #endregion
 
         #region Event

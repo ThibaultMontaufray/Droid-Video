@@ -24624,3 +24624,1727 @@ direct3d debug: Direct3D scene released successfully
 main debug: removing module "freetype"
 main debug: removing module "yuvp"
 main debug: removing module "swscale"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: Creating an input for '[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: using timeshift granularity of 50 MiB, in path 'C:\Users\amost\AppData\Local\Temp'
+main debug: `file:///D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' gives access `file' demux `' path `/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi'
+main debug: creating demux: access='file' demux='' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' file='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for access_demux module matching "file": 10 candidates
+main debug: no access_demux modules matched
+main debug: creating access 'file' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi', path='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for access module matching "file": 18 candidates
+filesystem debug: opening file `D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: using access module "filesystem"
+main debug: Using stream method for AStream*
+main debug: starting pre-buffering
+main debug: received first data after 0 ms
+main debug: pre-buffering done 1024 bytes in 0s - 1000000 KiB/s
+main debug: looking for stream_filter module matching "any": 5 candidates
+main debug: no stream_filter modules matched
+main debug: looking for stream_filter module matching "record": 5 candidates
+main debug: using stream_filter module "record"
+main debug: creating demux: access='file' demux='' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' file='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for demux module matching "avi": 58 candidates
+avi debug: <list 'AVI '>
+avi debug: <list 'hdrl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'odml'>
+avi debug: </list 'odml'>
+avi debug: </list 'hdrl'>
+avi debug: <list 'INFO'>
+avi debug: </list 'INFO'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVI '>
+avi debug: <list 'AVIX'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVIX'>
+avi debug: <list 'AVIX'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVIX'>
+avi debug: * LIST-root size:2205411196 pos:0
+avi debug:     + RIFF-AVI  size:1078705376 pos:0
+avi debug:     |   + LIST-hdrl size:8924 pos:12
+avi debug:     |   |   + avih size:56 pos:24
+avi debug:     |   |   + LIST-strl size:4316 pos:88
+avi debug:     |   |   |   + strh size:56 pos:100
+avi debug:     |   |   |   + strf size:40 pos:164
+avi debug:     |   |   |   + indx size:4116 pos:212
+avi debug:     |   |   |   + vprp size:68 pos:4336
+avi debug:     |   |   + LIST-strl size:4256 pos:4412
+avi debug:     |   |   |   + strh size:56 pos:4424
+avi debug:     |   |   |   + strf size:40 pos:4488
+avi debug:     |   |   |   + strn size:8 pos:4536
+avi debug:     |   |   |   + indx size:4116 pos:4552
+avi debug:     |   |   + LIST-odml size:260 pos:8676
+avi debug:     |   |   |   + dmlh size:248 pos:8688
+avi debug:     |   + LIST-INFO size:34 pos:8944
+avi debug:     |   |   + ISFT size:22 pos:8956
+avi debug:     |   + JUNK size:1016 pos:8986
+avi debug:     |   + LIST-movi size:1075386590 pos:10010
+avi debug:     |   + idx1 size:3308768 pos:1075396608
+avi debug:     + RIFF-AVIX size:1075809782 pos:1078705384
+avi debug:     |   + LIST-movi size:1075809770 pos:1078705396
+avi debug:     + RIFF-AVIX size:50896014 pos:2154515174
+avi debug:     |   + LIST-movi size:50896002 pos:2154515186
+avi warning: multiple riff -> OpenDML ?
+avi warning: detected OpenDML file
+avi debug: AVIH: 2 stream, flags  HAS_INDEX IS_INTERLEAVED TRUST_CKTYPE 
+avi debug: stream[0] rate:24000 scale:1001 samplesize:0
+avi debug: stream[0] video(XVID) 720x304 24bpp 23.976025fps
+main debug: selecting program id=0
+avi debug: stream[1] rate:125 scale:4 samplesize:0
+avi debug: stream[1] audio(0x2000 - A52 Audio (aka AC3)) 6 channels 48000Hz 16bits
+avi debug: loading subindex(0x1) 89780 entries
+avi debug: loading subindex(0x1) 111159 entries
+avi debug: loading subindex(0x1) 3469 entries
+avi debug: loading subindex(0x1) 117018 entries
+avi debug: loading subindex(0x1) 144882 entries
+avi debug: loading subindex(0x1) 4561 entries
+avi debug: selected ODML index for stream[0]
+avi debug: selected ODML index for stream[1]
+avi debug: stream[0] created 204408 index entries
+avi debug: stream[1] created 266461 index entries
+avi debug: stream[0] length:8525 (based on index)
+avi debug: stream[1] length:8526 (based on index)
+main debug: using demux module "avi"
+main debug: looking for a subtitle file in D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\
+main debug: looking for decoder module matching "any": 39 candidates
+avcodec debug: trying to use direct rendering
+avcodec debug: allowing 4 thread(s) for decoding
+avcodec debug: avcodec codec (MPEG-4 Video) started
+main debug: using decoder module "avcodec"
+main debug: looking for decoder module matching "any": 39 candidates
+main debug: using decoder module "a52"
+main debug: looking for meta reader module matching "any": 1 candidates
+lua debug: Trying Lua scripts in C:\Users\amost\AppData\Roaming\vlc\lua\meta\reader
+lua debug: Trying Lua scripts in D:\Github\Droid-Video\Project\lib\4.5.1\Resources\x64\lua\meta\reader
+main debug: no meta reader modules matched
+main debug: `file:///D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' successfully opened
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering a25%
+52 debug: Am/52 channels:ain6 sa debug: mplerate:Buffering 480003 3%
+bitrate:mmainain4 debug:  debug: 48000looking for 
+Buffering 41%
+text renderermain module matching " debug: any": Buffering 250%
+ candidamain debug: tesBuffering 58%
+
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (freetype325 ms in  debug: 5 ms)
+Using Arial as font from file C:\Windows\Fonts\arial.ttf
+freetype debug: using fontsize: 2
+main debug: using text renderer module "freetype"
+main debug: looking for video filter2 module matching "any": 54 candidates
+swscale debug: 32x32 chroma: YUVA -> 16x16 chroma: RGBA with scaling using Bicubic (good quality)
+main debug: using video filter2 module "swscale"
+main debug: looking for video filter2 module matching "any": 54 candidates
+yuvp debug: YUVP to YUVA converter
+main debug: using video filter2 module "yuvp"
+main debug: Deinterlacing available
+main debug: deinterlace 0, mode blend, is_needed 0
+main debug: Opening vout display wrapper
+main debug: looking for vout display module matching "any": 10 candidates
+direct3d debug: creating Vout EventThread
+direct3d debug: DirectXCreateWindow
+main debug: looking for vout window hwnd module matching "embed-hwnd,any": 1 candidates
+main debug: using vout window hwnd module "drawable"
+direct3d debug: created video sub-window
+direct3d debug: Vout EventThread running
+direct3d debug: disabling screen saver
+direct3d debug: Direct3d Device: Intel(R) HD Graphics 530 32902 6427 6
+main debug: VoutDisplayEvent 'resize' 741x343 window
+direct3d warning: trying surface pixel format: YV12
+direct3d debug: selected surface pixel format is YV12
+direct3d debug: Using D3DTEXF_LINEAR for minification
+direct3d debug: Using D3DTEXF_LINEAR for magnification
+direct3d debug: Direct3D scene created successfully
+direct3d debug: Direct3D device adapter successfully initialized
+main debug: using vout display module "direct3d"
+main debug: original format sz 720x304, of (0,0), vsz 720x304, 4cc I420, sar 243:241, msk r0x0 g0x0 b0x0
+main debug: removing module "freetype"
+main debug: looking for text renderer momaindule matching " debug: any": VoutDisplayEvent 'resize' 2 candidates1008x411 window
+
+freetype debug: Using Arial as font from file C:\Windows\Fonts\arial.ttf
+main error: Failed to set on top
+freetype debug: using fontsize: 2
+mmainain error: debug:  using Failed to resize display
+text renderer module "freetype"
+main debug: creating audio output
+main debug: looking for audio output module matching "any": 6 candidates
+avcodec debug: using direct rendering
+main debug: End of video preroll
+maindirectsound debug:  debug: Received first picture
+found 2 devices
+main debug: using audio output module "directsound"
+directsound debug: Opening DirectSound Audio Output
+directsound debug: Windows speaker config: Stereo and stream has 6 channels, using 2 channels
+main debug: output 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+main debug: looking for audio volume module matching "any": 2 candidates
+main debug: using audio volume module "float_mixer"
+main debug: input 'a52 ' 48000 Hz 3F2R/LFE frame=1536 samples/1792 bytes
+main debug: looking for audio filter module matching "scaletempo": 13 candidates
+scaletempo debug: format: 48000 rate, 6 nch, 4 bps, fl32
+scaletempo debug: params: 30 stride, 0.200 overlap, 14 search
+scaletempo debug: 1.000 scale, 1440.000 stride_in, 1440 stride_out, 1152 standing, 288 overlap, 672 search, 2400 queue, fl32 mode
+main debug: using audio filter module "scaletempo"
+main debug: conversion: 'a52 '->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->3F2R/LFE
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: no audio converter modules matched
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: using audio converter module "a52tofloat32"
+main debug: conversion pipeline complete
+main debug: conversion: 'f32l'->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->Stereo
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: using audio converter module "simple_channel_mixer"
+main debug: conversion pipeline complete
+main debug: looking for audio resampler module matching "any": 3 candidates
+main debug: using audio resampler module "samplerate"
+main debug: End of audio preroll
+main debug: Decoder buffering done in 105 ms
+main debug: inserting 240 zeroes
+main warning: buffer too late (-102000 us): dropped
+main warning: buffer too late (-71000 us): dropped
+main debug: playback too late (79583): flushing buffers
+main warning: playback too late (63000): up-sampling
+main debug: auto hiding mouse cursor
+main debug: auto hiding mouse cursor
+avi debug: seek requested: 5 seconds 0%
+avi debug: old:5714041 > new 5251000
+avi debug: old:5728000 > new 5251000
+avi debug: seek: 5 seconds
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+maimainn debug:  debug: End of audio preroll
+Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 6 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 5 ms
+main warning: early picture skipped
+main warning: early picture skipped
+main warning: early picture skipped
+main warning: early picture skipped
+avi debug: seek requested: 5 seconds 0%
+avi debug: old:5588916 > new 5251000
+avi debug: old:5600000 > new 5251000
+avi debug: seek: 5 seconds
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+main debug: mainEnd of audio preroll
+ debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 5 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 5 ms
+avi debug: seek requested: 5 seconds 0%
+avi debug: old:5588916 > new 5251000
+avi debug: old:5600000 > new 5251000
+avi debug: seek: 5 seconds
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+mmainain debug:  debug: End of audio preroll
+Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 5 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 7 ms
+avi debug: seek requested: 5 seconds 0%
+avi debug: old:5630625 > new 5251000
+avi debug: old:5632000 > new 5251000
+avi debug: seek: 5 seconds
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+main maindebug debug: : End of audio preroll
+Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 5 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 6 ms
+avi debug: seek requested: 5 seconds 0%
+avi debug: old:5588916 > new 5251000
+avi debug: old:5600000 > new 5251000
+avi debug: seek: 5 seconds
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+mainmain debug:  debug: Buffering End of audio preroll33
+%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 5 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 6 ms
+avi debug: seek requested: 2968 seconds 34%
+avi debug: old:5964291 < new 2968567000
+avi debug: old:5984000 < new 2968567000
+avi debug: seek: 2968 seconds
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+mmainain debug:  debug: End of audio preroll
+Buffering 25%
+main debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debumaing debug: : Buffering End of video preroll
+100%
+main debug: mainReceived first picture
+ debug: Stream buffering done (325 ms in 9 ms)
+main debug: Decoder buffering done in 7 ms
+avi debug: seek requested: 2968 seconds 34%
+avi debug: old:2969007708 > new 2968567000
+avi debug: old:2969024000 > new 2968567000
+avi debug: seek: 2968 seconds
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main maindebug debug: : End of audio preroll
+Buffering 25%
+main debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+mmainain debug:  debug: Buffering End of video preroll
+100%
+main debug: mainStream buffering done ( debug: 325 ms in 5 ms)
+Received first picture
+main debug: Decoder buffering done in 4 ms
+main debug: auto hiding mouse cursor
+direct3d debug: WinProc WM_DESTROY
+direct3d debug: DirectXEventThread terminating
+direct3d debug: DirectXCloseWindow
+direct3d debug: WinProc WM_DESTROY
+main debug: VoutDisplayEvent 'resize' -749706240x449 window
+main debug: VoutDisplayEvent 'resize' -1658262006x32761 window
+main debug: control: stopping input
+main debug: removing module "avcodec"
+main debug: VoutDisplayEvent 'resize' a-74970624vcodec0 debugx: 449ffmpeg codec ( MPEG-4 Video) stowindowppe
+d
+main debug: killing decoder fourccmain ` debug: mp4v', VoutDisplayEvent 'resize' 0-1658262006x PES in FIFO32761 
+window
+mmainain de debug:bug:  savVoutDisplayEing a free vout
+vent 'resize' -749706240x449 window
+main debug: VoutDisplayEvent 'resize' 28x0 window
+main debug: reusing provided vout
+main debug: removing module "a52"
+main debug: killing decoder fourcc `a52 ', 0 PES in FIFO
+main debug: removing module "samplerate"
+main debug: removing module "a52tofloat32"
+main debug: removing module "scaletempo"
+main debug: removing module "simple_channel_mixer"
+directsound debug: closing audio device
+main debug: removing module "float_mixer"
+main debug: keeping audio output
+main debug: removing module "avi"
+main debug: removing module "record"
+main debug: removing module "filesystem"
+main debug: Program doesn't contain anymore ES
+main debug: removing module "directsound"
+main debug: destroying useless vout
+main debug: removing module "direct3d"
+direct3d debug: Direct3D scene released successfully
+main debug: removing module "freetype"
+main debug: removing module "yuvp"
+main debug: removing module "swscale"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: Creating an input for '[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: using timeshift granularity of 50 MiB, in path 'C:\Users\amost\AppData\Local\Temp'
+main debug: `file:///D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' gives access `file' demux `' path `/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi'
+main debug: creating demux: access='file' demux='' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' file='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for access_demux module matching "file": 10 candidates
+main debug: no access_demux modules matched
+main debug: creating access 'file' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi', path='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for access module matching "file": 18 candidates
+filesystem debug: opening file `D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: using access module "filesystem"
+main debug: Using stream method for AStream*
+main debug: starting pre-buffering
+main debug: received first data after 0 ms
+main debug: pre-buffering done 1024 bytes in 0s - 1000000 KiB/s
+main debug: looking for stream_filter module matching "any": 5 candidates
+main debug: no stream_filter modules matched
+main debug: looking for stream_filter module matching "record": 5 candidates
+main debug: using stream_filter module "record"
+main debug: creating demux: access='file' demux='' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' file='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for demux module matching "avi": 58 candidates
+avi debug: <list 'AVI '>
+avi debug: <list 'hdrl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'odml'>
+avi debug: </list 'odml'>
+avi debug: </list 'hdrl'>
+avi debug: <list 'INFO'>
+avi debug: </list 'INFO'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVI '>
+avi debug: <list 'AVIX'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVIX'>
+avi debug: <list 'AVIX'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVIX'>
+avi debug: * LIST-root size:2205411196 pos:0
+avi debug:     + RIFF-AVI  size:1078705376 pos:0
+avi debug:     |   + LIST-hdrl size:8924 pos:12
+avi debug:     |   |   + avih size:56 pos:24
+avi debug:     |   |   + LIST-strl size:4316 pos:88
+avi debug:     |   |   |   + strh size:56 pos:100
+avi debug:     |   |   |   + strf size:40 pos:164
+avi debug:     |   |   |   + indx size:4116 pos:212
+avi debug:     |   |   |   + vprp size:68 pos:4336
+avi debug:     |   |   + LIST-strl size:4256 pos:4412
+avi debug:     |   |   |   + strh size:56 pos:4424
+avi debug:     |   |   |   + strf size:40 pos:4488
+avi debug:     |   |   |   + strn size:8 pos:4536
+avi debug:     |   |   |   + indx size:4116 pos:4552
+avi debug:     |   |   + LIST-odml size:260 pos:8676
+avi debug:     |   |   |   + dmlh size:248 pos:8688
+avi debug:     |   + LIST-INFO size:34 pos:8944
+avi debug:     |   |   + ISFT size:22 pos:8956
+avi debug:     |   + JUNK size:1016 pos:8986
+avi debug:     |   + LIST-movi size:1075386590 pos:10010
+avi debug:     |   + idx1 size:3308768 pos:1075396608
+avi debug:     + RIFF-AVIX size:1075809782 pos:1078705384
+avi debug:     |   + LIST-movi size:1075809770 pos:1078705396
+avi debug:     + RIFF-AVIX size:50896014 pos:2154515174
+avi debug:     |   + LIST-movi size:50896002 pos:2154515186
+avi warning: multiple riff -> OpenDML ?
+avi warning: detected OpenDML file
+avi debug: AVIH: 2 stream, flags  HAS_INDEX IS_INTERLEAVED TRUST_CKTYPE 
+avi debug: stream[0] rate:24000 scale:1001 samplesize:0
+avi debug: stream[0] video(XVID) 720x304 24bpp 23.976025fps
+main debug: selecting program id=0
+avi debug: stream[1] rate:125 scale:4 samplesize:0
+avi debug: stream[1] audio(0x2000 - A52 Audio (aka AC3)) 6 channels 48000Hz 16bits
+avi debug: loading subindex(0x1) 89780 entries
+avi debug: loading subindex(0x1) 111159 entries
+avi debug: loading subindex(0x1) 3469 entries
+avi debug: loading subindex(0x1) 117018 entries
+avi debug: loading subindex(0x1) 144882 entries
+avi debug: loading subindex(0x1) 4561 entries
+avi debug: selected ODML index for stream[0]
+avi debug: selected ODML index for stream[1]
+avi debug: stream[0] created 204408 index entries
+avi debug: stream[1] created 266461 index entries
+avi debug: stream[0] length:8525 (based on index)
+avi debug: stream[1] length:8526 (based on index)
+main debug: using demux module "avi"
+main debug: looking for a subtitle file in D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\
+main debug: looking for decoder module matching "any": 39 candidates
+avcodec debug: trying to use direct rendering
+avcodec debug: allowing 4 thread(s) for decoding
+avcodec debug: avcodec codec (MPEG-4 Video) started
+main debug: using decoder module "avcodec"
+main debug: looking for decoder module matching "any": 39 candidates
+main debug: using decoder module "a52"
+main debug: looking for meta reader module matching "any": 1 candidates
+lua debug: Trying Lua scripts in C:\Users\amost\AppData\Roaming\vlc\lua\meta\reader
+lua debug: Trying Lua scripts in D:\Github\Droid-Video\Project\lib\4.5.1\Resources\x64\lua\meta\reader
+main debug: no meta reader modules matched
+main debug: `file:///D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' successfully opened
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+a52 main debug: debugBuffering 33%
+: Amain debug: /52 channels:m6 samplerate:ain48000 bitrate:448000 debug: Buffering 41%
+
+looking fomain debug: r Buffering text renderer module matching "50%
+any": 2 maincandidates debug: 
+Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+fmain debug: reetypeStream buffering done (325 ms in 3 ms) debug: 
+Using Arial as font from file C:\Windows\Fonts\arial.ttf
+freetype debug: using fontsize: 2
+main debug: using text renderer module "freetype"
+main debug: looking for video filter2 module matching "any": 54 candidates
+swscale debug: 32x32 chroma: YUVA -> 16x16 chroma: RGBA with scaling using Bicubic (good quality)
+main debug: using video filter2 module "swscale"
+main debug: looking for video filter2 module matching "any": 54 candidates
+yuvp debug: YUVP to YUVA converter
+main debug: using video filter2 module "yuvp"
+main debug: Deinterlacing available
+main debug: deinterlace 0, mode blend, is_needed 0
+main debug: Opening vout display wrapper
+main debug: looking for vout display module matching "any": 10 candidates
+direct3d debug: creating Vout EventThread
+direct3d debug: DirectXCreateWindow
+main debug: looking for vout window hwnd module matching "embed-hwnd,any": 1 candidates
+main debug: using vout window hwnd module "drawable"
+direct3d debug: created video sub-window
+direct3d debug: Vout EventThread running
+direct3d debug: disabling screen saver
+direct3d debug: Direct3d Device: Intel(R) HD Graphics 530 32902 6427 6
+main debug: VoutDisplayEvent 'resize' 741x343 window
+direct3d warning: trying surface pixel format: YV12
+direct3d debug: selected surface pixel format is YV12
+direct3d debug: Using D3DTEXF_LINEAR for minification
+direct3d debug: Using D3DTEXF_LINEAR for magnification
+direct3d debug: Direct3D scene created successfully
+direct3d debug: Direct3D device adapter successfully initialized
+main debug: using vout display module "direct3d"
+main debug: original format sz 720x304, of (0,0), vsz 720x304, 4cc I420, sar 243:241, msk r0x0 g0x0 b0x0
+main debug: removing module "freetype"
+main debug: mainVoutDisplayEve debug: nt 'resize' looking for 1008x411 text renderer module matching "any": window
+2 candidates
+freetype debug: Using Arial as font from file C:\Windows\Fonts\arial.ttf
+freetype debug: using fontsizem: ain2 error: 
+Failed to set on top
+main debug: using text renderer module "freetype"main
+ error: Failed to resize display
+main debug: creating audio output
+main debug: looking for audio output module matching "any": 6 candidates
+avcodec debug: using direct rendering
+main debug: End of video preroll
+main debug: Received first picture
+directsound debug: found 2 devices
+main debug: using audio output module "directsound"
+directsound debug: Opening DirectSound Audio Output
+directsound debug: Windows speaker config: Stereo and stream has 6 channels, using 2 channels
+main debug: output 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+main debug: looking for audio volume module matching "any": 2 candidates
+main debug: using audio volume module "float_mixer"
+main debug: input 'a52 ' 48000 Hz 3F2R/LFE frame=1536 samples/1792 bytes
+main debug: looking for audio filter module matching "scaletempo": 13 candidates
+scaletempo debug: format: 48000 rate, 6 nch, 4 bps, fl32
+scaletempo debug: params: 30 stride, 0.200 overlap, 14 search
+scaletempo debug: 1.000 scale, 1440.000 stride_in, 1440 stride_out, 1152 standing, 288 overlap, 672 search, 2400 queue, fl32 mode
+main debug: using audio filter module "scaletempo"
+main debug: conversion: 'a52 '->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->3F2R/LFE
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: no audio converter modules matched
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: using audio converter module "a52tofloat32"
+main debug: conversion pipeline complete
+main debug: conversion: 'f32l'->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->Stereo
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: using audio converter module "simple_channel_mixer"
+main debug: conversion pipeline complete
+main debug: looking for audio resampler module matching "any": 3 candidates
+main debug: using audio resampler module "samplerate"
+main debug: End of audio preroll
+main debug: Decoder buffering done in 105 ms
+main debug: inserting 240 zeroes
+main warning: playback too late (61583): up-sampling
+main debug: auto hiding mouse cursor
+main debug: auto hiding mouse cursor
+direct3d debug: WinProc WM_DESTROY
+direct3d debug: DirectXEventThread terminating
+direct3d debug: DirectXCloseWindow
+direct3d debug: WinProc WM_DESTROY
+main debug: VoutDisplayEvent 'resize' -1292508192x443 window
+main debug: VoutDisplayEvent 'resize' 31x0 window
+main debug: VoutDisplayEvent 'resize' -1292508192x443 window
+main debug: VoutDisplayEvent 'resize' -1658262006x32761 window
+main debug: control: stopping input
+main debug: VoutDisplayEvent 'resize' -1292508192x443 window
+main debug: VoutDisplayEvent 'resize' 25x0 window
+main debug: removing module "avcodec"
+main debugavcodec debug: : ffmpeg codec (VoutDisplayEvent 'resize' MPEG-4 Video) stopped
+-1292508main192 debug: xkilling decoder fou443 rcc window`
+mp4v', 0 PES in FIFO
+main debug: VoutDisplayEvent 'resize' -1658262006x32761 window
+maimainn de debug: bug: VoutDisplayEvent 'resize' saving a free-1292508192x vout
+443 window
+main debug: VoutDisplayEvent 'resize' 25x0 window
+main debug: reusing provided vout
+main debug: removing module "a52"
+main debug: killing decoder fourcc `a52 ', 0 PES in FIFO
+main debug: removing module "samplerate"
+main debug: removing module "a52tofloat32"
+main debug: removing module "scaletempo"
+main debug: removing module "simple_channel_mixer"
+directsound debug: closing audio device
+main debug: removing module "float_mixer"
+main debug: keeping audio output
+main debug: removing module "avi"
+main debug: removing module "record"
+main debug: removing module "filesystem"
+main debug: Program doesn't contain anymore ES
+main debug: removing module "directsound"
+main debug: destroying useless vout
+main debug: removing module "direct3d"
+direct3d debug: Direct3D scene released successfully
+main debug: removing module "freetype"
+main debug: removing module "yuvp"
+main debug: removing module "swscale"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: Creating an input for '[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: using timeshift granularity of 50 MiB, in path 'C:\Users\amost\AppData\Local\Temp'
+main debug: `file:///D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' gives access `file' demux `' path `/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi'
+main debug: creating demux: access='file' demux='' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' file='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for access_demux module matching "file": 10 candidates
+main debug: no access_demux modules matched
+main debug: creating access 'file' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi', path='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for access module matching "file": 18 candidates
+filesystem debug: opening file `D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: using access module "filesystem"
+main debug: Using stream method for AStream*
+main debug: starting pre-buffering
+main debug: received first data after 0 ms
+main debug: pre-buffering done 1024 bytes in 0s - 1000000 KiB/s
+main debug: looking for stream_filter module matching "any": 5 candidates
+main debug: no stream_filter modules matched
+main debug: looking for stream_filter module matching "record": 5 candidates
+main debug: using stream_filter module "record"
+main debug: creating demux: access='file' demux='' location='/D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' file='D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V.avi'
+main debug: looking for demux module matching "avi": 58 candidates
+avi debug: <list 'AVI '>
+avi debug: <list 'hdrl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'odml'>
+avi debug: </list 'odml'>
+avi debug: </list 'hdrl'>
+avi debug: <list 'INFO'>
+avi debug: </list 'INFO'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVI '>
+avi debug: <list 'AVIX'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVIX'>
+avi debug: <list 'AVIX'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVIX'>
+avi debug: * LIST-root size:2205411196 pos:0
+avi debug:     + RIFF-AVI  size:1078705376 pos:0
+avi debug:     |   + LIST-hdrl size:8924 pos:12
+avi debug:     |   |   + avih size:56 pos:24
+avi debug:     |   |   + LIST-strl size:4316 pos:88
+avi debug:     |   |   |   + strh size:56 pos:100
+avi debug:     |   |   |   + strf size:40 pos:164
+avi debug:     |   |   |   + indx size:4116 pos:212
+avi debug:     |   |   |   + vprp size:68 pos:4336
+avi debug:     |   |   + LIST-strl size:4256 pos:4412
+avi debug:     |   |   |   + strh size:56 pos:4424
+avi debug:     |   |   |   + strf size:40 pos:4488
+avi debug:     |   |   |   + strn size:8 pos:4536
+avi debug:     |   |   |   + indx size:4116 pos:4552
+avi debug:     |   |   + LIST-odml size:260 pos:8676
+avi debug:     |   |   |   + dmlh size:248 pos:8688
+avi debug:     |   + LIST-INFO size:34 pos:8944
+avi debug:     |   |   + ISFT size:22 pos:8956
+avi debug:     |   + JUNK size:1016 pos:8986
+avi debug:     |   + LIST-movi size:1075386590 pos:10010
+avi debug:     |   + idx1 size:3308768 pos:1075396608
+avi debug:     + RIFF-AVIX size:1075809782 pos:1078705384
+avi debug:     |   + LIST-movi size:1075809770 pos:1078705396
+avi debug:     + RIFF-AVIX size:50896014 pos:2154515174
+avi debug:     |   + LIST-movi size:50896002 pos:2154515186
+avi warning: multiple riff -> OpenDML ?
+avi warning: detected OpenDML file
+avi debug: AVIH: 2 stream, flags  HAS_INDEX IS_INTERLEAVED TRUST_CKTYPE 
+avi debug: stream[0] rate:24000 scale:1001 samplesize:0
+avi debug: stream[0] video(XVID) 720x304 24bpp 23.976025fps
+main debug: selecting program id=0
+avi debug: stream[1] rate:125 scale:4 samplesize:0
+avi debug: stream[1] audio(0x2000 - A52 Audio (aka AC3)) 6 channels 48000Hz 16bits
+avi debug: loading subindex(0x1) 89780 entries
+avi debug: loading subindex(0x1) 111159 entries
+avi debug: loading subindex(0x1) 3469 entries
+avi debug: loading subindex(0x1) 117018 entries
+avi debug: loading subindex(0x1) 144882 entries
+avi debug: loading subindex(0x1) 4561 entries
+avi debug: selected ODML index for stream[0]
+avi debug: selected ODML index for stream[1]
+avi debug: stream[0] created 204408 index entries
+avi debug: stream[1] created 266461 index entries
+avi debug: stream[0] length:8525 (based on index)
+avi debug: stream[1] length:8526 (based on index)
+main debug: using demux module "avi"
+main debug: looking for a subtitle file in D:\Video\A_TRIER\[www.Cpasbien.me] The.Great.Gatsby.2013.FRENCH.BRRip.XviD AC3-S.V\
+main debug: looking for decoder module matching "any": 39 candidates
+avcodec debug: trying to use direct rendering
+avcodec debug: allowing 4 thread(s) for decoding
+avcodec debug: avcodec codec (MPEG-4 Video) started
+main debug: using decoder module "avcodec"
+main debug: looking for decoder module matching "any": 39 candidates
+main debug: using decoder module "a52"
+main debug: looking for meta reader module matching "any": 1 candidates
+lua debug: Trying Lua scripts in C:\Users\amost\AppData\Roaming\vlc\lua\meta\reader
+lua debug: Trying Lua scripts in D:\Github\Droid-Video\Project\lib\4.5.1\Resources\x64\lua\meta\reader
+main debug: no meta reader modules matched
+main debug: `file:///D:/Video/A_TRIER/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V/[www.Cpasbien.me]%20The.Great.Gatsby.2013.FRENCH.BRRip.XviD%20AC3-S.V.avi' successfully opened
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Bua52ffering  debug: 25A/52 channels:%6 samplerate:
+48000 bitratemain: debug: 448000Buffering 
+33%
+mainmain debug:  debug: creating audio outputBuffering 
+41%
+mmain debug: ainBuffering  debug: 50looking for %
+audio outputmain module matching " debug: any": Buffering 6 candidates58
+%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 5 ms)
+directsound debug: found 2 devices
+main debug: using audio output module "directsound"
+directsomainund debug:  debug: looking for Opening DirectSound Audio Output
+text renderer module matching "any": 2 candidates
+freetype debug: Using Arial as font from file C:\Windows\Fonts\arial.ttf
+freetype debug: using fontsize: 2
+main debug: using text renderer module "freetype"
+main debug: looking for video filter2 module matching "any": 54 candidates
+swscale debug: 32x32 chroma: YUVA -> 16x16 chroma: RGBA with scaling using Bicubic (good quality)
+main debug: using video filter2 module "swscale"
+main debug: looking for video filter2 module matching "any": 54 candidates
+yuvp debug: YUVP to YUVA converter
+main debug: using video filter2 module "yuvp"
+directsound debug: Windows speaker config: Stereo and stream has 6 channels, using 2 channels
+main debug: Deinterlacing available
+main debug: deinterlace 0, mode blend, is_needed 0
+main debug: Opening vout display wrapper
+main debug: looking for vout display module matching "any": 10 candidates
+main debug: output 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+main debug: looking for audio volume module matching "any": 2 candidates
+main debug: using audio volume module "float_mixer"
+main debug: input 'a52 ' 48000 Hz 3F2R/LFE frame=1536 samples/1792 bytes
+main debug: looking for audio filter module matching "scaletempo": 13 candidates
+direct3d debug: creating Vout EventThread
+scaletempo debug: format: 48000 rate, 6 nch, 4 bps, fl32
+scaletempo debug: pdirect3darams:  debug: 30 stride, DirectXCreateWindow
+0.200 overlap,main  debug: 14 searchlooking for 
+vout window hwndscaletempo module matching " debug: embed-hwnd,any": 11 candidates.000
+ scale, 1440.000 stride_in, 1440 stride_out, 1152 standing, 288 mainoverlap,  debug: 672 search, using 2400 queue, vout window hwnd module "drawable"fl32 mode
+
+main debug: using audio filter module "scaletempo"
+main debug: conversion: 'a52 '->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->3F2R/LFE
+main debug: looking for audio converter module matching "any": 12 candidates
+direct3d debug: created video sub-window
+direct3d debug: Vout EventThread running
+direct3d debug: disabling screen saver
+main debug: no audio converter modules matcheddirect3d
+ debug: Direct3d Device: main debug: Intel(R) HD Graphics 530 looking for 32902 audio converter module matching "any": 6427 12 candidates
+6
+main debug: using audio converter module "a52tofloat32"
+main debug: conversion pipeline complete
+main debug: conversion: 'f32l'->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->Stereo
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: using audio converter module "simple_channel_mixer"
+main debug: conversion pipeline complete
+main debug: looking for audio resampler module matching "any": 3 candidates
+main debug: using audio resampler module "samplerate"
+main debug: End of audio preroll
+main debug: VoutDisplayEvent 'resize' 741x343 window
+direct3d warning: trying surface pixel format: YV12
+direct3d debug: selected surface pixel format is YV12
+direct3d debug: Using D3DTEXF_LINEAR for minification
+direct3d debug: Using D3DTEXF_LINEAR for magnification
+direct3d debug: Direct3D scene created successfully
+direct3d debug: Direct3D device adapter successfully initialized
+main debug: using vout display module "direct3d"
+main debug: original format sz 720x304, of (0,0), vsz 720x304, 4cc I420, sar 243:241, msk r0x0 g0x0 b0x0
+main debug: removing module "freetype"
+main debug: looking for text renderer module matching "any": 2 candidates
+main debugfreetype:  debug: VoutDisplayEvent 'resize' Using 1920x867 Arial as font from file windowC:\Windows\Fonts\arial.ttf
+
+freetype debug: using fontsize: 2
+main debugmain:  error: using Failed to set on toptext renderer module "
+freetype"
+main error: Failed to resize display
+avcodec debug: using direct rendering
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 63 ms
+main debug: inserting 432 zeroes
+main warning: playback too late (60583): up-sampling
+main debug: auto hiding mouse cursor
+main debug: VoutDisplayEvent 'resize' 1008x411 window
+main debug: VoutDisplayEvent 'resize' 1007x411 window
+main debug: VoutDisplayEvent 'resize' 995x406 window
+main debug: auto hiding mouse cursor
+main debug: VoutDisplayEvent 'resize' 984x402 window
+main debug: VoutDisplayEvent 'resize' 857x314 window
+main debug: VoutDisplayEvent 'resize' 849x314 window
+main debug: VoutDisplayEvent 'resize' 841x308 window
+main debug: VoutDisplayEvent 'resize' 749x290 window
+main debug: VoutDisplayEvent 'resize' 744x290 window
+main debug: VoutDisplayEvent 'resize' 742x290 window
+main debug: VoutDisplayEvent 'resize' 743x289 window
+main debug: VoutDisplayEvent 'resize' 745x289 window
+main debug: VoutDisplayEvent 'resize' 749x289 window
+main debug: VoutDisplayEvent 'resize' 801x290 window
+main debug: VoutDisplayEvent 'resize' 909x318 window
+main debug: VoutDisplayEvent 'resize' 949x323 window
+main debug: VoutDisplayEvent 'resize' 1016x318 window
+main debug: VoutDisplayEvent 'resize' 1067x319 window
+main debug: VoutDisplayEvent 'resize' 1068x320 window
+main debug: VoutDisplayEvent 'resize' 1082x324 window
+main debug: VoutDisplayEvent 'resize' 1117x337 window
+main debug: VoutDisplayEvent 'resize' 1136x346 window
+main debug: VoutDisplayEvent 'resize' 1152x350 window
+main debug: VoutDisplayEvent 'resize' 1152x352 window
+main debug: VoutDisplayEvent 'resize' 1157x394 window
+main debug: VoutDisplayEvent 'resize' 1161x460 window
+main debug: VoutDisplayEvent 'resize' 1159x477 window
+main debug: VoutDisplayEvent 'resize' 1159x479 window
+main debug: VoutDisplayEvent 'resize' 1159x480 window
+main debug: VoutDisplayEvent 'resize' 1159x479 window
+main debug: VoutDisplayEvent 'resize' 1159x478 window
+direct3d debug: WinProc WM_DESTROY
+direct3d debug: DirectXEventThread terminating
+direct3d debug: DirectXCloseWindow
+direct3d debug: WinProc WM_DESTROY
+direct3d debug: Display:332 (hr=0x80070578)
+main debug: VoutDisplayEvent 'resize' 950620080x442 window
+main debug: VoutDisplayEvent 'resize' -1658262006x32761 window
+main debug: control: stopping input
+main debug: removing module "avcodec"
+avcodec debug: ffmpeg codec (MPEG-4 Video) stopped
+main debug: killing decoder fourcc `mp4v', 0 PES in FIFO
+main debug: saving a free vout
+main debug: reusing provided vout
+main debug:main  debug: removing module "VoutDisplayEvent 'resize' a52"
+0x0 windmainow debug: 
+killing dmainecoder fourcc ` debug: a52 ', VoutDisplayEvent 'resize' 0 PES in FIFO1x0 window
+
+maimainn debug:  error: removing module "Failed to resize displaysamplerate"
+
+main debug: removing module "a52tofloat32"
+main debug: removing module "scaletempo"
+main debug: removing module "simple_channel_mixer"
+directsound debug: closing audio device
+main debug: removing module "float_mixer"
+main debug: keeping audio output
+main debug: removing module "avi"
+main debug: removing module "record"
+main debug: removing module "filesystem"
+main debug: Program doesn't contain anymore ES
+main debug: removing module "directsound"
+main debug: destroying useless vout
+main debug: removing module "direct3d"
+direct3d debug: Direct3D scene released successfully
+main debug: removing module "freetype"
+main debug: removing module "yuvp"
+main debug: removing module "swscale"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: Creating an input for 'Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4'
+main debug: using timeshift granularity of 50 MiB, in path 'C:\Users\amost\AppData\Local\Temp'
+main debug: `file:///D:/Video/MARVEL%20-%20Superhero/(2016)%20Captain%20America%20Civil%20War%20[1080p]%20[YTS.AG]/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4' gives access `file' demux `' path `/D:/Video/MARVEL%20-%20Superhero/(2016)%20Captain%20America%20Civil%20War%20[1080p]%20[YTS.AG]/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4'
+main debug: creating demux: access='file' demux='' location='/D:/Video/MARVEL%20-%20Superhero/(2016)%20Captain%20America%20Civil%20War%20[1080p]%20[YTS.AG]/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4' file='D:\Video\MARVEL - Superhero\(2016) Captain America Civil War [1080p] [YTS.AG]\Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4'
+main debug: looking for access_demux module matching "file": 10 candidates
+main debug: no access_demux modules matched
+main debug: creating access 'file' location='/D:/Video/MARVEL%20-%20Superhero/(2016)%20Captain%20America%20Civil%20War%20[1080p]%20[YTS.AG]/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4', path='D:\Video\MARVEL - Superhero\(2016) Captain America Civil War [1080p] [YTS.AG]\Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4'
+main debug: looking for access module matching "file": 18 candidates
+filesystem debug: opening file `D:\Video\MARVEL - Superhero\(2016) Captain America Civil War [1080p] [YTS.AG]\Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4'
+main debug: using access module "filesystem"
+main debug: Using stream method for AStream*
+main debug: starting pre-buffering
+main debug: received first data after 0 ms
+main debug: pre-buffering done 1024 bytes in 0s - 999 KiB/s
+main debug: looking for stream_filter module matching "any": 5 candidates
+main debug: no stream_filter modules matched
+main debug: looking for stream_filter module matching "record": 5 candidates
+main debug: using stream_filter module "record"
+main debug: creating demux: access='file' demux='' location='/D:/Video/MARVEL%20-%20Superhero/(2016)%20Captain%20America%20Civil%20War%20[1080p]%20[YTS.AG]/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4' file='D:\Video\MARVEL - Superhero\(2016) Captain America Civil War [1080p] [YTS.AG]\Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4'
+main debug: looking for demux module matching "mp4": 58 candidates
+mp4 debug: dumping root Box "root"
+mp4 debug: |   + ftyp size 32
+mp4 debug: |   + moov size 7661530
+mp4 debug: |   |   + mvhd size 108
+mp4 debug: |   |   + trak size 3291004
+mp4 debug: |   |   |   + tkhd size 92
+mp4 debug: |   |   |   + edts size 36
+mp4 debug: |   |   |   |   + elst size 28
+mp4 debug: |   |   |   + mdia size 3290868
+mp4 debug: |   |   |   |   + mdhd size 32
+mp4 debug: |   |   |   |   + hdlr size 45
+mp4 debug: |   |   |   |   + minf size 3290783
+mp4 debug: |   |   |   |   |   + vmhd size 20
+mp4 debug: |   |   |   |   |   + dinf size 36
+mp4 debug: |   |   |   |   |   |   + dref size 28
+mp4 debug: |   |   |   |   |   |   |   + url  size 12
+mp4 debug: |   |   |   |   |   + stbl size 3290719
+mp4 debug: |   |   |   |   |   |   + stsd size 151
+mp4 debug: |   |   |   |   |   |   |   + avc1 size 135
+mp4 debug: |   |   |   |   |   |   |   |   + avcC size 49
+mp4 debug: |   |   |   |   |   |   + stts size 24
+mp4 debug: |   |   |   |   |   |   + stss size 8608
+mp4 debug: |   |   |   |   |   |   + ctts size 1582072
+mp4 debug: |   |   |   |   |   |   + stsc size 28
+mp4 debug: |   |   |   |   |   |   + stsz size 849916
+mp4 debug: |   |   |   |   |   |   + stco size 849912
+mp4 debug: |   |   + trak size 4370312
+mp4 debug: |   |   |   + tkhd size 92
+mp4 debug: |   |   |   + edts size 36
+mp4 debug: |   |   |   |   + elst size 28
+mp4 debug: |   |   |   + mdia size 4370176
+mp4 debug: |   |   |   |   + mdhd size 32
+mp4 debug: |   |   |   |   + hdlr size 45
+mp4 debug: |   |   |   |   + minf size 4370091
+mp4 debug: |   |   |   |   |   + smhd size 16
+mp4 debug: |   |   |   |   |   + dinf size 36
+mp4 debug: |   |   |   |   |   |   + dref size 28
+mp4 debug: |   |   |   |   |   |   |   + url  size 12
+mp4 debug: |   |   |   |   |   + stbl size 4370031
+mp4 debug: |   |   |   |   |   |   + stsd size 103
+mp4 debug: |   |   |   |   |   |   |   + mp4a size 87
+mp4 debug: |   |   |   |   |   |   |   |   + esds size 51
+mp4 debug: |   |   |   |   |   |   + stts size 1629256
+mp4 debug: |   |   |   |   |   |   + stsc size 229108
+mp4 debug: |   |   |   |   |   |   + stsz size 1661644
+mp4 debug: |   |   |   |   |   |   + stco size 849912
+mp4 debug: |   |   + udta size 98
+mp4 debug: |   |   |   + meta size 90
+mp4 debug: |   |   |   |   + hdlr size 33
+mp4 debug: |   |   |   |   + ilst size 45
+mp4 debug: |   |   |   |   |   + ctoo size 37
+mp4 debug: |   + free size 8
+mp4 debug: |   + mdat size -1892540193
+mp4 debug: ISO Media file (isom) version 512.
+mp4 debug: found 2 tracks
+mp4 warning: elst box found
+mp4 debug:    - [0] duration=8861937ms media time=83ms) rate=1.0
+mp4 debug: track[Id 0x1] read 212474 chunk
+mp4 warning: CTTS table
+mp4 debug: track[Id 0x1] read 212474 samples length:8861s
+main debug: selecting program id=0
+mp4 debug: adding track[Id 0x1] video (enable) language undef
+mp4 warning: elst box found
+mp4 debug:    - [0] duration=8861941ms media time=42ms) rate=1.0
+mp4 debug: track[Id 0x2] read 212474 chunk
+mp4 debug: track[Id 0x2] read 415406 samples length:8861s
+mp4 debug: adding track[Id 0x2] audio (enable) language undef
+main debug: using demux module "mp4"
+main debug: looking for a subtitle file in D:\Video\MARVEL - Superhero\(2016) Captain America Civil War [1080p] [YTS.AG]\
+main debug: looking for decoder module matching "any": 39 candidates
+avcodec debug: trying to use direct rendering
+avcodec debug: allowing 4 thread(s) for decoding
+avcodec debug: avcodec codec (H264 - MPEG-4 AVC (part 10)) started
+avcodec debug: using frame thread mode with 4 threads
+main debug: using decoder module "avcodec"
+main debug: looking for decoder module matching "any": 39 candidates
+main debug: using decoder module "faad"
+main debug: looking for meta reader module matching "any": 1 candidates
+lua debug: Trying Lua scripts in C:\Users\amost\AppData\Roaming\vlc\lua\meta\reader
+lua debug: Trying Lua scripts in D:\Github\Droid-Video\Project\lib\4.5.1\Resources\x64\lua\meta\reader
+main debug: no meta reader modules matched
+main debug: `file:///D:/Video/MARVEL%20-%20Superhero/(2016)%20Captain%20America%20Civil%20War%20[1080p]%20[YTS.AG]/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].mp4' successfully opened
+mp4 debug: elst (0) gives 0ms (movie)-> 83ms (track)
+mp4 debug: track[Id 0x1] using Sync Sample Box (stss)
+mp4 debug: stts gives 2 --> 0 (sample number)
+mp4 debug: elst (0) gives 0ms (movie)-> 42ms (track)
+mp4 debug: track[Id 0x2] does not provide Sync Sample Box (stss)
+main debug: Buffering 0%
+main debug: Buffering 0%
+main debug: Buffering 33%
+main debug: Buffering 66%
+main debug: Buffering 100%
+main debug: Stream buffering done (400 ms in 1 ms)
+faad warning: decoded zero sample
+main debug: looking for text renderer module matching "any": 2 candidates
+freetype debug: Using Arial as font from file C:\Windows\Fonts\arial.ttf
+freetype debug: using fontsize: 2
+main debug: using text renderer module "freetype"
+main debug: looking for video filter2 module matching "any": 54 candidates
+swscale debug: 32x32 chroma: YUVA -> 16x16 chroma: RGBA with scaling using Bicubic (good quality)
+main debug: using video filter2 module "swscale"
+main debug: looking for video filter2 module matching "any": 54 candidates
+yuvp debug: YUVP to YUVA converter
+main debug: using video filter2 module "yuvp"
+main debug: Deinterlacing available
+main debug: deinterlace 0, mode blend, is_needed 0
+main debug: Opening vout display wrapper
+main debug: looking for vout display module matching "any": 10 candidates
+direct3d debug: creating Vout EventThread
+direct3d debug: DirectXCreateWindow
+main debug: looking for vout window hwnd module matching "embed-hwnd,any": 1 candidates
+main debug: using vout window hwnd module "drawable"
+direct3d debug: created video sub-window
+direct3d debug: Vout EventThread running
+direct3d debug: disabling screen saver
+direct3d debug: Direct3d Device: Intel(R) HD Graphics 530 32902 6427 6
+main debug: VoutDisplayEvent 'resize' 1936x839 window
+direct3d warning: trying surface pixel format: YV12
+direct3d debug: selected surface pixel format is YV12
+direct3d debug: Using D3DTEXF_LINEAR for minification
+direct3d debug: Using D3DTEXF_LINEAR for magnification
+direct3d debug: Direct3D scene created successfully
+direct3d debug: Direct3D device adapter successfully initialized
+main debug: using vout display module "direct3d"
+main debug: original format sz 1920x800, of (0,0), vsz 1920x800, 4cc I420, sar 1:1, msk r0x0 g0x0 b0x0
+main debug: removing module "freetype"
+main debug: looking for text renderer mmodule matching "ainany":  debug: 2 candidatesVoutDisplayEvent 'resize' 
+1008x411 window
+freetype debug: Using Arial as font from file C:\Windows\Fonts\arial.ttf
+main error: Failed to set on top
+freetype debug: using fontsize: 2
+mainmain error:  debug: Failed to resize display
+using text renderer module "freetype"
+main debug: creating audio output
+main debug: looking for audio output module matching "any": 6 candidates
+avcodec debug: using direct rendering
+directsound debug: found 2 devices
+main debug: using audio output module "directsound"
+directsound debug: Opening DirectSound Audio Output
+main debug: End of video preroll
+main debug: Received first picture
+directsound debug: Windows speaker config: Stereo and stream has 2 channels, using 2 channels
+main debug: output 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+main debug: looking for audio volume module matching "any": 2 candidates
+main debug: using audio volume module "float_mixer"
+main debug: input 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+main debug: looking for audio filter module matching "scaletempo": 13 candidates
+scaletempo debug: format: 48000 rate, 2 nch, 4 bps, fl32
+scaletempo debug: params: 30 stride, 0.200 overlap, 14 search
+scaletempo debug: 1.000 scale, 1440.000 stride_in, 1440 stride_out, 1152 standing, 288 overlap, 672 search, 2400 queue, fl32 mode
+main debug: using audio filter module "scaletempo"
+main debug: conversion: 'f32l'->'f32l' 48000 Hz->48000 Hz Stereo->Stereo
+main debug: conversion pipeline complete
+main debug: conversion: 'f32l'->'f32l' 48000 Hz->48000 Hz Stereo->Stereo
+main debug: conversion pipeline complete
+main debug: looking for audio resampler module matching "any": 3 candidates
+main debug: using audio resampler module "samplerate"
+main debug: End of audio preroll
+main debug: Decoder buffering done in 63 ms
+main debug: inserting 1447 zeroes
+main debug: picture might be displayed late (missing 1 ms)
+main debug: auto hiding mouse cursor
+main debug: auto hiding mouse cursor
+mp4 debug: elst (0) gives 6400ms (movie)-> 6483ms (track)
+mp4 debug: track[Id 0x1] using Sync Sample Box (stss)
+mp4 debug: stts gives 155 --> 0 (sample number)
+mp4 debug: elst (0) gives 6400ms (movie)-> 6442ms (track)
+mp4 debug: track[Id 0x2] does not provide Sync Sample Box (stss)
+main debug: Buffering 0%
+main debug: Buffering 0%
+main debug: Buffering 33%
+main debug: Buffering 66%
+mainmain debug:  debugBuffering :100% 
+End of audio prerollm
+ain debug: Stream buffering done (400 ms in 4 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 176 ms
+main warning: early picture skipped
+mp4 debug: elst (0) gives 6400ms (movie)-> 6483ms (track)
+mp4 debug: track[Id 0x1] using Sync Sample Box (stss)
+mp4 debug: stts gives 155 --> 0 (sample number)
+mp4 debug: elst (0) gives 6400ms (movie)-> 6442ms (track)
+mp4 debug: track[Id 0x2] does not provide Sync Sample Box (stss)
+main debug: Buffering 0%
+main debug: Buffering 0%
+main debug: Buffering 33%
+main debug: Buffering 66%
+main demain debug: bugBuff: ering 100%
+End of audimain debug: o prerollStream buffering done (400 ms in 1 ms)
+
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 130 ms
+mp4 debug: elst (0) gives 2915126ms (movie)-> 2915209ms (track)
+mp4 debug: track[Id 0x1] using Sync Sample Box (stss)
+mp4 debug: stts gives 69895 --> 69893 (sample number)
+mp4 debug: elst (0) gives 2915126ms (movie)-> 2915168ms (track)
+mp4 debug: track[Id 0x2] does not provide Sync Sample Box (stss)
+main debug: Buffering 0%
+main debug: Buffering 0%
+main debug: Buffering 33%
+main debug: Buffering 66%
+main debug: Buffering 100%
+mainmai debugn:  debug: Stream buffering done (End of audio preroll400
+ ms in 11 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 91 ms
+main warning: early picture skipped
+mp4 debug: elst (0) gives 2915126ms (movie)-> 2915209ms (track)
+mp4 debug: track[Id 0x1] using Sync Sample Box (stss)
+mp4 debug: stts gives 69895 --> 69893 (sample number)
+mp4 debug: elst (0) gives 2915126ms (movie)-> 2915168ms (track)
+mp4 debug: track[Id 0x2] does not provide Sync Sample Box (stss)
+main debug: Buffering 0%
+main debug: Buffering 0%
+main debug: Buffering 33%
+main debug: Buffering 66%
+main debug: Buffering 100%
+main debug: Stream buffering done (main400 ms in 2 ms) debug: 
+End of audio preroll
+main debug: auto hiding mouse cursor
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 57 ms
+main debug: auto hiding mouse cursor
+main debug: VoutDisplayEvent 'resize' 1920x867 window
+main debug: auto hiding mouse cursor
+main debug: auto hiding mouse cursor
+main debug: VoutDisplayEvent 'resize' 200x100 window
+main debug: VoutDisplayEvent 'resize' 1936x1056 window
+main debug: VoutDisplayEvent 'resize' 1920x1080 window
+main debug: auto hiding mouse cursor
+main debug: auto hiding mouse cursor
+main debug: auto hiding mouse cursor
+main debug: VoutDisplayEvent 'mouse button' 0 t=8
+main debug: VoutDisplayEvent 'mouse button' 0 t=9
+main debug: VoutDisplayEvent 'resize' 200x100 window
+main debug: VoutDisplayEvent 'resize' 1920x867 window
+main debug: auto hiding mouse cursor
+main debug: auto hiding mouse cursor
+main debug: VoutDisplayEvent 'mouse button' 0 t=8
+main debug: VoutDisplayEvent 'mouse button' 0 t=9
+direct3d debug: WinProc WM_DESTROY
+direct3d debug: DirectXEventThread terminating
+direct3d debug: DirectXCloseWindow
+direct3d debug: WinProc WM_DESTROY
+main debug: VoutDisplayEvent 'resize' 440219312x478 window
+main debug: VoutDisplayEvent 'resize' 35x0 window
+main debug: VoutDisplayEvent 'resize' 440219312x478 window
+main debug: VoutDisplayEvent 'resize' -1658262006x32761 window
+main debug: control: stopping input
+main debug: VoutDisplayEvent 'resize' 440219312x478 window
+main debug: VoutDisplayEvent 'resize' -1658262006x32761 window
+main debug: removing module "avcodec"
+avcodec debug: ffmpeg codec (H264 - MPEG-4 AVC (part 10)) stopped
+main debug: killing decoder fourcc `h264', 0 PES in FIFO
+maimainn debug:  debug: saving a free vout
+VoutDisplayEvent 'resize' 440219312x478 window
+main debug: VoutDisplayEvent 'resize' 0x0 window
+main debug: reusing provided vout
+main debug: removing module "faad"
+main debug: killing decoder fourcc `mp4a', 0 PES in FIFO
+main debug: removing module "samplerate"
+main debug: removing module "scaletempo"
+directsound debug: closing audio device
+main debug: removing module "float_mixer"
+main debug: keeping audio output
+main debug: removing module "mp4"
+mp4 debug: freeing all memory
+main debug: removing module "record"
+main debug: removing module "filesystem"
+main debug: Program doesn't contain anymore ES
+main debug: removing module "directsound"
+main debug: destroying useless vout
+main debug: removing module "direct3d"
+direct3d debug: Direct3D scene released successfully
+main debug: removing module "freetype"
+main debug: removing module "yuvp"
+main debug: removing module "swscale"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: Creating an input for 'Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi'
+main debug: using timeshift granularity of 50 MiB, in path 'C:\Users\amost\AppData\Local\Temp'
+main debug: `file:///D:/Video/MARVEL%20-%20Superhero/Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi' gives access `file' demux `' path `/D:/Video/MARVEL%20-%20Superhero/Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi'
+main debug: creating demux: access='file' demux='' location='/D:/Video/MARVEL%20-%20Superhero/Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi' file='D:\Video\MARVEL - Superhero\Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi'
+main debug: looking for access_demux module matching "file": 10 candidates
+main debug: no access_demux modules matched
+main debug: creating access 'file' location='/D:/Video/MARVEL%20-%20Superhero/Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi', path='D:\Video\MARVEL - Superhero\Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi'
+main debug: looking for access module matching "file": 18 candidates
+filesystem debug: opening file `D:\Video\MARVEL - Superhero\Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi'
+main debug: using access module "filesystem"
+main debug: Using stream method for AStream*
+main debug: starting pre-buffering
+main debug: received first data after 0 ms
+main debug: pre-buffering done 1024 bytes in 0s - 1000000 KiB/s
+main debug: looking for stream_filter module matching "any": 5 candidates
+main debug: no stream_filter modules matched
+main debug: looking for stream_filter module matching "record": 5 candidates
+main debug: using stream_filter module "record"
+main debug: creating demux: access='file' demux='' location='/D:/Video/MARVEL%20-%20Superhero/Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi' file='D:\Video\MARVEL - Superhero\Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi'
+main debug: looking for demux module matching "avi": 58 candidates
+avi debug: <list 'AVI '>
+avi debug: <list 'hdrl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'strl'>
+avi debug: </list 'strl'>
+avi debug: <list 'odml'>
+avi debug: </list 'odml'>
+avi debug: </list 'hdrl'>
+avi debug: <list 'INFO'>
+avi debug: </list 'INFO'>
+avi debug: skipping movi chunk
+avi debug: </list 'AVI '>
+avi warning: found null fourcc chunk (corrupted file?)
+avi debug: * LIST-root size:1471285261 pos:0
+avi debug:     + RIFF-AVI  size:1471283652 pos:0
+avi debug:     |   + LIST-hdrl size:8818 pos:12
+avi debug:     |   |   + avih size:56 pos:24
+avi debug:     |   |   + LIST-strl size:4244 pos:88
+avi debug:     |   |   |   + strh size:56 pos:100
+avi debug:     |   |   |   + strf size:40 pos:164
+avi debug:     |   |   |   + JUNK size:4120 pos:212
+avi debug:     |   |   + LIST-strl size:4222 pos:4340
+avi debug:     |   |   |   + strh size:56 pos:4352
+avi debug:     |   |   |   + strf size:18 pos:4416
+avi debug:     |   |   |   + JUNK size:4120 pos:4442
+avi debug:     |   |   + LIST-odml size:260 pos:8570
+avi debug:     |   |   |   + dmlh size:248 pos:8582
+avi debug:     |   + LIST-INFO size:82 pos:8838
+avi debug:     |   |   + ISFT size:69 pos:8850
+avi debug:     |   + JUNK size:1304 pos:8928
+avi debug:     |   + LIST-movi size:1465883004 pos:10240
+avi debug:     |   + idx1 size:5390400 pos:1465893252
+avi debug:     + JUNK size:1580 pos:1471283660
+avi debug:     +      size:0 pos:1471285248
+avi debug: AVIH: 2 stream, flags  HAS_INDEX IS_INTERLEAVED 
+avi debug: stream[0] rate:24000 scale:1001 samplesize:0
+avi debug: stream[0] video(XVID) 720x400 24bpp 23.976025fps
+main debug: selecting program id=0
+avi debug: stream[1] rate:48000 scale:1 samplesize:1
+avi debug: stream[1] audio(0x2000 - A52 Audio (aka AC3)) 6 channels 48000Hz 0bits
+avi debug: selected standard index for stream[0]
+avi debug: selected standard index for stream[1]
+avi debug: stream[0] created 168457 index entries
+avi debug: stream[1] created 168443 index entries
+avi debug: stream[0] length:7026 (based on index)
+avi debug: stream[1] length:7025 (based on index)
+main debug: using demux module "avi"
+main debug: looking for a subtitle file in D:\Video\MARVEL - Superhero\
+main debug: looking for decoder module matching "any": 39 candidates
+avcodec debug: trying to use direct rendering
+avcodec debug: allowing 4 thread(s) for decoding
+avcodec debug: avcodec codec (MPEG-4 Video) started
+main debug: using decoder module "avcodec"
+main debug: looking for decoder module matching "any": 39 candidates
+main debug: using decoder module "a52"
+main debug: looking for meta reader module matching "any": 1 candidates
+lua debug: Trying Lua scripts in C:\Users\amost\AppData\Roaming\vlc\lua\meta\reader
+lua debug: Trying Lua scripts in D:\Github\Droid-Video\Project\lib\4.5.1\Resources\x64\lua\meta\reader
+main debug: no meta reader modules matched
+main debug: `file:///D:/Video/MARVEL%20-%20Superhero/Ant.Man.2015.FRENCH.DVDRip.XViD.AC3-FUNKKY.avi' successfully opened
+main debug: Buffering 0%
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+main debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 5 ms)
+main debug: looking for text renderer module matching "any": 2 candidates
+freetype debug: Using Arial as font from file C:\Windows\Fonts\arial.ttf
+freetype debug: using fontsize: 2
+main debug: using text renderer module "freetype"
+main debug: looking for video filter2 module matching "any": 54 candidates
+swscale debug: 32x32 chroma: YUVA -> 16x16 chroma: RGBA with scaling using Bicubic (good quality)
+main debug: using video filter2 module "swscale"
+main debug: looking for video filter2 module matching "any": 54 candidates
+yuvp debug: YUVP to YUVA converter
+main debug: using video filter2 module "yuvp"
+main debug: Deinterlacing available
+main debug: deinterlace 0, mode blend, is_needed 0
+main debug: Opening vout display wrapper
+main debug: looking for vout display module matching "any": 10 candidates
+direct3d debug: creating Vout EventThread
+direct3d debug: DirectXCreateWindow
+main debug: looking for vout window hwnd module matching "embed-hwnd,any": 1 candidates
+main debug: using vout window hwnd module "drawable"
+direct3d debug: created video sub-window
+direct3d debug: Vout EventThread running
+direct3d debug: disabling screen saver
+direct3d debug: Direct3d Device: Intel(R) HD Graphics 530 32902 6427 6
+main debug: VoutDisplayEvent 'resize' 736x439 window
+direct3d warning: trying surface pixel format: YV12
+direct3d debug: selected surface pixel format is YV12
+direct3d debug: Using D3DTEXF_LINEAR for minification
+direct3d debug: Using D3DTEXF_LINEAR for magnification
+direct3d debug: Direct3D scene created successfully
+direct3d debug: Direct3D device adapter successfully initialized
+main debug: using vout display module "direct3d"
+main debug: original format sz 720x400, of (0,0), vsz 720x400, 4cc I420, sar 1:1, msk r0x0 g0x0 b0x0
+main debug: removing module "freetype"
+main debug: VoutDisplayEvent 'resize' 1008x411 window
+main error: Failed to set on top
+main error: Failed to resize display
+main debug: looking for text renderer module matching "any": 2 candidates
+freetype debug: Using Arial as font from file C:\Windows\Fonts\arial.ttf
+freetype debug: using fontsize: 2
+main debug: using text renderer module "freetype"
+avcodec debug: using direct rendering
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 522 ms
+main debug: auto hiding mouse cursor
+a52 debug: A/52 channels:6 samplerate:48000 bitrate:384000
+main debug: creating audio output
+main debug: looking for audio output module matching "any": 6 candidates
+directsound debug: found 2 devices
+main debug: using audio output module "directsound"
+directsound debug: Opening DirectSound Audio Output
+directsound debug: Windows speaker config: Stereo and stream has 6 channels, using 2 channels
+main debug: output 'f32l' 48000 Hz Stereo frame=1 samples/8 bytes
+main debug: looking for audio volume module matching "any": 2 candidates
+main debug: using audio volume module "float_mixer"
+main debug: input 'a52 ' 48000 Hz 3F2R/LFE frame=1536 samples/1536 bytes
+main debug: looking for audio filter module matching "scaletempo": 13 candidates
+scaletempo debug: format: 48000 rate, 6 nch, 4 bps, fl32
+scaletempo debug: params: 30 stride, 0.200 overlap, 14 search
+scaletempo debug: 1.000 scale, 1440.000 stride_in, 1440 stride_out, 1152 standing, 288 overlap, 672 search, 2400 queue, fl32 mode
+main debug: using audio filter module "scaletempo"
+main debug: conversion: 'a52 '->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->3F2R/LFE
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: no audio converter modules matched
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: using audio converter module "a52tofloat32"
+main debug: conversion pipeline complete
+main debug: conversion: 'f32l'->'f32l' 48000 Hz->48000 Hz 3F2R/LFE->Stereo
+main debug: looking for audio converter module matching "any": 12 candidates
+main debug: using audio converter module "simple_channel_mixer"
+main debug: conversion pipeline complete
+main debug: looking for audio resampler module matching "any": 3 candidates
+main debug: using audio resampler module "samplerate"
+main debug: End of audio preroll
+main debug: discarded audio buffer
+avi debug: seek requested: 704 seconds 10%
+avi debug: old:3420083 < new 704022000
+avi debug: seek: 704 seconds
+main debug: Buffering 0%
+mmainain debug:  debuBuffering g: 8%
+End of audimaino preroll debug: 
+Buffering 16%
+main debug: Buffering 25%
+main debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 100 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 55 ms
+main warning: early picture skipped
+main warning: early picture skipped
+main warning: early picture skipped
+main warning: early picture skipped
+main debug: inserting 679 zeroes
+main warning: playback too late (62729): up-sampling
+avi debug: seek requested: 704 seconds 10%
+avi debug: old:704370333 > new 704022000
+avi debug: seek: 704 seconds
+main debug: Buffering 0%
+main debug: End of audio preroll
+main debug: Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+main debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 5 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 69 ms
+main debug: resampling stopped (drift: -7583 us)
+main debug: auto hiding mouse cursor
+avi debug: seek requested: 1088 seconds 15%
+avi debug: old:705037666 < new 1088034000
+avi debug: seek: 1088 seconds
+main debug: Buffering 0%
+main debug: End of audio prerolmainl debug: 
+Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+main debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 26 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 83 ms
+main warning: early picture skipped
+main warning: early picture skipped
+main warning: early picture skipped
+main warning: early picture skipped
+avi debug: seek requested: 1088 seconds 15%
+avi debug: old:1088378958 > new 1088034000
+avi debug: seek: 1088 seconds
+main debug: Buffering 0%
+main debug: End of audio prermainoll debug: 
+Buffering 8%
+main debug: Buffering 16%
+main debug: Buffering 25%
+main debug: Buffering 33%
+main debug: Buffering 41%
+main debug: Buffering 50%
+main debug: Buffering 58%
+main debug: Buffering 66%
+main debug: Buffering 75%
+main debug: Buffering 83%
+main debug: Buffering 91%
+main debug: Buffering 100%
+main debug: Stream buffering done (325 ms in 4 ms)
+main debug: End of video preroll
+main debug: Received first picture
+main debug: Decoder buffering done in 68 ms
+main debug: picture might be displayed late (missing 3 ms)
+direct3d debug: WinProc WM_DESTROY
+direct3d debug: DirectXEventThread terminating
+direct3d debug: DirectXCloseWindow
+direct3d debug: WinProc WM_DESTROY
+direct3d debug: Display:332 (hr=0x80070578)
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 27x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 26x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: auto hiding mouse cursor
+main debug: VoutDisplayEvent 'resize' 27x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 70x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 70x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 69x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 59x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 69x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 70x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 63x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 64x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 62x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 59x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 61x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 70x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 62x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 65x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 64x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 62x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 62x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 63x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 70x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 70x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 63x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' 61x0 window
+main debug: VoutDisplayEvent 'resize' 1000584576x355 window
+main debug: VoutDisplayEvent 'resize' -1659376118x32761 window
