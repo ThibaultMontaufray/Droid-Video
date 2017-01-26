@@ -53,7 +53,7 @@ namespace Droid_video
             }
             catch (System.Exception exp)
             {
-                Tools4Libraries.Log.write(string.Format("Error trying searching languages for {0}./n Exception {1}", file, exp.Message));
+                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying searching languages for {0}./n Exception {1}", file, exp.Message));
             }
             return languages;
         }
@@ -80,7 +80,7 @@ namespace Droid_video
             }
             catch (System.Exception exception)
             {
-                Tools4Libraries.Log.write(string.Format("Error trying to download subtitle for {0}./n Exception {1}", file, exception.Message));
+                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying to download subtitle for {0}./n Exception {1}", file, exception.Message));
             }
             return subtitleFinalFile;
         }

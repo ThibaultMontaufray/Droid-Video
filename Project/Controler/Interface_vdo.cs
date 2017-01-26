@@ -255,7 +255,7 @@ namespace Droid_video
                 { 
                     if (instMovie.Equals(CurrentVideo.Path))
                     {
-                        if ((((CurrentVideo.Time * 100) / CurrentVideo.Length) < 95) && (((CurrentVideo.Time * 100) / CurrentVideo.Length) > 10))
+                        if (((((double)CurrentVideo.Time * 100) / (double)CurrentVideo.Length) * 10000 < 95) && ((((double)CurrentVideo.Time * 100) / (double)CurrentVideo.Length) * 10000 > 10))
                         {
                             finalList.Add(thisMovie);
                         }
@@ -300,7 +300,6 @@ namespace Droid_video
                 _seriePathPreview = DetectPreviewEpisod();
 
                 _tsm.UpdateVideoDetails();
-
             }
             else
             {
@@ -445,6 +444,7 @@ namespace Droid_video
         }
         private void AddMovieAdvancement()
         {
+            if (CurrentVideo == null) return;
             bool done = false;
             string thisMovie = string.Format("{0}#{1}#{2}", CurrentVideo.Path, DateTime.Now, CurrentVideo.Time);
             string instMovie;
@@ -454,7 +454,7 @@ namespace Droid_video
                 instMovie = movie.Split('#')[0];
                 if (instMovie.Equals(CurrentVideo.Path))
                 {
-                    if (CurrentVideo.Length == 0 || ((CurrentVideo.Time / CurrentVideo.Length) * 100) > 95)
+                    if (CurrentVideo.Length == 0 || (((((double)CurrentVideo.Time / (double)CurrentVideo.Length) * 100) * 10000 < 95) && (((double)CurrentVideo.Time / (double)CurrentVideo.Length) * 100) * 10000 > 10))
                     {
                         finalList.Add(thisMovie);
                         done = true;

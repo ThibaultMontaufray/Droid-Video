@@ -183,6 +183,7 @@ namespace Droid_video
             {
                 Log.write("[ ERR : 0123 ] Cannot load the position of the movie \n\n" + exp.Message);
             }
+            myBtnPlayPause.BackgroundImage = _vlcControl.IsPlaying ? Tools4Libraries.Resources.ResourceIconSet32Default.control_pause : Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
         }
         #endregion
 
