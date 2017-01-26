@@ -20,6 +20,10 @@ namespace Droid_video
         private ToolStripMenuVDO _tsm;
         private Stream _stream;
         private bool _openned;
+        private string _currentDirectory;
+        private List<Video> _currentDirectoryFiles;
+        private string _seriePathNext;
+        private string _seriePathPreview;
         
         private Panel _sheet;
         private Panel _panelVideo;
@@ -33,6 +37,26 @@ namespace Droid_video
         #endregion
 
         #region Properties
+        public string CurrentDirectory
+        {
+            get { return _currentDirectory; }
+            set { _currentDirectory = value; }
+        }
+        public string SeriePathPreview
+        {
+            get { return _seriePathPreview; }
+            set { _seriePathPreview = value; }
+        }
+        public string SeriePathNext
+        {
+            get { return _seriePathNext; }
+            set { _seriePathNext = value; }
+        }
+        public List<Video> CurrentDirectoryFiles
+        {
+            get { return _currentDirectoryFiles; }
+            set { _currentDirectoryFiles = value; }
+        }
         public List<string> MoviesProgression
         {
             get { return _moviesProgression; }
@@ -167,6 +191,12 @@ namespace Droid_video
                 case "relaunchVideo":
                     LaunchSetOldPosition();
                     break;
+                case "serieNext":
+                    LaunchNextEpisod();
+                    break;
+                case "seriePreview":
+                    LaunchPreviewEpisod();
+                    break;
                 case "moveVideo":
                     break;
             }
@@ -225,7 +255,7 @@ namespace Droid_video
                 { 
                     if (instMovie.Equals(CurrentVideo.Path))
                     {
-                        if (((CurrentVideo.Time * 100) / CurrentVideo.Length) < 95)
+                        if ((((CurrentVideo.Time * 100) / CurrentVideo.Length) < 95) && (((CurrentVideo.Time * 100) / CurrentVideo.Length) > 10))
                         {
                             finalList.Add(thisMovie);
                         }
@@ -260,6 +290,23 @@ namespace Droid_video
                 if (moviePath.Equals(CurrentVideo.Path)) return true;
             }
             return false;
+        }
+        public void LoadDirectoryFiles()
+        {
+            if (CurrentVideo != null && !string.IsNullOrEmpty(CurrentVideo.Path))
+            {
+                if (Path.GetDirectoryName(CurrentVideo.Path) != _currentDirectory) { _currentDirectoryFiles = DetectMovies(); }
+                _seriePathNext = DetectNextEpisod();
+                _seriePathPreview = DetectPreviewEpisod();
+
+                _tsm.UpdateVideoDetails();
+
+            }
+            else
+            {
+                _seriePathPreview = string.Empty;
+                _seriePathNext = string.Empty;
+            }
         }
         #endregion
 
@@ -367,11 +414,28 @@ namespace Droid_video
         {
             _videoFrame.LoadPosition();
         }
+        private void LaunchNextEpisod()
+        {
+            if (!string.IsNullOrEmpty(_seriePathNext))
+            {
+                _videoFrame.Stop();
+                Open(_seriePathNext);
+            }
+        }
+        private void LaunchPreviewEpisod()
+        {
+            if (!string.IsNullOrEmpty(_seriePathPreview))
+            {
+                _videoFrame.Stop();
+                Open(_seriePathPreview);
+            }
+        }
         #endregion
 
         #region Methods	private
         private void Init()
         {
+            _currentDirectoryFiles = new List<Video>();
             _explorerShown = true;
             _libraryShown = false;
 
@@ -442,6 +506,96 @@ namespace Droid_video
             {
                 Log.write("[ CRT : 8400 ] Cannot create the video frame. \n" + exp8400.Message);
             }
+        }
+        private string DetectNextEpisod()
+        {
+            _seriePathNext = string.Empty;
+            if (_currentVideo != null && !string.IsNullOrEmpty(_currentVideo.Season))
+            {
+                int currentEpisod = int.Parse(_currentVideo.Episod);
+                int currentSeason = int.Parse(_currentVideo.Season);
+                int nextEpisod = currentEpisod + 1;
+                int nextSeason = currentSeason + 1;
+                List<Video> videos;
+
+                videos = _currentDirectoryFiles.Where(v =>
+                    v.NameClean.Equals(_currentVideo.NameClean) &&
+                    (v.Season.Equals(currentSeason.ToString()) || v.Season.Equals("0" + currentSeason.ToString())) &&
+                    (v.Episod.Equals(nextEpisod.ToString()) || v.Episod.Equals("0" + nextEpisod.ToString()))
+                ).ToList();
+
+                if (videos.Count() == 1)
+                {
+                    _seriePathNext = videos[0].Path;
+                }
+                else
+                { 
+                    videos = _currentDirectoryFiles.Where(v =>
+                        v.NameClean.Equals(_currentVideo.NameClean) &&
+                        (v.Season.Equals(nextSeason.ToString()) || v.Season.Equals("0" + nextSeason.ToString())) &&
+                        (v.Episod.Equals("1") || v.Episod.Equals("01"))
+                    ).ToList();
+
+                    if (videos.Count() == 1) { _seriePathNext = videos[0].Path; }
+                }
+            }
+            return _seriePathNext;
+        }
+        private string DetectPreviewEpisod()
+        {
+            _seriePathPreview = string.Empty;
+            if (_currentVideo != null && !string.IsNullOrEmpty(_currentVideo.Season))
+            {
+                int currentEpisod = int.Parse(_currentVideo.Episod);
+                int currentSeason = int.Parse(_currentVideo.Season);
+                int previewEpisod = currentEpisod - 1;
+                int previewSeason = currentSeason - 1;
+                List<Video> videos;
+
+                videos = _currentDirectoryFiles.Where(v =>
+                    v.NameClean.Equals(_currentVideo.NameClean) &&
+                    (v.Season.Equals(currentSeason.ToString()) || v.Season.Equals("0" + currentSeason.ToString())) &&
+                    (v.Episod.Equals(previewEpisod.ToString()) || v.Episod.Equals("0" + previewEpisod.ToString()))
+                ).ToList();
+
+                if (videos.Count() == 1)
+                {
+                    _seriePathPreview = videos[0].Path;
+                }
+                else
+                { 
+                    for (int i = 50; i > 0; i--)
+                    {
+                        videos = _currentDirectoryFiles.Where(v =>
+                            v.NameClean.Equals(_currentVideo.NameClean) &&
+                            (v.Season.Equals(previewSeason) || v.Season.Equals("0" + previewSeason)) &&
+                            (v.Episod.Equals(i.ToString()) || v.Episod.Equals("0" + i))
+                        ).ToList();
+
+                        if (videos.Count() == 1)
+                        {
+                            _seriePathPreview = videos[0].Path;
+                            break;
+                        }
+                    }
+                }
+            }
+            return _seriePathPreview;
+        }
+        private List<Video> DetectMovies()
+        {
+            List<Video> listVid = new List<Video>();
+            Video vid;
+            string directory = Path.GetDirectoryName(CurrentVideo.Path);
+
+            foreach (var file in Directory.GetFiles(directory))
+            {
+                vid = new Video();
+                vid.Path = file;
+                listVid.Add(vid);
+            }
+
+            return listVid;
         }
         #endregion
 

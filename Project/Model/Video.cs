@@ -166,19 +166,22 @@ namespace Droid_video
             _lang.Add(_langAr);
             _lang.Add(_langCh);
         }
-        private void CleanVideoName()
+        private async void CleanVideoName()
         {
             List<string> filePart = new List<string>();
             _language = string.Empty;
             _format = System.IO.Path.GetExtension(_path);
             _cleanName = System.IO.Path.GetFileNameWithoutExtension(_path);
+            _cleanName = _cleanName.Replace("FASTSUB", string.Empty);
+            _cleanName = _cleanName.Replace("fastsub", string.Empty);
+            _cleanName = _cleanName.Replace("FastSub", string.Empty);
 
             DetectLanguage(ref filePart);
             DetectDate(ref filePart);
             DetectSeries(ref filePart);
             DetectSource(ref filePart);
             DetectInfo(ref filePart);
-            DetectSubtitles();
+            _videoSubtitleLanguages = await DetectSubtitles();
         }
         private void DetectDate(ref List<string> filePart)
         {
@@ -372,8 +375,9 @@ namespace Droid_video
                 _cleanName = System.IO.Path.GetFileName(_path);
             }
         }
-        private async void DetectSubtitles()
+        private async Task<List<string>> DetectSubtitles()
         {
+            List<string> subList = new List<string>();
             string search = string.Empty;
             try
             {
@@ -383,12 +387,13 @@ namespace Droid_video
                     search += string.Format(" S{0}E{1}", _season, _episod);
                 }
                 Task<List<string>> retList =  SubtitleDownloader.SearchLanguagesAvailable(_path);
-                _videoSubtitleLanguages = await retList;
+                subList = await retList;
             }
             catch (Exception exp)
             {
                 Tools4Libraries.Log.write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
             }
+            return subList;
         }
         #endregion
     }

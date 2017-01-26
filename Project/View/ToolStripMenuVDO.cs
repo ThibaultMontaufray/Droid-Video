@@ -36,6 +36,9 @@ namespace Droid_video
         private RibbonLabel _lblInfo1; // depend of what data available we have
         private RibbonLabel _lblInfo2;
         private RibbonLabel _lblInfo3;
+        private RibbonLabel _lblSeries;
+        private RibbonButton _rb_serieNext;
+        private RibbonButton _rb_seriePreview;
 
         private RibbonPanel _panelAudio;
         private RibbonTextBox _adjustAudioTrack;
@@ -91,6 +94,7 @@ namespace Droid_video
 
             if (_intVdo.CurrentVideo != null)
             {
+                EnableMenu();
                 _rb_continueVideo.Enabled = _intVdo.IsMovieProgressionAvailable();
 
                 _rb_subtitleList.DropDownItems.Clear();
@@ -109,7 +113,7 @@ namespace Droid_video
                 if (_intVdo.CurrentVideo.Date != null) data.Add(string.Format("Release : {0}", _intVdo.CurrentVideo.Date));
                 if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Language)) data.Add(string.Format("Language : {0}", _intVdo.CurrentVideo.Language));
                 if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.SubtitleLanguage)) data.Add(string.Format("Subtitle : {0}", _intVdo.CurrentVideo.SubtitleLanguage));
-                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Season)) data.Add(string.Format("Season {0} - Episod {1}", _intVdo.CurrentVideo.Season, _intVdo.CurrentVideo.Episod));
+                //if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Season)) data.Add(string.Format("Season {0} - Episod {1}", _intVdo.CurrentVideo.Season, _intVdo.CurrentVideo.Episod));
                 if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Format)) data.Add(string.Format("Format : {0}", _intVdo.CurrentVideo.Format));
                 if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Source)) data.Add(string.Format("Source : {0}", _intVdo.CurrentVideo.Source));
 
@@ -137,13 +141,42 @@ namespace Droid_video
                     _lblInfo2.Text = string.Empty;
                     _lblInfo3.Text = string.Empty;
                 }
+
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Season))
+                {
+                    _lblSeries.Text = string.Format("Season {0} - Episod {1}", _intVdo.CurrentVideo.Season, _intVdo.CurrentVideo.Episod);
+                    _lblSeries.Visible = true;
+                    _rb_seriePreview.Visible = true;
+                    _rb_serieNext.Visible = true;
+                    _rb_seriePreview.Enabled = !string.IsNullOrEmpty(_intVdo.SeriePathPreview);
+                    _rb_serieNext.Enabled = !string.IsNullOrEmpty(_intVdo.SeriePathNext);
+                }
+
+                _rb_subtitleList.Enabled = _intVdo.CurrentVideo.DownloadableSubtilteLanguages.Count != 0;
             }
             else
             {
                 _lblInfo1.Text = "Video : ";
                 _lblInfo2.Text = "Release : ";
                 _lblInfo3.Text = "Language : ";
+                DisableMenu();
             }
+        }
+        private void DisableMenu()
+        {
+            _panelAudio.Enabled = false;
+            _panelScreen.Enabled = false;
+            _panelSubtile.Enabled = false;
+            _rb_continueVideo.Enabled = false;
+            _lblSeries.Visible = false;
+            _rb_seriePreview.Visible = false;
+            _rb_serieNext.Visible = false;
+        }
+        private void EnableMenu()
+        {
+            _panelAudio.Enabled = true;
+            _panelScreen.Enabled = true;
+            _panelSubtile.Enabled = true;
         }
         #endregion
 
@@ -254,7 +287,22 @@ namespace Droid_video
             _lblInfo3 = new RibbonLabel();
             _lblInfo3.LabelWidth = 200;
 
+            _lblSeries = new RibbonLabel();
+
+            _rb_serieNext = new RibbonButton("Episode suivant");
+            _rb_serieNext.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.document_page_next;
+            _rb_serieNext.MaxSizeMode = RibbonElementSizeMode.Medium;
+            _rb_serieNext.Click += _rb_serieNext_Click;
+
+            _rb_seriePreview = new RibbonButton("Episode précédent");
+            _rb_seriePreview.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.document_page_previous;
+            _rb_seriePreview.MaxSizeMode = RibbonElementSizeMode.Medium;
+            _rb_seriePreview.Click += _rb_seriePreview_Click;
+
             _panelInfo = new RibbonPanel("Details");
+            _panelInfo.Items.Add(_lblSeries);
+            _panelInfo.Items.Add(_rb_serieNext);
+            _panelInfo.Items.Add(_rb_seriePreview);
             _panelInfo.Items.Add(_lblInfo1);
             _panelInfo.Items.Add(_lblInfo2);
             _panelInfo.Items.Add(_lblInfo3);
@@ -336,6 +384,16 @@ namespace Droid_video
         private void _rb_continueVideo_Click(object sender, EventArgs e)
         {
             ToolBarEventArgs action = new ToolBarEventArgs("relaunchVideo");
+            OnAction(action);
+        }
+        private void _rb_seriePreview_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("seriePreview");
+            OnAction(action);
+        }
+        private void _rb_serieNext_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("serieNext");
             OnAction(action);
         }
         #endregion

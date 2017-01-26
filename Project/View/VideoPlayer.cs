@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using Tools4Libraries;
 using System.Configuration;
+using System.Threading.Tasks;
 
 namespace Droid_video
 {
@@ -125,7 +126,7 @@ namespace Droid_video
         }
         public void Play()
         {
-            if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Path))
+            if (_intVdo.CurrentVideo != null && !string.IsNullOrEmpty(_intVdo.CurrentVideo.Path))
             {
                 if (!_openned)
                 {
@@ -148,6 +149,8 @@ namespace Droid_video
             _openned = false;
             _trackBar.Value = 0;
             _vlcControl.Time = 0;
+            _intVdo.CurrentVideo = null;
+            _intVdo.Tsm.UpdateVideoDetails();
         }
         public void Pause()
         {
@@ -204,6 +207,10 @@ namespace Droid_video
         {
             _intVdo.CurrentVideo = new Video();
             _intVdo.CurrentVideo.Path = path;
+
+            _intVdo.LoadDirectoryFiles();
+            _intVdo.CurrentDirectory = Path.GetDirectoryName(_intVdo.CurrentVideo.Path);
+
             _openned = false;
             _trackBar.Enabled = true;
 
@@ -607,6 +614,7 @@ namespace Droid_video
 
             myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - (long)_intVdo.CurrentVideo.Time).Ticks).ToString("T"));
             SetSubtitle(new TimeSpan((long)time));
+            _vlcControl.Audio.Volume = _trackBarSound.Value;
         }
         private void _trackBar_MouseDown(object sender, MouseEventArgs e)
         {

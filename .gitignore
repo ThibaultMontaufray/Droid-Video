@@ -301,3 +301,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.exe
+Project/lib/4.5.1/Droid_video.exe
