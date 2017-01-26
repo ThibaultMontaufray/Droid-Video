@@ -127,6 +127,17 @@
     <Compile Include="Controler\Comparers\SeasonEpisodeLastComparer.cs" />
     <Compile Include="Controler\Comparers\SplitLastComparer.cs" />
     <Compile Include="Controler\ControlExtensions.cs" />
+    <Compile Include="Controler\GetText.cs" />
+    <Compile Include="Properties\ResourceEnglish.Designer.cs">
+      <DependentUpon>ResourceEnglish.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ResourceFrench.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceFrench.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controler\SubtitleFile.cs" />
     <Compile Include="Controler\SubtitleDownloader.cs" />
     <Compile Include="Model\Video.cs" />
@@ -151,6 +162,14 @@
     <Compile Include="View\VideoPlayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="Properties\ResourceEnglish.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceEnglish.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ResourceFrench.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceFrench.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Demo.resx">
       <DependentUpon>Demo.cs</DependentUpon>
     </EmbeddedResource>

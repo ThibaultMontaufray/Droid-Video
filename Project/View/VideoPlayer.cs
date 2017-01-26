@@ -76,6 +76,10 @@ namespace Droid_video
                 return _vlcControl.IsPlaying;
             }
         }
+        public SliderTrackBar TrackBarSound
+        {
+            get { return _trackBarSound; }
+        }
         #endregion
 
         #region Constructor
@@ -190,10 +194,7 @@ namespace Droid_video
         #region Methods protected
         protected override void Dispose(bool disposing)
         {
-            _intVdo.SaveMovieProgression();
-
-            Properties.Settings.Default.volume = _trackBarSound.Value;
-            Properties.Settings.Default.Save();
+            _intVdo.Close();
 
             if (disposing && (components != null))
             {
@@ -754,7 +755,9 @@ namespace Droid_video
         }
         private void _vlcControl_Stopped(object sender, VlcMediaPlayerStoppedEventArgs e)
         {
-            _intVdo.SaveMovieProgression();
+            _intVdo.SaveUserParams();
+            myLblMediaRest.Text = new TimeSpan(0).ToString("T");
+            myLblVlcPosition.Text = new TimeSpan(0).ToString("T");
         }
         #endregion
     }

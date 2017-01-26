@@ -109,13 +109,12 @@ namespace Droid_video
                     }
                 }
 
-                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.NameClean)) data.Add(string.Format("Video : {0}", _intVdo.CurrentVideo.NameClean));
-                if (_intVdo.CurrentVideo.Date != null) data.Add(string.Format("Release : {0}", _intVdo.CurrentVideo.Date));
-                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Language)) data.Add(string.Format("Language : {0}", _intVdo.CurrentVideo.Language));
-                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.SubtitleLanguage)) data.Add(string.Format("Subtitle : {0}", _intVdo.CurrentVideo.SubtitleLanguage));
-                //if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Season)) data.Add(string.Format("Season {0} - Episod {1}", _intVdo.CurrentVideo.Season, _intVdo.CurrentVideo.Episod));
-                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Format)) data.Add(string.Format("Format : {0}", _intVdo.CurrentVideo.Format));
-                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Source)) data.Add(string.Format("Source : {0}", _intVdo.CurrentVideo.Source));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.NameClean)) data.Add(string.Format("{1} : {0}", _intVdo.CurrentVideo.NameClean, GetText.Text("Video")));
+                if (_intVdo.CurrentVideo.Date != null) data.Add(string.Format("{1} : {0}", _intVdo.CurrentVideo.Date, GetText.Text("Release")));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Language)) data.Add(string.Format("{1} : {0}", _intVdo.CurrentVideo.Language, GetText.Text("Language")));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.SubtitleLanguage)) data.Add(string.Format("{1} : {0}", _intVdo.CurrentVideo.SubtitleLanguage, GetText.Text("Subtitle")));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Format)) data.Add(string.Format("{1} : {0}", _intVdo.CurrentVideo.Format, GetText.Text("Format")));
+                if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Source)) data.Add(string.Format("{1} : {0}", _intVdo.CurrentVideo.Source, GetText.Text("Source")));
 
                 if (data.Count > 2)
                 {
@@ -132,19 +131,19 @@ namespace Droid_video
                 else if (data.Count == 1)
                 {
                     _lblInfo1.Text = data[0];
-                    _lblInfo2.Text = string.Format("Path : ", _intVdo.CurrentVideo.Path);
+                    _lblInfo2.Text = string.Format("{0} : {1}", GetText.Text("Path"), _intVdo.CurrentVideo.Path);
                     _lblInfo3.Text = string.Empty;
                 }
                 else
                 {
-                    _lblInfo1.Text = string.Format("Path : ", _intVdo.CurrentVideo.Path);
+                    _lblInfo1.Text = string.Format("{0} : {1}", GetText.Text("Path"), _intVdo.CurrentVideo.Path);
                     _lblInfo2.Text = string.Empty;
                     _lblInfo3.Text = string.Empty;
                 }
 
                 if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.Season))
                 {
-                    _lblSeries.Text = string.Format("Season {0} - Episod {1}", _intVdo.CurrentVideo.Season, _intVdo.CurrentVideo.Episod);
+                    _lblSeries.Text = string.Format("{2} {0} - {3} {1}", _intVdo.CurrentVideo.Season, _intVdo.CurrentVideo.Episod, GetText.Text("Season"), GetText.Text("Episod"));
                     _lblSeries.Visible = true;
                     _rb_seriePreview.Visible = true;
                     _rb_serieNext.Visible = true;
@@ -156,9 +155,9 @@ namespace Droid_video
             }
             else
             {
-                _lblInfo1.Text = "Video : ";
-                _lblInfo2.Text = "Release : ";
-                _lblInfo3.Text = "Language : ";
+                _lblInfo1.Text = GetText.Text("Video") + " : ";
+                _lblInfo2.Text = GetText.Text("Release") + " : ";
+                _lblInfo3.Text = GetText.Text("Language") + " : ";
                 DisableMenu();
             }
         }
@@ -207,17 +206,17 @@ namespace Droid_video
         }
         private void BuildPanelOpen()
         {
-            _rb_open_video = new RibbonButton("Open");
+            _rb_open_video = new RibbonButton(GetText.Text("Open"));
             _rb_open_video.Image = Tools4Libraries.Resources.ResourceIconSet32Default.folder;
             _rb_open_video.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.folder;
             _rb_open_video.Click += new EventHandler(rb_open_video_Click);
 
-            _rb_continueVideo = new RibbonButton("Reprendre");
+            _rb_continueVideo = new RibbonButton(GetText.Text("Continue"));
             _rb_continueVideo.Image = Tools4Libraries.Resources.ResourceIconSet32Default.edit_free;
             _rb_continueVideo.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.edit_free;
             _rb_continueVideo.Click += _rb_continueVideo_Click;
 
-            _panelMain = new RibbonPanel("Video");
+            _panelMain = new RibbonPanel(GetText.Text("Video"));
             _panelMain.Items.Add(_rb_open_video);
             _panelMain.Items.Add(_rb_continueVideo);
             this.Panels.Add(_panelMain);
@@ -289,17 +288,17 @@ namespace Droid_video
 
             _lblSeries = new RibbonLabel();
 
-            _rb_serieNext = new RibbonButton("Episode suivant");
+            _rb_serieNext = new RibbonButton(GetText.Text("Next_episod"));
             _rb_serieNext.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.document_page_next;
             _rb_serieNext.MaxSizeMode = RibbonElementSizeMode.Medium;
             _rb_serieNext.Click += _rb_serieNext_Click;
 
-            _rb_seriePreview = new RibbonButton("Episode précédent");
+            _rb_seriePreview = new RibbonButton(GetText.Text("Preview_episod"));
             _rb_seriePreview.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.document_page_previous;
             _rb_seriePreview.MaxSizeMode = RibbonElementSizeMode.Medium;
             _rb_seriePreview.Click += _rb_seriePreview_Click;
 
-            _panelInfo = new RibbonPanel("Details");
+            _panelInfo = new RibbonPanel(GetText.Text("Details"));
             _panelInfo.Items.Add(_lblSeries);
             _panelInfo.Items.Add(_rb_serieNext);
             _panelInfo.Items.Add(_rb_seriePreview);

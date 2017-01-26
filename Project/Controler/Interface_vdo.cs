@@ -110,6 +110,12 @@ namespace Droid_video
                 _tsm.UpdateVideoDetails();
                 AddMovieAdvancement();
             }
+            else
+            {
+                _videoFrame.OpenFile();
+                _tsm.UpdateVideoDetails();
+                AddMovieAdvancement();
+            }
 			return false;
 		}
 		public override void Print()
@@ -121,7 +127,9 @@ namespace Droid_video
 			try 
 			{
 				_stream.Close();
-			}
+                SaveMovieProgression();
+                SaveUserParams();
+            }
 			catch
 			{
 				
@@ -306,6 +314,12 @@ namespace Droid_video
                 _seriePathPreview = string.Empty;
                 _seriePathNext = string.Empty;
             }
+        }
+        public void SaveUserParams()
+        {
+            Properties.Settings.Default.language = GetText.CurrentLanguage.ToString();
+            Properties.Settings.Default.volume = _videoFrame.TrackBarSound.Value;
+            Properties.Settings.Default.Save();
         }
         #endregion
 
