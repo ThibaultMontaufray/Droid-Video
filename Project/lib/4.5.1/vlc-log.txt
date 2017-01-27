@@ -59591,3 +59591,14 @@ main debug: exiting
 main debug: no exit handler
 main debug: removing module "logger"
 -- logger module stopped --
+﻿-- logger module started --
+main debug: VLC media player - 2.1.5 Rincewind
+main debug: Copyright © 1996-2014 the VideoLAN team
+main debug: revision 2.1.5-15-g4e4a233
+main debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--disable-dirac' '--host=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32'
+main debug: using interface module "logger"
+main debug: removing all interfaces
+main debug: exiting
+main debug: no exit handler
+main debug: removing module "logger"
+-- logger module stopped --
