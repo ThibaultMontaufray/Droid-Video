@@ -52,7 +52,7 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\IconServo.ico</ApplicationIcon>
+    <ApplicationIcon>servo_icon_video.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
@@ -106,16 +106,16 @@
       <HintPath>..\..\Tools4Libraries\lib\4.5.1\Tools4Libraries.Slider.dll</HintPath>
     </Reference>
     <Reference Include="Vlc.DotNet.Core, Version=2.1.130.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>ExternalDll\Vlc.DotNet.Core.dll</HintPath>
+      <HintPath>packages\Vlc.DotNet.Core.2.1.130\lib\net45\x86\Vlc.DotNet.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Vlc.DotNet.Core.Interops, Version=2.1.130.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>ExternalDll\Vlc.DotNet.Core.Interops.dll</HintPath>
+      <HintPath>packages\Vlc.DotNet.Core.Interops.2.1.130\lib\net45\x86\Vlc.DotNet.Core.Interops.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Vlc.DotNet.Forms, Version=2.1.130.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>ExternalDll\Vlc.DotNet.Forms.dll</HintPath>
+      <HintPath>packages\Vlc.DotNet.Forms.2.1.130\lib\net45\x86\Vlc.DotNet.Forms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -223,6 +223,7 @@
     <None Include="Resources\video_bg.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="servo_icon_video.ico" />
     <EmbeddedResource Include="Resources\IconServo.ico" />
     <None Include="Resources\transparent.png" />
     <Content Include="Resources\x64\libgcc_s_seh-1.dll">

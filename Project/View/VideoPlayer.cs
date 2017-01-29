@@ -232,6 +232,7 @@ namespace Droid_video
 
             #region VLCControl
             this._vlcControl = new VlcControl();
+            this.Controls.Add(_vlcControl);
             ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).BeginInit();
             this._vlcControl.Dock = DockStyle.Fill;
             this._vlcControl.BackColor = System.Drawing.Color.Black;
@@ -247,15 +248,21 @@ namespace Droid_video
             this._vlcControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
             this._vlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
             this._vlcControl.Stopped += _vlcControl_Stopped;
+            this._vlcControl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this._vlcControl.Location = new System.Drawing.Point(0, 0);
+            this._vlcControl.TabIndex = 99;
+            this._vlcControl.Size = new System.Drawing.Size(0, 0);
+            this._vlcControl.Rate = 0;
+            this._vlcControl.TabStop = false;
+            //this._vlcControl.VlcMediaplayerOptions. StartupOptions.AddOption(":sout=#http{dst=:9090/1.mp3} :sout-keep");
             ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).EndInit();
-            this.Controls.Add(_vlcControl);
 
-            _vlcProcess = Process.GetCurrentProcess();
-            IntPtr hWnd = _vlcProcess.MainWindowHandle;
-            if (hWnd != IntPtr.Zero)
-            {
-                ShowWindow(hWnd, 0); // 0 = SW_HIDE
-            }
+            //_vlcProcess = Process.GetCurrentProcess();
+            //IntPtr hWnd = _vlcProcess.MainWindowHandle;
+            //if (hWnd != IntPtr.Zero)
+            //{
+            //    ShowWindow(hWnd, 0); // 0 = SW_HIDE
+            //}
             #endregion
 
             #region TrackBar
