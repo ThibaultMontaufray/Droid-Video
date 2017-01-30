@@ -391,7 +391,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                //Tools4Libraries.Log.write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
+                Tools4Libraries.Log.write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
             }
             return subList;
         }

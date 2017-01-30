@@ -18,8 +18,6 @@ namespace Droid_video
     {
 		#region Attributes
         private ToolStripMenuVDO _tsm;
-        private Stream _stream;
-        private bool _openned;
         private string _currentDirectory;
         private List<Video> _currentDirectoryFiles;
         private string _seriePathNext;
@@ -67,7 +65,7 @@ namespace Droid_video
             get { return _currentVideo; }
             set { _currentVideo = value; }
         }
-        public new ToolStripMenuVDO Tsm
+        public ToolStripMenuVDO Tsm
 		{
 			get { return _tsm; }
 			set { _tsm = value as ToolStripMenuVDO; }
@@ -79,7 +77,7 @@ namespace Droid_video
         }
 		public override bool Openned
 		{
-			get { return _openned; }
+			get { return _currentVideo != null; }
         }
         #endregion
 
@@ -103,7 +101,8 @@ namespace Droid_video
 
         #region Methods Public
         public override bool Open(object o)
-		{
+        {
+            if (_videoFrame == null) BuildPanel();
             if (o is string)
             {
                 _videoFrame.OpenFile(o as string);
@@ -126,7 +125,6 @@ namespace Droid_video
 		{
 			try 
 			{
-				_stream.Close();
                 SaveMovieProgression();
                 SaveUserParams();
             }
@@ -346,6 +344,7 @@ namespace Droid_video
         }
         private void LaunchOpenVideo()
         {
+            if (_videoFrame == null) BuildPanel();
             if (_videoFrame.IsPlaying) _videoFrame.Pause();
             _videoFrame.OpenFile();
             _tsm.UpdateVideoDetails();
@@ -509,7 +508,6 @@ namespace Droid_video
             try
             {
                 _videoFrame = new VideoPlayer(this);
-                _videoFrame.FullScreenRequested += _videoFrame_FullScreenRequested;
                 _videoFrame.FullScreenExit += _videoFrame_FullScreenExit;
                 _videoFrame.Dock = DockStyle.Fill;
 
@@ -619,10 +617,6 @@ namespace Droid_video
             _videoFrame.KeyEvent(e.KeyChar);
         }
         private void _videoFrame_FullScreenExit()
-        {
-            LaunchFullScreen();
-        }
-        private void _videoFrame_FullScreenRequested()
         {
             LaunchFullScreen();
         }

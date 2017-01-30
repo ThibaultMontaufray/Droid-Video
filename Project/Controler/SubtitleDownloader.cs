@@ -14,7 +14,9 @@ namespace Droid_video
     public partial class SubtitleDownloader
     {
         #region Attribute
-        private static Thread _thread;
+        private static string _currentFile = string.Empty;
+        private static string _currentLang = string.Empty;
+
         private static readonly string UserAgent = ConfigurationManager.AppSettings["UserAgent"];
         private static readonly string Language = ConfigurationManager.AppSettings["Language"];
         private static readonly IAnonymousClient _client = Osdb.Login(Language, UserAgent);
@@ -36,12 +38,54 @@ namespace Droid_video
         #endregion
 
         #region Methods public
-        public static async Task<List<string>> SearchLanguagesAvailable(string file)
+        public static Task<List<string>> SearchLanguagesAvailable(string file)
+        {
+            _currentFile = file;
+            return new Task<List<string>>(GetLanguagesAvailable);
+        }
+        public static Task<string> SearchSubtitle(string file, string lang)
+        {
+            _currentLang = lang;
+            _currentFile = file;
+
+            return new Task<string>(GetSubtitle); 
+        }
+        #endregion
+        
+        #region Methods private
+        private static string GetSubtitle()
+        {
+            Subtitle subtitle;
+            string subtitleFinalFile = string.Empty;
+            try
+            {
+                IList<Subtitle> subtitles = _client.SearchSubtitlesFromFile(Language, _currentFile);
+                subtitles = subtitles.Where(s => s.LanguageName.Equals(_currentLang)).ToList();
+                subtitle = FindBestFit(_currentFile, subtitles);
+
+                if (subtitle == null)
+                {
+                    if (subtitles.Count == 0) { return string.Empty; }
+                    // we try to give a file even if that doesn't fit exactly.
+                    subtitleFinalFile = DownloadSubtitle(_currentFile, subtitles[0], _currentLang);
+                }
+                else
+                {
+                    subtitleFinalFile = DownloadSubtitle(_currentFile, subtitle, _currentLang);
+                }
+            }
+            catch (System.Exception exception)
+            {
+                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying to download subtitle for {0}./n Exception {1}", _currentFile, exception.Message));
+            }
+            return subtitleFinalFile;
+        }
+        private static List<string> GetLanguagesAvailable()
         {
             List<string> languages = new List<string>();
             try
             {
-                IList<Subtitle> subtitles = _client.SearchSubtitlesFromFile(Language, file);
+                IList<Subtitle> subtitles = _client.SearchSubtitlesFromFile(Language, _currentFile);
                 foreach (var item in subtitles)
                 {
                     if (!languages.Contains(item.LanguageName))
@@ -53,40 +97,10 @@ namespace Droid_video
             }
             catch (System.Exception exp)
             {
-                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying searching languages for {0}./n Exception {1}", file, exp.Message));
+                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying searching languages for {0}./n Exception {1}", _currentFile, exp.Message));
             }
             return languages;
         }
-        public static async Task<string> SearchSubtitle(string file, string lang)
-        {
-            Subtitle subtitle;
-            string subtitleFinalFile = string.Empty;
-            try
-            {
-                IList<Subtitle> subtitles = _client.SearchSubtitlesFromFile(Language, file);
-                subtitles = subtitles.Where(s => s.LanguageName.Equals(lang)).ToList();
-                subtitle = FindBestFit(file, subtitles);
-
-                if (subtitle == null)
-                {
-                    if (subtitles.Count == 0) { return string.Empty; }
-                    // we try to give a file even if that doesn't fit exactly.
-                    subtitleFinalFile= DownloadSubtitle(file, subtitles[0], lang);
-                }
-                else
-                { 
-                    subtitleFinalFile = DownloadSubtitle(file, subtitle, lang);
-                }
-            }
-            catch (System.Exception exception)
-            {
-                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying to download subtitle for {0}./n Exception {1}", file, exception.Message));
-            }
-            return subtitleFinalFile;
-        }
-        #endregion
-        
-        #region Methods private
         private static string DownloadSubtitle(string file, OSDBnet.Subtitle subtitle, string lang)
         {
             file = string.Format("{0}\\{1}_{2}{3}", Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file), lang, Path.GetExtension(file));

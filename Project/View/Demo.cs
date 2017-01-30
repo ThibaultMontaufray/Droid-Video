@@ -98,7 +98,6 @@ namespace Droid_video
         private void LoadRecentFiles()
         {
             DateTime date;
-            RibbonButton btn_recentFiles;
             KeyValuePair<DateTime, string> movieItem;
             List<KeyValuePair<DateTime, string>> list = new List<KeyValuePair<DateTime, string>>();
             foreach (var item in _intVdo.MoviesProgression)

@@ -42,7 +42,6 @@ namespace Droid_video
         private Timer _detectMouseMovement;
         private bool _hidding;
         private bool _showing;
-        private bool _quickAccessHidden;
         private Point _mousePosition;
         private DateTime _lastTimeMouseMove;
         private Panel _panelSound;
@@ -56,7 +55,6 @@ namespace Droid_video
         private int _minSubTop = 105;
         private string _subText;
 
-        public event VideoPlayerEventHandler FullScreenRequested;
         public event VideoPlayerEventHandler FullScreenExit;
         public VideoPlayerEventHandler HideSubtitlePanel;
         public VideoPlayerEventHandler DisplaySubtitlePanel;
@@ -224,15 +222,20 @@ namespace Droid_video
             _lastFrameMove = DateTime.MinValue;
             _hidding = false;
             _showing = false;
-            _quickAccessHidden = false;
             _subtitlesUserControl.Visible = false;
 
             HideSubtitlePanel = new VideoPlayerEventHandler(HideSubtitle);
             DisplaySubtitlePanel = new VideoPlayerEventHandler(ShowSubtitle);
 
-            #region VLCControl
+            InitVlcControl();
+            InitTrackBar();
+            InitTrackBarSound();
+            InitTimers();
+            InitEvent();
+        }
+        private void InitVlcControl()
+        {
             this._vlcControl = new VlcControl();
-            this.Controls.Add(_vlcControl);
             ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).BeginInit();
             this._vlcControl.Dock = DockStyle.Fill;
             this._vlcControl.BackColor = System.Drawing.Color.Black;
@@ -256,16 +259,17 @@ namespace Droid_video
             this._vlcControl.TabStop = false;
             //this._vlcControl.VlcMediaplayerOptions. StartupOptions.AddOption(":sout=#http{dst=:9090/1.mp3} :sout-keep");
             ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).EndInit();
+            this.Controls.Add(_vlcControl);
 
-            //_vlcProcess = Process.GetCurrentProcess();
-            //IntPtr hWnd = _vlcProcess.MainWindowHandle;
-            //if (hWnd != IntPtr.Zero)
-            //{
-            //    ShowWindow(hWnd, 0); // 0 = SW_HIDE
-            //}
-            #endregion
-
-            #region TrackBar
+            _vlcProcess = Process.GetCurrentProcess();
+            IntPtr hWnd = _vlcProcess.MainWindowHandle;
+            if (hWnd != IntPtr.Zero)
+            {
+                ShowWindow(hWnd, 0); // 0 = SW_HIDE
+            }
+        }
+        private void InitTrackBar()
+        {
             _trackBar = new SliderTrackBar();
             _trackBar.BackColor = System.Drawing.Color.Transparent;
             _trackBar.EmptyTrackColor = System.Drawing.Color.Black;
@@ -282,9 +286,9 @@ namespace Droid_video
             _trackBar.UseSeeking = false;
             _trackBar.Enabled = false;
             _panelControl.Controls.Add(_trackBar);
-            #endregion
-
-            #region TrackBarSound
+        }
+        private void InitTrackBarSound()
+        {
             _trackBarSound = new SliderTrackBar();
             _trackBarSound.BackColor = System.Drawing.Color.Transparent;
             _trackBarSound.EmptyTrackColor = System.Drawing.Color.Black;
@@ -312,9 +316,9 @@ namespace Droid_video
                 Log.write("[ WRN : 0000 ] Cannot load volume default. \n" + exp.Message);
 
             }
-            #endregion
-
-            #region Timers
+        }
+        private void InitTimers()
+        {
             _showPanel = new Timer();
             _showPanel.Interval = 1;
             _showPanel.Tick += _showPanel_Tick;
@@ -327,9 +331,9 @@ namespace Droid_video
             _detectMouseMovement.Interval = 3000;
             _detectMouseMovement.Tick += _detectMouseMovement_Tick;
             _detectMouseMovement.Start();
-            #endregion
-
-            #region Event
+        }
+        private void InitEvent()
+        {
             this.MouseMove += MouseMoveEvent;
             this._panelControl.MouseMove += MouseMoveEvent;
             this._panelSound.MouseMove += MouseMoveEvent;
@@ -339,7 +343,6 @@ namespace Droid_video
             this._panelSound.KeyPress += KeyPressEvent;
 
             this.Resize += VideoPlayer_Resize;
-            #endregion
         }
         private void InitializeComponent()
         {
@@ -519,6 +522,7 @@ namespace Droid_video
             this.ResumeLayout(false);
             this.MouseWheel += VideoPlayer_MouseWheel;
         }
+
         private void HideVldConsol()
         {
 
@@ -687,7 +691,6 @@ namespace Droid_video
                 _showing = true;
                 _panelControl.Height += 1;
             }
-            _quickAccessHidden = false;
         }
         private void _hidePanel_Tick(object sender, EventArgs e)
         {
@@ -701,7 +704,6 @@ namespace Droid_video
                 _hidding = true;
                 _panelControl.Height -= 1;
             }
-            _quickAccessHidden = true;
         }
         private void _trackBarSound_ValueChanged(object sender, SliderTrackBarValueChangedEventArgs e)
         {
