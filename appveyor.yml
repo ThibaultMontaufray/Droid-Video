@@ -9,7 +9,7 @@ assembly_info:
   assembly_informational_version: '{version}'
 environment:
   COVERALLS_REPO_TOKEN:
-    secure: I67q5TgRSaHwvzygDxO/gJKmLFpq0LmExvovvm/TK8HE29hloVvBohU2Nteo3qFE
+    secure: zJrrM7R9VjyY0dlP0WsayJxld1FmbSTvm
 before_build:
   - nuget restore Droid_Video.sln
 build:
