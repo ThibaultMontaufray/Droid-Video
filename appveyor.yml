@@ -13,7 +13,7 @@ environment:
 before_build:
   - nuget restore Droid_Video.sln
 build:
-  project: .\Droid_Video.sln
+  project: .\Project\Droid_Video.sln
   verbosity: minimal
 test_script:
 - ps: >-
