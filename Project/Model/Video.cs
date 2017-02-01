@@ -9,9 +9,12 @@ using Droid_web;
 
 namespace Droid_video
 {
+    public delegate void VideoEventHandler();
     public class Video
     {
         #region Attribute
+        public event VideoEventHandler SubtitleResearchCompleted;
+
         private string _path;
         private string _cleanName;
         private List<string> _videoSubtitleLanguages;
@@ -182,6 +185,7 @@ namespace Droid_video
             DetectSource(ref filePart);
             DetectInfo(ref filePart);
             _videoSubtitleLanguages = await DetectSubtitles();
+            if (SubtitleResearchCompleted != null) SubtitleResearchCompleted();
         }
         private void DetectDate(ref List<string> filePart)
         {

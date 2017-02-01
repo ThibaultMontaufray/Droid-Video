@@ -1,13 +1,10 @@
-﻿using System;
+﻿// LOG 02 - 01
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tools4Libraries;
 
 namespace Droid_video
 {
@@ -30,6 +27,11 @@ namespace Droid_video
             Init();
             LoadArgs(args);
         }
+        public new void Dispose()
+        {
+            _intVdo.Dispose();
+            base.Dispose();
+        }
         #endregion
 
         #region Methods public
@@ -38,6 +40,7 @@ namespace Droid_video
         #region Methods private
         private void Init()
         {
+            Tools4Libraries.Log.LogLevel = 0;
             LoadLanguage();
 
             _intVdo = new Interface_vdo();
@@ -45,6 +48,7 @@ namespace Droid_video
 
             _intVdo.Sheet.Dock = DockStyle.Fill;
             this.Controls.Add(_intVdo.Sheet);
+            this.FormClosing += Demo_FormClosing;
 
             InitRibbon();
         }
@@ -97,27 +101,38 @@ namespace Droid_video
         }
         private void LoadRecentFiles()
         {
-            DateTime date;
-            KeyValuePair<DateTime, string> movieItem;
-            List<KeyValuePair<DateTime, string>> list = new List<KeyValuePair<DateTime, string>>();
-            foreach (var item in _intVdo.MoviesProgression)
+            try
             {
-                if (DateTime.TryParse(item.Split('#')[1], out date))
+                DateTime date;
+                KeyValuePair<DateTime, string> movieItem;
+                List<KeyValuePair<DateTime, string>> list = new List<KeyValuePair<DateTime, string>>();
+                if (_intVdo != null && _intVdo.MoviesProgression != null)
                 {
-                    movieItem = new KeyValuePair<DateTime, string>(date, item.Split('#')[0].ToString());
-                    list.Add(movieItem);
+                    foreach (var item in _intVdo.MoviesProgression)
+                    {
+                        if (DateTime.TryParse(item.Split('#')[1], out date))
+                        {
+                            movieItem = new KeyValuePair<DateTime, string>(date, item.Split('#')[0].ToString());
+                            list.Add(movieItem);
+                        }
+                    }
+                }
+                list.Sort(CompareMoviesRecentList);
+
+                _ribbon.OrbDropDown.RecentItems.Clear();
+                int maxFiles = list.Count > 16 ? 16 : list.Count;
+                for (int i = list.Count - 1; (i > list.Count - maxFiles) || (i < 0); i--)
+                {
+                    RibbonItem recentItem = new RibbonOrbRecentItem();
+                    recentItem.Text = Path.GetFileName(list[i].Value);
+                    recentItem.Value = list[i].Value;
+                    recentItem.Click += RecentItem_Click;
+                    _ribbon.OrbDropDown.RecentItems.Add(recentItem);
                 }
             }
-            list.Sort(CompareMoviesRecentList);
-
-            _ribbon.OrbDropDown.RecentItems.Clear();
-            for (int i = list.Count-1; (i > list.Count - 16) || (i == 0); i--)
+            catch (Exception exp)
             {
-                RibbonItem recentItem = new RibbonOrbRecentItem();
-                recentItem.Text = Path.GetFileName(list[i].Value);
-                recentItem.Value = list[i].Value;
-                recentItem.Click += RecentItem_Click;
-                _ribbon.OrbDropDown.RecentItems.Add(recentItem);
+                Log.write("[ ERR : 0201 ] Cannot load recent files. \n" + exp.Message);
             }
         }
         private void LoadArgs(string[] args)
@@ -150,6 +165,10 @@ namespace Droid_video
         {
             RibbonOrbRecentItem rori = sender as RibbonOrbRecentItem;
             _intVdo.Open(rori.Value);
+        }
+        private void Demo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Dispose();
         }
         #endregion
     }

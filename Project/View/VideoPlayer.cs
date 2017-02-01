@@ -1,4 +1,5 @@
-﻿using System;
+﻿// LOG 01 - 5
+using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -10,7 +11,6 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using Tools4Libraries;
 using System.Configuration;
-using System.Threading.Tasks;
 
 namespace Droid_video
 {
@@ -20,10 +20,12 @@ namespace Droid_video
         #region Attributes
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.ComponentResourceManager resources;
 
         private Vlc.DotNet.Forms.VlcControl _vlcControl;
-        private System.Windows.Forms.Button myBtnPlayPause;
+        private System.Windows.Forms.Button _myBtnPlayPause;
         private System.Windows.Forms.Button myBtnStop;
         private System.Windows.Forms.Label myLblMediaRest;
         private System.Windows.Forms.Label myLblVlcPosition;
@@ -35,7 +37,7 @@ namespace Droid_video
         private Button buttonUp30;
         private Button buttonMinus10;
         private bool _mouseDown;
-        private Button buttonMute;
+        private Button _buttonMute;
         private Panel _panelQuickControls;
         private Timer _hidePanel;
         private Timer _showPanel;
@@ -55,6 +57,7 @@ namespace Droid_video
         private int _minSubTop = 105;
         private string _subText;
 
+        public event VideoPlayerEventHandler FullScreenRequested;
         public event VideoPlayerEventHandler FullScreenExit;
         public VideoPlayerEventHandler HideSubtitlePanel;
         public VideoPlayerEventHandler DisplaySubtitlePanel;
@@ -83,6 +86,7 @@ namespace Droid_video
         #region Constructor
         public VideoPlayer(Interface_vdo intvdo)
         {
+            _fullScreen = false;
             _intVdo = intvdo;
             InitializeComponent();
             Init();
@@ -92,12 +96,13 @@ namespace Droid_video
         #region Methods public
         public new void Dispose()
         {
-            _vlcProcess.Kill();
+            if (_vlcProcess != null) _vlcProcess.Kill();
             base.Dispose();
         }
         public void OpenFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Video Files (.avi .mkv .mp4 .mov)|*.avi;*.mkv;*.mp4;*.mov|All Files (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Open(ofd.FileName);
@@ -107,15 +112,18 @@ namespace Droid_video
         {
             Open(path);
         }
-        public void KeyEvent(char key)
+        public void KeyEvent(char? key)
         {
             switch (key)
             {
-                case '0':
-                    Pause();
+                case null:
+                    if (_intVdo.CurrentVideo != null && _fullScreen == false) FullScreenRequested();
                     break;
+                //case '0':
+                //    Pause();
+                //    break;
                 case (char)Keys.Escape:
-                    if (FullScreenExit != null) FullScreenExit();
+                    if (_intVdo.CurrentVideo != null && _fullScreen == true) FullScreenExit();
                     break;
                 case (char)Keys.Space:
                     Pause();
@@ -140,14 +148,14 @@ namespace Droid_video
                 {
                     Pause();
                 }
-                myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_pause;
+                _myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_pause;
                 _trackBar.Enabled = true;
             }
         }
         public void Stop()
         {
             _vlcControl.Stop();
-            myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
+            _myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
             _openned = false;
             _trackBar.Value = 0;
             _vlcControl.Time = 0;
@@ -157,7 +165,7 @@ namespace Droid_video
         public void Pause()
         {
             _vlcControl.Pause();
-            myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
+            _myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
         }
         public void HideQuickControl()
         {
@@ -185,7 +193,7 @@ namespace Droid_video
             {
                 Log.write("[ ERR : 0123 ] Cannot load the position of the movie \n\n" + exp.Message);
             }
-            myBtnPlayPause.BackgroundImage = _vlcControl.IsPlaying ? Tools4Libraries.Resources.ResourceIconSet32Default.control_pause : Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
+            _myBtnPlayPause.BackgroundImage = _vlcControl.IsPlaying ? Tools4Libraries.Resources.ResourceIconSet32Default.control_pause : Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
         }
         #endregion
 
@@ -207,9 +215,10 @@ namespace Droid_video
         {
             _intVdo.CurrentVideo = new Video();
             _intVdo.CurrentVideo.Path = path;
+            _intVdo.CurrentVideo.SubtitleResearchCompleted += CurrentVideo_SubtitleResearchCompleted;
 
             _intVdo.LoadDirectoryFiles();
-            _intVdo.CurrentDirectory = Path.GetDirectoryName(_intVdo.CurrentVideo.Path);
+            _intVdo.CurrentDirectory = Path.GetDirectoryName(path);
 
             _openned = false;
             _trackBar.Enabled = true;
@@ -235,126 +244,162 @@ namespace Droid_video
         }
         private void InitVlcControl()
         {
-            this._vlcControl = new VlcControl();
-            ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).BeginInit();
-            this._vlcControl.Dock = DockStyle.Fill;
-            this._vlcControl.BackColor = System.Drawing.Color.Black;
-            this._vlcControl.BackgroundImage = new Bitmap(Droid_video.Properties.Resources.video_bg);
-            this._vlcControl.BackgroundImageLayout = ImageLayout.Center;
-            this._vlcControl.Location = new System.Drawing.Point(12, 12);
-            this._vlcControl.Name = "myVlcControl";
-            this._vlcControl.Size = new System.Drawing.Size(564, 338);
-            this._vlcControl.TabIndex = 0;
-            this._vlcControl.Text = "vlcRincewindControl1";
-            this._vlcControl.VlcLibDirectory = null;
-            this._vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
-            this._vlcControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
-            this._vlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
-            this._vlcControl.Stopped += _vlcControl_Stopped;
-            this._vlcControl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this._vlcControl.Location = new System.Drawing.Point(0, 0);
-            this._vlcControl.TabIndex = 99;
-            this._vlcControl.Size = new System.Drawing.Size(0, 0);
-            this._vlcControl.Rate = 0;
-            this._vlcControl.TabStop = false;
-            //this._vlcControl.VlcMediaplayerOptions. StartupOptions.AddOption(":sout=#http{dst=:9090/1.mp3} :sout-keep");
-            ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).EndInit();
-            this.Controls.Add(_vlcControl);
-
-            _vlcProcess = Process.GetCurrentProcess();
-            IntPtr hWnd = _vlcProcess.MainWindowHandle;
-            if (hWnd != IntPtr.Zero)
+            try
             {
-                ShowWindow(hWnd, 0); // 0 = SW_HIDE
+                this._vlcControl = new VlcControl();
+                ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).BeginInit();
+                this._vlcControl.Dock = DockStyle.Fill;
+                this._vlcControl.BackColor = System.Drawing.Color.Black;
+                this._vlcControl.BackgroundImage = new Bitmap(Droid_video.Properties.Resources.video_bg);
+                this._vlcControl.BackgroundImageLayout = ImageLayout.Center;
+                this._vlcControl.Location = new System.Drawing.Point(12, 12);
+                this._vlcControl.Name = "myVlcControl";
+                this._vlcControl.Size = new System.Drawing.Size(564, 338);
+                this._vlcControl.TabIndex = 0;
+                this._vlcControl.Text = "vlcRincewindControl1";
+                this._vlcControl.VlcLibDirectory = null;
+                GetVlcLibraries();
+                this._vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
+                this._vlcControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
+                this._vlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
+                this._vlcControl.Stopped += _vlcControl_Stopped;
+                this._vlcControl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+                this._vlcControl.Location = new System.Drawing.Point(0, 0);
+                this._vlcControl.TabIndex = 99;
+                this._vlcControl.Size = new System.Drawing.Size(0, 0);
+                this._vlcControl.Rate = 0;
+                this._vlcControl.TabStop = false;
+                //this._vlcControl.VlcMediaplayerOptions. StartupOptions.AddOption(":sout=#http{dst=:9090/1.mp3} :sout-keep");
+                ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).EndInit();
+                this.Controls.Add(_vlcControl);
+
+                _vlcProcess = Process.GetCurrentProcess();
+                IntPtr hWnd = _vlcProcess.MainWindowHandle;
+                if (hWnd != IntPtr.Zero)
+                {
+                    ShowWindow(hWnd, 0); // 0 = SW_HIDE
+                }
+            }
+            catch (Exception exp)
+            {
+                Log.write("[ ERR : 0100 ] Cannot create vlc controler. \n" + exp.Message);
             }
         }
         private void InitTrackBar()
         {
-            _trackBar = new SliderTrackBar();
-            _trackBar.BackColor = System.Drawing.Color.Transparent;
-            _trackBar.EmptyTrackColor = System.Drawing.Color.Black;
-            _trackBar.Dock = DockStyle.Top;
-            _trackBar.Height = 20;
-            _trackBar.ScaleType = SliderTrackBar.SliderTrackBarScaleType.None;
-            _trackBar.SliderButtonSize = new Size(14, 7);
-            _trackBar.ShowSlider = SliderTrackBar.SliderTrackBarShowSlider.OnHover;
-            _trackBar.TrackLowerColor = Color.FromName("SaddleBrown");
-            _trackBar.TrackUpperColor = Color.FromName("Orange");
-            _trackBar.MouseUp += _trackBar_MouseUp;
-            _trackBar.MouseDown += _trackBar_MouseDown;
-            _trackBar.MouseMove += _trackBar_MouseMove;
-            _trackBar.UseSeeking = false;
-            _trackBar.Enabled = false;
-            _panelControl.Controls.Add(_trackBar);
-        }
-        private void InitTrackBarSound()
-        {
-            _trackBarSound = new SliderTrackBar();
-            _trackBarSound.BackColor = System.Drawing.Color.Transparent;
-            _trackBarSound.EmptyTrackColor = System.Drawing.Color.Black;
-            _trackBarSound.Height = 20;
-            _trackBarSound.ScaleType = SliderTrackBar.SliderTrackBarScaleType.ScaleFields;
-            _trackBarSound.ScaleFieldColor = Color.Gray;
-            _trackBarSound.SliderButtonSize = new Size(14, 7);
-            _trackBarSound.ShowSlider = SliderTrackBar.SliderTrackBarShowSlider.Always;
-            _trackBarSound.TrackLowerColor = Color.FromName("SaddleBrown");
-            _trackBarSound.TrackUpperColor = Color.FromName("Orange");
-            _trackBarSound.Dock = DockStyle.Fill;
-            _trackBarSound.Maximum = 100;
-            _trackBarSound.UseSeeking = false;
-            _trackBarSound.ValueChanged += _trackBarSound_ValueChanged;
-            _panelSound.Controls.Add(_trackBarSound);
-
             try
             {
-                ConfigurationManager.RefreshSection("appSettings");
-                _trackBarSound.Value = Properties.Settings.Default.volume;
+                _trackBar = new SliderTrackBar();
+                _trackBar.BackColor = System.Drawing.Color.Transparent;
+                _trackBar.EmptyTrackColor = System.Drawing.Color.Black;
+                _trackBar.Dock = DockStyle.Top;
+                _trackBar.Height = 20;
+                _trackBar.ScaleType = SliderTrackBar.SliderTrackBarScaleType.None;
+                _trackBar.SliderButtonSize = new Size(14, 7);
+                _trackBar.ShowSlider = SliderTrackBar.SliderTrackBarShowSlider.OnHover;
+                _trackBar.TrackLowerColor = Color.FromName("SaddleBrown");
+                _trackBar.TrackUpperColor = Color.FromName("Orange");
+                _trackBar.MouseUp += _trackBar_MouseUp;
+                _trackBar.MouseDown += _trackBar_MouseDown;
+                _trackBar.MouseMove += _trackBar_MouseMove;
+                _trackBar.UseSeeking = false;
+                _trackBar.Enabled = false;
+                _panelControl.Controls.Add(_trackBar);
             }
             catch (Exception exp)
             {
-                _trackBarSound.Value = 50;
-                Log.write("[ WRN : 0000 ] Cannot load volume default. \n" + exp.Message);
+                Log.write("[ ERR : 0101 ] Cannot create track bar. \n" + exp.Message);
+            }
+        }
+        private void InitTrackBarSound()
+        {
+            try
+            {
+                _trackBarSound = new SliderTrackBar();
+                _trackBarSound.BackColor = System.Drawing.Color.Transparent;
+                _trackBarSound.EmptyTrackColor = System.Drawing.Color.Black;
+                _trackBarSound.Height = 20;
+                _trackBarSound.ScaleType = SliderTrackBar.SliderTrackBarScaleType.ScaleFields;
+                _trackBarSound.ScaleFieldColor = Color.Gray;
+                _trackBarSound.SliderButtonSize = new Size(14, 7);
+                _trackBarSound.ShowSlider = SliderTrackBar.SliderTrackBarShowSlider.Always;
+                _trackBarSound.TrackLowerColor = Color.FromName("SaddleBrown");
+                _trackBarSound.TrackUpperColor = Color.FromName("Orange");
+                _trackBarSound.Dock = DockStyle.Fill;
+                _trackBarSound.Maximum = 100;
+                _trackBarSound.UseSeeking = false;
+                _trackBarSound.ValueChanged += _trackBarSound_ValueChanged;
+                _panelSound.Controls.Add(_trackBarSound);
 
+                try
+                {
+                    ConfigurationManager.RefreshSection("appSettings");
+                    _trackBarSound.Value = Properties.Settings.Default.volume;
+                }
+                catch (Exception exp)
+                {
+                    _trackBarSound.Value = 50;
+                    Log.write("[ WRN : 0103 ] Cannot load volume default. \n" + exp.Message);
+
+                }
+            }
+            catch (Exception exp)
+            {
+                Log.write("[ ERR : 0102 ] Cannot create sound track bar. \n" + exp.Message);
             }
         }
         private void InitTimers()
         {
-            _showPanel = new Timer();
-            _showPanel.Interval = 1;
-            _showPanel.Tick += _showPanel_Tick;
+            try
+            {
+                _showPanel = new Timer();
+                _showPanel.Interval = 1;
+                _showPanel.Tick += _showPanel_Tick;
 
-            _hidePanel = new Timer();
-            _hidePanel.Interval = 1;
-            _hidePanel.Tick += _hidePanel_Tick;
+                _hidePanel = new Timer();
+                _hidePanel.Interval = 1;
+                _hidePanel.Tick += _hidePanel_Tick;
 
-            _detectMouseMovement = new Timer();
-            _detectMouseMovement.Interval = 3000;
-            _detectMouseMovement.Tick += _detectMouseMovement_Tick;
-            _detectMouseMovement.Start();
+                _detectMouseMovement = new Timer();
+                _detectMouseMovement.Interval = 3000;
+                _detectMouseMovement.Tick += _detectMouseMovement_Tick;
+                _detectMouseMovement.Start();
+            }
+            catch (Exception exp)
+            {
+                Log.write("[ ERR : 0104 ] Cannot create timers. \n" + exp.Message);
+            }
         }
         private void InitEvent()
         {
-            this.MouseMove += MouseMoveEvent;
-            this._panelControl.MouseMove += MouseMoveEvent;
-            this._panelSound.MouseMove += MouseMoveEvent;
+            try
+            {
+                this.MouseMove += MouseMoveEvent;
+                this._panelControl.MouseMove += MouseMoveEvent;
+                this._panelSound.MouseMove += MouseMoveEvent;
 
-            this._vlcControl.KeyPress += KeyPressEvent;
-            this._panelControl.KeyPress += KeyPressEvent;
-            this._panelSound.KeyPress += KeyPressEvent;
+                this._vlcControl.KeyPress += KeyPressEvent;
+                this._panelControl.KeyPress += KeyPressEvent;
+                this._panelSound.KeyPress += KeyPressEvent;
 
-            this.Resize += VideoPlayer_Resize;
+                this.Resize += VideoPlayer_Resize;
+            }
+            catch (Exception exp)
+            {
+                Log.write("[ ERR : 0105 ] Cannot create events. \n" + exp.Message);
+            }
         }
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoPlayer));
+            resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoPlayer));
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this._textBoxSubtitle = new System.Windows.Forms.WebBrowser();
             this._subtitlesUserControl = new System.Windows.Forms.UserControl();
             this._panelControl = new System.Windows.Forms.Panel();
             this._panelQuickControls = new System.Windows.Forms.Panel();
             this._panelSound = new System.Windows.Forms.Panel();
-            this.myBtnPlayPause = new System.Windows.Forms.Button();
-            this.buttonMute = new System.Windows.Forms.Button();
+            this._myBtnPlayPause = new System.Windows.Forms.Button();
+            this._buttonMute = new System.Windows.Forms.Button();
             this.buttonUp30 = new System.Windows.Forms.Button();
             this.buttonMinus10 = new System.Windows.Forms.Button();
             this.myBtnStop = new System.Windows.Forms.Button();
@@ -402,8 +447,8 @@ namespace Droid_video
             // _panelQuickControls
             // 
             this._panelQuickControls.Controls.Add(this._panelSound);
-            this._panelQuickControls.Controls.Add(this.myBtnPlayPause);
-            this._panelQuickControls.Controls.Add(this.buttonMute);
+            this._panelQuickControls.Controls.Add(this._myBtnPlayPause);
+            this._panelQuickControls.Controls.Add(this._buttonMute);
             this._panelQuickControls.Controls.Add(this.buttonUp30);
             this._panelQuickControls.Controls.Add(this.buttonMinus10);
             this._panelQuickControls.Controls.Add(this.myBtnStop);
@@ -423,29 +468,36 @@ namespace Droid_video
             // 
             // myBtnPlayPause
             // 
-            this.myBtnPlayPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.myBtnPlayPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnPlayPause.BackgroundImage")));
-            this.myBtnPlayPause.FlatAppearance.BorderSize = 0;
-            this.myBtnPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.myBtnPlayPause.Location = new System.Drawing.Point(163, 4);
-            this.myBtnPlayPause.Name = "myBtnPlayPause";
-            this.myBtnPlayPause.Size = new System.Drawing.Size(32, 32);
-            this.myBtnPlayPause.TabIndex = 1;
-            this.myBtnPlayPause.UseVisualStyleBackColor = true;
-            this.myBtnPlayPause.Click += new System.EventHandler(this.OnButtonPlayPauseClicked);
+            this._myBtnPlayPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._myBtnPlayPause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnPlayPause.BackgroundImage")));
+            this._myBtnPlayPause.FlatAppearance.BorderSize = 0;
+            this._myBtnPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._myBtnPlayPause.FlatAppearance.BorderColor = Color.Black;
+            this._myBtnPlayPause.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            this._myBtnPlayPause.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            this._myBtnPlayPause.Location = new System.Drawing.Point(163, 4);
+            this._myBtnPlayPause.Name = "myBtnPlayPause";
+            this._myBtnPlayPause.Size = new System.Drawing.Size(32, 32);
+            this._myBtnPlayPause.TabIndex = 1;
+            this._myBtnPlayPause.UseVisualStyleBackColor = true;
+            this._myBtnPlayPause.Click += new System.EventHandler(this.OnButtonPlayPauseClicked);
+            this._myBtnPlayPause.KeyPress += MyBtnPlayPause_KeyPress;
+            this._myBtnPlayPause.KeyDown += _myBtnPlayPause_KeyDown;
             // 
             // buttonMute
             // 
-            this.buttonMute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonMute.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMute.BackgroundImage")));
-            this.buttonMute.FlatAppearance.BorderSize = 0;
-            this.buttonMute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMute.Location = new System.Drawing.Point(338, 12);
-            this.buttonMute.Name = "buttonMute";
-            this.buttonMute.Size = new System.Drawing.Size(16, 16);
-            this.buttonMute.TabIndex = 9;
-            this.buttonMute.UseVisualStyleBackColor = true;
-            this.buttonMute.Click += new System.EventHandler(this.buttonMute_Click);
+            this._buttonMute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._buttonMute.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMute.BackgroundImage")));
+            this._buttonMute.FlatAppearance.BorderSize = 0;
+            this._buttonMute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._buttonMute.FlatAppearance.MouseDownBackColor = Color.FromArgb(40, 255, 255, 255);
+            this._buttonMute.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 255, 255, 255);
+            this._buttonMute.Location = new System.Drawing.Point(338, 12);
+            this._buttonMute.Name = "buttonMute";
+            this._buttonMute.Size = new System.Drawing.Size(16, 16);
+            this._buttonMute.TabIndex = 9;
+            this._buttonMute.UseVisualStyleBackColor = true;
+            this._buttonMute.Click += new System.EventHandler(this.buttonMute_Click);
             // 
             // buttonUp30
             // 
@@ -453,6 +505,8 @@ namespace Droid_video
             this.buttonUp30.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonUp30.BackgroundImage")));
             this.buttonUp30.FlatAppearance.BorderSize = 0;
             this.buttonUp30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUp30.FlatAppearance.MouseDownBackColor = Color.FromArgb(40, 255, 255, 255);
+            this.buttonUp30.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 255, 255, 255);
             this.buttonUp30.Location = new System.Drawing.Point(239, 3);
             this.buttonUp30.Name = "buttonUp30";
             this.buttonUp30.Size = new System.Drawing.Size(32, 32);
@@ -467,6 +521,8 @@ namespace Droid_video
             this.buttonMinus10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonMinus10.FlatAppearance.BorderSize = 0;
             this.buttonMinus10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMinus10.FlatAppearance.MouseDownBackColor = Color.FromArgb(40, 255, 255, 255);
+            this.buttonMinus10.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 255, 255, 255);
             this.buttonMinus10.Location = new System.Drawing.Point(125, 4);
             this.buttonMinus10.Name = "buttonMinus10";
             this.buttonMinus10.Size = new System.Drawing.Size(32, 32);
@@ -480,6 +536,8 @@ namespace Droid_video
             this.myBtnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("myBtnStop.BackgroundImage")));
             this.myBtnStop.FlatAppearance.BorderSize = 0;
             this.myBtnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.myBtnStop.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            this.myBtnStop.FlatAppearance.MouseOverBackColor = Color.Transparent;
             this.myBtnStop.Location = new System.Drawing.Point(201, 4);
             this.myBtnStop.Name = "myBtnStop";
             this.myBtnStop.Size = new System.Drawing.Size(32, 32);
@@ -570,6 +628,30 @@ namespace Droid_video
             else if (delta < _trackBarSound.Minimum) _trackBarSound.Value = _trackBarSound.Minimum;
             else _trackBarSound.Value = delta;
         }
+        private void GetVlcLibraries()
+        {
+            var currentAssembly = Assembly.GetEntryAssembly();
+            var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
+            if (currentDirectory == null)
+                return;
+
+            if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
+                _vlcControl.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"Resources\x86\"));
+            else
+                _vlcControl.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"Resources\x64\"));
+
+            if (!_vlcControl.VlcLibDirectory.Exists)
+            {
+                var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+                folderBrowserDialog.Description = "Select Vlc libraries folder.";
+                folderBrowserDialog.RootFolder = Environment.SpecialFolder.Desktop;
+                folderBrowserDialog.ShowNewFolderButton = true;
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    _vlcControl.VlcLibDirectory = new DirectoryInfo(folderBrowserDialog.SelectedPath);
+                }
+            }
+        }
         #endregion
 
         #region Event
@@ -579,6 +661,7 @@ namespace Droid_video
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
             if (currentDirectory == null)
                 return;
+
             if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"Resources\x86\"));
             else
@@ -610,7 +693,7 @@ namespace Droid_video
         private void OnButtonStopClicked(object sender, EventArgs e)
         {
             Stop();
-            myBtnPlayPause.Focus();
+            _myBtnPlayPause.Focus();
         }
         private void OnVlcMediaLengthChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs e)
         {
@@ -625,7 +708,7 @@ namespace Droid_video
             if (!_mouseDown) _trackBar.InvokeIfRequired(l => l.Value = (int)_vlcControl.Time);
             _intVdo.CurrentVideo.Time = _vlcControl.Time;
 
-            myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - (long)_intVdo.CurrentVideo.Time).Ticks).ToString("T"));
+            myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - (long)time).Ticks).ToString("T"));
             SetSubtitle(new TimeSpan((long)time));
             _vlcControl.Audio.Volume = _trackBarSound.Value;
         }
@@ -634,14 +717,14 @@ namespace Droid_video
             _lastFrameMove = DateTime.Now;
             _mouseDown = true;
             _vlcControl.Time = _trackBar.Value;
-            myBtnPlayPause.Focus();
+            _myBtnPlayPause.Focus();
         }
         private void _trackBar_MouseUp(object sender, MouseEventArgs e)
         {
             _lastFrameMove = DateTime.Now;
             _mouseDown = false;
             _vlcControl.Time = _trackBar.Value;
-            myBtnPlayPause.Focus();
+            _myBtnPlayPause.Focus();
         }
         private void _trackBar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -655,29 +738,29 @@ namespace Droid_video
             {
                 _trackBar.ToolTipActive = false;
             }
-            myBtnPlayPause.Focus();
+            _myBtnPlayPause.Focus();
         }
         private void buttonMinus10_Click(object sender, EventArgs e)
         {
             _vlcControl.Time = _vlcControl.Time - 10000;
-            myBtnPlayPause.Focus();
+            _myBtnPlayPause.Focus();
         }
         private void buttonUp30_Click(object sender, EventArgs e)
         {
             _vlcControl.Time = _vlcControl.Time + 30000;
-            myBtnPlayPause.Focus();
+            _myBtnPlayPause.Focus();
         }
         private void buttonMute_Click(object sender, EventArgs e)
         {
             _vlcControl.Audio.ToggleMute();
-            if (_vlcControl.Audio.IsMute) this.buttonMute.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet16Default.sound_mute;
-            else this.buttonMute.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet16Default.sound_none;
-            myBtnPlayPause.Focus();
+            if (_vlcControl.Audio.IsMute) this._buttonMute.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet16Default.sound_mute;
+            else this._buttonMute.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet16Default.sound_none;
+            _myBtnPlayPause.Focus();
         }
         private void _panelControl_Resize(object sender, EventArgs e)
         {
             _panelQuickControls.Left = (_panelControl.Width / 2) - (_panelQuickControls.Width / 2);
-            myBtnPlayPause.Focus();
+            _myBtnPlayPause.Focus();
         }
         private void _showPanel_Tick(object sender, EventArgs e)
         {
@@ -711,7 +794,7 @@ namespace Droid_video
         }
         private void KeyPressEvent(object sender, KeyPressEventArgs e)
         {
-            KeyEvent(e.KeyChar);
+            //KeyEvent(e.KeyChar);
         }
         private void MouseMoveEvent(object sender, MouseEventArgs e)
         {
@@ -767,6 +850,25 @@ namespace Droid_video
             _intVdo.SaveUserParams();
             myLblMediaRest.Text = new TimeSpan(0).ToString("T");
             myLblVlcPosition.Text = new TimeSpan(0).ToString("T");
+        }
+        private void MyBtnPlayPause_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //KeyEvent(e.KeyChar);
+        }
+        private void _myBtnPlayPause_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData.ToString() == Keys.Enter.ToString() + ", " + Keys.Alt.ToString())
+            {
+                KeyEvent(null);
+            }
+            else if (e.KeyCode != Keys.Space)
+            {
+                KeyEvent(Convert.ToChar(e.KeyValue));
+            }
+        }
+        private void CurrentVideo_SubtitleResearchCompleted()
+        {
+            _intVdo.Tsm.UpdateVideoDetails();
         }
         #endregion
     }

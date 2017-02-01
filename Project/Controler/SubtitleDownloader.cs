@@ -38,17 +38,25 @@ namespace Droid_video
         #endregion
 
         #region Methods public
-        public static Task<List<string>> SearchLanguagesAvailable(string file)
+        public static async Task<List<string>> SearchLanguagesAvailable(string file)
         {
             _currentFile = file;
-            return new Task<List<string>>(GetLanguagesAvailable);
+            Task<List<string>> lst = new Task<List<string>>(GetLanguagesAvailable);
+            lst.Start();
+
+            List<string> res = await lst;
+            return res;
         }
-        public static Task<string> SearchSubtitle(string file, string lang)
+        public static async Task<string> SearchSubtitle(string file, string lang)
         {
             _currentLang = lang;
             _currentFile = file;
 
-            return new Task<string>(GetSubtitle); 
+            Task<string> sub = new Task<string>(GetSubtitle);
+            sub.Start();
+
+            string res = await sub;
+            return res;
         }
         #endregion
         
@@ -74,9 +82,13 @@ namespace Droid_video
                     subtitleFinalFile = DownloadSubtitle(_currentFile, subtitle, _currentLang);
                 }
             }
-            catch (System.Exception exception)
+            //catch (System.Exception exception)
+            //{
+            //    Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying to download subtitle for {0}./n Exception {1}", _currentFile, exception.Message));
+            //}
+            finally
             {
-                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying to download subtitle for {0}./n Exception {1}", _currentFile, exception.Message));
+
             }
             return subtitleFinalFile;
         }
@@ -95,9 +107,13 @@ namespace Droid_video
                 }
                 languages.Sort();
             }
-            catch (System.Exception exp)
+            //catch (System.Exception exp)
+            //{
+            //    Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying searching languages for {0}./n Exception {1}", _currentFile, exp.Message));
+            //}
+            finally
             {
-                Tools4Libraries.Log.write(string.Format("[INF: 0000] : Error trying searching languages for {0}./n Exception {1}", _currentFile, exp.Message));
+
             }
             return languages;
         }
