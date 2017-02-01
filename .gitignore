@@ -305,3 +305,5 @@ $RECYCLE.BIN/
 Project/lib/4.5.1/Droid_video.exe
 Project/lib/4.5.1/vlc-log.txt
 Project/lib/4.5.1/vlc-log.txt
+*.exe
+Project/lib/4.5.1/Tools4Libraries.dll
