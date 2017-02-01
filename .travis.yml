@@ -1,5 +1,5 @@
 language: csharp
-solution: Droid_Video.sln
+solution: Project/Droid_Video.sln
 mono: latest
 notifications:
   email: false

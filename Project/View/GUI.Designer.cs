@@ -33,7 +33,6 @@
             this.imageList32 = new System.Windows.Forms.ImageList(this.components);
             this.imageList16 = new System.Windows.Forms.ImageList(this.components);
             this.imageListTreeView = new System.Windows.Forms.ImageList(this.components);
-            this.imageListVideo = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // imageList32
@@ -79,17 +78,6 @@
             this.imageListTreeView.Images.SetKeyName(2, "favorite");
             this.imageListTreeView.Images.SetKeyName(3, "network");
             // 
-            // imageListVideo
-            // 
-            this.imageListVideo.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListVideo.ImageStream")));
-            this.imageListVideo.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListVideo.Images.SetKeyName(0, "0003");
-            this.imageListVideo.Images.SetKeyName(1, "0021");
-            this.imageListVideo.Images.SetKeyName(2, "browse");
-            this.imageListVideo.Images.SetKeyName(3, "btnplay");
-            this.imageListVideo.Images.SetKeyName(4, "pause");
-            this.imageListVideo.Images.SetKeyName(5, "stop");
-            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,7 +94,6 @@
         public System.Windows.Forms.ImageList imageList32;
         public System.Windows.Forms.ImageList imageList16;
         public System.Windows.Forms.ImageList imageListTreeView;
-        public System.Windows.Forms.ImageList imageListVideo;
     }
 }
 

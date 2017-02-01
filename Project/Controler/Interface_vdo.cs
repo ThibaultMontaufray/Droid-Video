@@ -133,7 +133,7 @@ namespace Droid_video
 				
 			}
 		}
-		public override bool Save()
+        public override bool Save()
 		{
 			return false;
 		}
@@ -208,6 +208,10 @@ namespace Droid_video
             }
 		}
 
+        public void Dispose()
+        {
+            if (_formFrame != null) _formFrame.Dispose();
+        }
         public RibbonTab BuildToolBar()
         {
             _tsm = new ToolStripMenuVDO(this);
@@ -325,6 +329,7 @@ namespace Droid_video
         private void LaunchDisableSubtitle()
         {
             _currentVideo.Subtitle = null;
+            _tsm.UpdateVideoDetails();
         }
         private async void LaunchDownloadSubtitle()
         {
@@ -336,6 +341,7 @@ namespace Droid_video
                 { 
                     _currentVideo.Subtitle = new SubtitleFile(subtitle);
                 }
+                _tsm.UpdateVideoDetails();
             }
             catch (Exception exp)
             {
@@ -416,10 +422,12 @@ namespace Droid_video
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Subtitles Files (.srt)|*.srt|All Files (*.*)|*.*";
+            if (_currentDirectory!= null) ofd.InitialDirectory = _currentDirectory;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 _currentVideo.Subtitle = new SubtitleFile(ofd.FileName);
                 _currentVideo.Path = ofd.FileName;
+                _tsm.UpdateVideoDetails();
             }
         }
         private void LaunchSetOldPosition()
@@ -509,6 +517,7 @@ namespace Droid_video
             {
                 _videoFrame = new VideoPlayer(this);
                 _videoFrame.FullScreenExit += _videoFrame_FullScreenExit;
+                _videoFrame.FullScreenRequested += _videoFrame_FullScreenRequested;
                 _videoFrame.Dock = DockStyle.Fill;
 
                 _panelVideo.Controls.Add(_videoFrame);
@@ -617,6 +626,10 @@ namespace Droid_video
             _videoFrame.KeyEvent(e.KeyChar);
         }
         private void _videoFrame_FullScreenExit()
+        {
+            LaunchDisableFullScreen();
+        }
+        private void _videoFrame_FullScreenRequested()
         {
             LaunchFullScreen();
         }

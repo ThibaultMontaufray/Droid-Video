@@ -71,6 +71,7 @@ namespace Droid_video
                 BuildPanelSubtitle();
                 BuildPanelAudio();
                 BuildPanelInfo();
+
                 this.Text = "Video";
             }
             catch (Exception exp4200)
@@ -96,6 +97,7 @@ namespace Droid_video
             {
                 EnableMenu();
                 _rb_continueVideo.Enabled = _intVdo.IsMovieProgressionAvailable();
+                _rb_disableSubtitle.Enabled = _intVdo.CurrentVideo.Subtitle != null;
 
                 _rb_subtitleList.DropDownItems.Clear();
                 if (_intVdo.CurrentVideo.DownloadableSubtilteLanguages != null)
@@ -173,7 +175,9 @@ namespace Droid_video
         }
         private void EnableMenu()
         {
-            _panelAudio.Enabled = true;
+            // TODO : finish the dev of audio
+            _panelAudio.Enabled = false;
+
             _panelScreen.Enabled = true;
             _panelSubtile.Enabled = true;
         }
@@ -186,6 +190,7 @@ namespace Droid_video
             _rb_full_screeen.Image = Tools4Libraries.Resources.ResourceIconSet32Default.resize_picture;
             _rb_full_screeen.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.resize_picture;
             _rb_full_screeen.Click += new EventHandler(rb_full_screeen_Click);
+            _rb_full_screeen.ToolTip = "Alt + Enter";
 
             _rb_16_9 = new RibbonButton("Horizontal");
             _rb_16_9.Image = Tools4Libraries.Resources.ResourceIconSet32Default.size_horizontal;
