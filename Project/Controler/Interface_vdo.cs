@@ -247,7 +247,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0000 ] User settings have been modified out of the program ! \n\n" + exp.Message);
+                Log.Write("[ ERR : 0000 ] User settings have been modified out of the program ! \n\n" + exp.Message);
             }
 
             return 0;
@@ -345,7 +345,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ CRT : 0123 ] Cannot download subtitle files \n\n" + exp.Message);
+                Log.Write("[ CRT : 0123 ] Cannot download subtitle files \n\n" + exp.Message);
             }
         }
         private void LaunchOpenVideo()
@@ -382,7 +382,7 @@ namespace Droid_video
             }
             catch (Exception exp8401)
             {
-                Log.write("[ CRT : 8401 ] Error during the full screen frame execution.\nPlease close the video sheet and relaunch it.\nYou can send the following message to support teams :\n\n" + exp8401.Message);
+                Log.Write("[ CRT : 8401 ] Error during the full screen frame execution.\nPlease close the video sheet and relaunch it.\nYou can send the following message to support teams :\n\n" + exp8401.Message);
             }
         }
         private void LaunchDisableFullScreen()
@@ -525,7 +525,7 @@ namespace Droid_video
             }
             catch (Exception exp8400)
             {
-                Log.write("[ CRT : 8400 ] Cannot create the video frame. \n" + exp8400.Message);
+                Log.Write("[ CRT : 8400 ] Cannot create the video frame. \n" + exp8400.Message);
             }
         }
         private string DetectNextEpisod()
