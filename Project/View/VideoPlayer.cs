@@ -191,7 +191,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0123 ] Cannot load the position of the movie \n\n" + exp.Message);
+                Log.Write("[ ERR : 0123 ] Cannot load the position of the movie \n\n" + exp.Message);
             }
             _myBtnPlayPause.BackgroundImage = _vlcControl.IsPlaying ? Tools4Libraries.Resources.ResourceIconSet32Default.control_pause : Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
         }
@@ -282,7 +282,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0100 ] Cannot create vlc controler. \n" + exp.Message);
+                Log.Write("[ ERR : 0100 ] Cannot create vlc controler. \n" + exp.Message);
             }
         }
         private void InitTrackBar()
@@ -308,7 +308,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0101 ] Cannot create track bar. \n" + exp.Message);
+                Log.Write("[ ERR : 0101 ] Cannot create track bar. \n" + exp.Message);
             }
         }
         private void InitTrackBarSound()
@@ -339,13 +339,13 @@ namespace Droid_video
                 catch (Exception exp)
                 {
                     _trackBarSound.Value = 50;
-                    Log.write("[ WRN : 0103 ] Cannot load volume default. \n" + exp.Message);
+                    Log.Write("[ WRN : 0103 ] Cannot load volume default. \n" + exp.Message);
 
                 }
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0102 ] Cannot create sound track bar. \n" + exp.Message);
+                Log.Write("[ ERR : 0102 ] Cannot create sound track bar. \n" + exp.Message);
             }
         }
         private void InitTimers()
@@ -367,7 +367,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0104 ] Cannot create timers. \n" + exp.Message);
+                Log.Write("[ ERR : 0104 ] Cannot create timers. \n" + exp.Message);
             }
         }
         private void InitEvent()
@@ -386,7 +386,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0105 ] Cannot create events. \n" + exp.Message);
+                Log.Write("[ ERR : 0105 ] Cannot create events. \n" + exp.Message);
             }
         }
         private void InitializeComponent()

@@ -213,7 +213,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
+                Tools4Libraries.Log.Write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
             }
         }
         private void DetectLanguage(ref List<string> filePart)
@@ -293,7 +293,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
+                Tools4Libraries.Log.Write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
             }
         }
         private void DetectSeries(ref List<string> filePart)
@@ -323,7 +323,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
+                Tools4Libraries.Log.Write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
             }
         }
         private void DetectSource(ref List<string> filePart)
@@ -356,7 +356,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
+                Tools4Libraries.Log.Write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
             }
         }
         private void DetectInfo(ref List<string> filePart)
@@ -375,7 +375,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Tools4Libraries.Log.write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
+                Tools4Libraries.Log.Write("[INF: 0001] Error while parsing the file name. \n" + exp.Message);
                 _cleanName = System.IO.Path.GetFileName(_path);
             }
         }
@@ -395,7 +395,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Tools4Libraries.Log.write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
+                Tools4Libraries.Log.Write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
             }
             return subList;
         }

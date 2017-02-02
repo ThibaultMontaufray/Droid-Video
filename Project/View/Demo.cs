@@ -40,7 +40,9 @@ namespace Droid_video
         #region Methods private
         private void Init()
         {
+            Tools4Libraries.Log.ApplicationAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Servodroid\Droid-Video";
             Tools4Libraries.Log.LogLevel = 0;
+
             LoadLanguage();
 
             _intVdo = new Interface_vdo();
@@ -132,7 +134,7 @@ namespace Droid_video
             }
             catch (Exception exp)
             {
-                Log.write("[ ERR : 0201 ] Cannot load recent files. \n" + exp.Message);
+                Log.Write("[ ERR : 0201 ] Cannot load recent files. \n" + exp.Message);
             }
         }
         private void LoadArgs(string[] args)

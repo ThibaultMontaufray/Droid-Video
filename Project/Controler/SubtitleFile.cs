@@ -116,7 +116,7 @@ namespace Droid_video
             }
             catch (Exception exp0001)
             {
-                Tools4Libraries.Log.write("[INF: 0001] Cannot read the file. \n" + exp0001.Message);
+                Tools4Libraries.Log.Write("[INF: 0001] Cannot read the file. \n" + exp0001.Message);
             }
         }
         #endregion
