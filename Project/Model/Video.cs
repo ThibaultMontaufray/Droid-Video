@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Droid_web;
+using OSDBnet;
 
 namespace Droid_video
 {
@@ -14,12 +12,14 @@ namespace Droid_video
     {
         #region Attribute
         public event VideoEventHandler SubtitleResearchCompleted;
+        public event VideoEventHandler SubtitleChanged;
 
         private string _path;
         private string _cleanName;
         private List<string> _videoSubtitleLanguages;
         private List<string> _subtitlePath;
-        private SubtitleFile _subtitle;
+        //private SubtitleFile _subtitle;
+        private Subtitle _subtitle;
         private int? _date;
         private string _source;
         private string _info;
@@ -33,6 +33,7 @@ namespace Droid_video
         private long _time;
         private string _subtitleRequested;
         private double _audioAdjustment;
+        private string _currentSubtitlePath;
         
         private List<string[]> _lang;
         private string[] _langFr = { "fr", "Fr", "FR", "french", "FRENCH", "French" };
@@ -46,6 +47,15 @@ namespace Droid_video
         #endregion
 
         #region Properties
+        public string CurrentSubtitlePath
+        {
+            get { return _currentSubtitlePath; }
+            set
+            {
+                _currentSubtitlePath = value;
+                if (SubtitleChanged != null) SubtitleChanged();
+            }
+        }
         public double AudioAdjustment
         {
             get { return _audioAdjustment; }
@@ -101,10 +111,14 @@ namespace Droid_video
             get { return _date; }
             set { _date = value; }
         }
-        public SubtitleFile Subtitle
+        public Subtitle Subtitle
         {
             get { return _subtitle; }
-            set { _subtitle = value; }
+            set
+            {
+                _subtitle = value;
+                if (SubtitleChanged != null) SubtitleChanged();
+            }
         }
         public List<string> SubtitlePath
         {
@@ -175,6 +189,9 @@ namespace Droid_video
             _language = string.Empty;
             _format = System.IO.Path.GetExtension(_path);
             _cleanName = System.IO.Path.GetFileNameWithoutExtension(_path);
+            _cleanName = _cleanName.Replace("FANSUB", string.Empty);
+            _cleanName = _cleanName.Replace("fansub", string.Empty);
+            _cleanName = _cleanName.Replace("FanSub", string.Empty);
             _cleanName = _cleanName.Replace("FASTSUB", string.Empty);
             _cleanName = _cleanName.Replace("fastsub", string.Empty);
             _cleanName = _cleanName.Replace("FastSub", string.Empty);
@@ -390,12 +407,16 @@ namespace Droid_video
                 {
                     search += string.Format(" S{0}E{1}", _season, _episod);
                 }
-                Task<List<string>> retList =  SubtitleDownloader.SearchLanguagesAvailable(_path);
+                Task<List<string>> retList = SubtitleDownloader.SearchLanguagesAvailable(_path);
                 subList = await retList;
             }
-            catch (Exception exp)
+            catch (Exception)
             {
-                Tools4Libraries.Log.Write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
+                // normal if no connection
+                //Tools4Libraries.Log.Write("[INF: 0001] Error while listing downloadable subtitles. \n" + exp.Message);
+            }
+            finally
+            {
             }
             return subList;
         }

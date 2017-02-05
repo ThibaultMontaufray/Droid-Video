@@ -47,6 +47,8 @@ namespace Droid_video
 
             _intVdo = new Interface_vdo();
             _intVdo.Tsm.ActionAppened += Tsm_ActionAppened;
+            _intVdo.CurrentScreen = Screen.FromControl(this);
+            this.LocationChanged += Demo_LocationChanged;
 
             _intVdo.Sheet.Dock = DockStyle.Fill;
             this.Controls.Add(_intVdo.Sheet);
@@ -123,11 +125,11 @@ namespace Droid_video
 
                 _ribbon.OrbDropDown.RecentItems.Clear();
                 int maxFiles = list.Count > 16 ? 16 : list.Count;
-                for (int i = list.Count - 1; (i > list.Count - maxFiles) || (i < 0); i--)
+                for (int i = list.Count; (i > list.Count - maxFiles) || (i < 0); i--)
                 {
                     RibbonItem recentItem = new RibbonOrbRecentItem();
-                    recentItem.Text = Path.GetFileName(list[i].Value);
-                    recentItem.Value = list[i].Value;
+                    recentItem.Text = Path.GetFileName(list[i - 1].Value);
+                    recentItem.Value = list[i - 1].Value;
                     recentItem.Click += RecentItem_Click;
                     _ribbon.OrbDropDown.RecentItems.Add(recentItem);
                 }
@@ -144,6 +146,7 @@ namespace Droid_video
                 _intVdo.Open(args[0]);
             }
         }
+        
         static int CompareMoviesRecentList(KeyValuePair<DateTime, string> a, KeyValuePair<DateTime, string> b)
         {
             return a.Key.CompareTo(b.Key);
@@ -171,6 +174,10 @@ namespace Droid_video
         private void Demo_FormClosing(object sender, FormClosingEventArgs e)
         {
             Dispose();
+        }
+        private void Demo_LocationChanged(object sender, EventArgs e)
+        {
+            _intVdo.CurrentScreen = Screen.FromControl(this);
         }
         #endregion
     }
