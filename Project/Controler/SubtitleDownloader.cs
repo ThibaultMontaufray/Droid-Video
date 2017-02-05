@@ -86,6 +86,10 @@ namespace Droid_video
             //{
             //    Tools4Libraries.Log.Write(string.Format("[INF: 0000] : Error trying to download subtitle for {0}./n Exception {1}", _currentFile, exception.Message));
             //}
+            catch (System.Exception)
+            {
+                // normal if no connection
+            }
             finally
             {
 
@@ -111,6 +115,10 @@ namespace Droid_video
             //{
             //    Tools4Libraries.Log.Write(string.Format("[INF: 0000] : Error trying searching languages for {0}./n Exception {1}", _currentFile, exp.Message));
             //}
+            catch (System.Exception)
+            {
+                // normal if no connection
+            }
             finally
             {
 

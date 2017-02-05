@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Tools4Libraries;
 using System.Threading.Tasks;
 using System.Linq;
+using OSDBnet;
 
 namespace Droid_video
 {
@@ -22,7 +23,7 @@ namespace Droid_video
         private List<Video> _currentDirectoryFiles;
         private string _seriePathNext;
         private string _seriePathPreview;
-        
+
         private Panel _sheet;
         private Panel _panelVideo;
         private VideoPlayer _videoFrame;
@@ -32,9 +33,16 @@ namespace Droid_video
         private bool _libraryShown;
         private Video _currentVideo;
         private List<string> _moviesProgression;
+        private Screen _currentScreen;
+        private TransparentPanel _panelMouseControl;
         #endregion
 
         #region Properties
+        public Screen CurrentScreen
+        {
+            get { return _currentScreen; }
+            set { _currentScreen = value; }
+        }
         public string CurrentDirectory
         {
             get { return _currentDirectory; }
@@ -179,12 +187,6 @@ namespace Droid_video
                 case "screenFull":
                     LaunchFullScreen();
                     break;
-                case "screen169":
-                    LaunchFullScreen();
-                    break;
-                case "screen15":
-                    LaunchDisableFullScreen();
-                    break;
                 case "browseSubtitle":
                     LaunchBrowseSubtitle();
                     break;
@@ -205,8 +207,20 @@ namespace Droid_video
                     break;
                 case "moveVideo":
                     break;
+                case "rotationScreen0":
+                    LaunchRotationVideo(0);
+                    break;
+                case "rotationScreen90":
+                    LaunchRotationVideo(90);
+                    break;
+                case "rotationScreen180":
+                    LaunchRotationVideo(180);
+                    break;
+                case "rotationScreen270":
+                    LaunchRotationVideo(270);
+                    break;
             }
-		}
+        }
 
         public void Dispose()
         {
@@ -219,14 +233,11 @@ namespace Droid_video
         }
         public void BuildPanel()
         {
-            //if (_tsm.CurrentTabPage != null)
-            //{
             BuildPanelVideo();
             
             _sheet = new Panel();
             _sheet.Controls.Add(_panelVideo);
             _sheet.Disposed += _sheet_Disposed;
-            //}
         }
         public long GetMovieAdvancement(string movieTitle)
         {
@@ -328,7 +339,7 @@ namespace Droid_video
         #region Methods Launcher
         private void LaunchDisableSubtitle()
         {
-            _currentVideo.Subtitle = null;
+            _currentVideo.CurrentSubtitlePath = string.Empty;
             _tsm.UpdateVideoDetails();
         }
         private async void LaunchDownloadSubtitle()
@@ -339,7 +350,8 @@ namespace Droid_video
                 string subtitle = await taskSubtitle;
                 if (!string.IsNullOrEmpty(subtitle))
                 { 
-                    _currentVideo.Subtitle = new SubtitleFile(subtitle);
+                    _currentVideo.Subtitle = new Subtitle();
+                    _currentVideo.Subtitle.SubtitleFileName = subtitle;
                 }
                 _tsm.UpdateVideoDetails();
             }
@@ -363,21 +375,25 @@ namespace Droid_video
                 _panelVideo.Dock = DockStyle.None;
                 _sheet.Controls.Remove(_panelVideo);
 
+                Rectangle bounds = _currentScreen.Bounds;
                 if (_formFrame != null) _formFrame.Dispose();
                 _formFrame = new Form();
+                _formFrame.SetBounds(bounds.X, bounds.Y, bounds.Width, bounds.Height);
                 _formFrame.FormBorderStyle = FormBorderStyle.None;
                 _formFrame.StartPosition = FormStartPosition.CenterParent;
                 _formFrame.WindowState = FormWindowState.Maximized;
                 _formFrame.ShowIcon = false;
                 _formFrame.ShowInTaskbar = false;
-                _formFrame.Controls.Add(_panelVideo);
-                _formFrame.Disposed += new EventHandler(f_Disposed);
-                _formFrame.KeyPress += _formFrame_KeyPress;
-                _formFrame.FormClosing += _formFrame_FormClosing;
 
+                _panelMouseControl.Width = _formFrame.Width;
+                _panelMouseControl.Height = _formFrame.Height - 100;
+                _formFrame.Controls.Add(_panelMouseControl);
+
+                _formFrame.Controls.Add(_panelVideo);
+                _formFrame.KeyPress += _formFrame_KeyPress; ;
+                _formFrame.FormClosing += _formFrame_FormClosing;
                 _panelVideo.Dock = DockStyle.Fill;
                 _videoFrame.FullScreen = true;
-
                 _formFrame.ShowDialog();
             }
             catch (Exception exp8401)
@@ -392,6 +408,7 @@ namespace Droid_video
             if (_formFrame != null && !_formFrame.IsDisposed)
             {
                 _formFrame.Controls.Remove(_panelVideo);
+                _formFrame.Controls.Remove(_panelMouseControl);
                 _formFrame.Dispose();
             }
 
@@ -425,8 +442,7 @@ namespace Droid_video
             if (_currentDirectory!= null) ofd.InitialDirectory = _currentDirectory;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                _currentVideo.Subtitle = new SubtitleFile(ofd.FileName);
-                _currentVideo.Path = ofd.FileName;
+                _currentVideo.CurrentSubtitlePath = ofd.FileName;
                 _tsm.UpdateVideoDetails();
             }
         }
@@ -450,6 +466,10 @@ namespace Droid_video
                 Open(_seriePathPreview);
             }
         }
+        private void LaunchRotationVideo(int rotation)
+        {
+            _videoFrame.Rotation(rotation);
+        }
         #endregion
 
         #region Methods	private
@@ -462,6 +482,16 @@ namespace Droid_video
             LoadMoviesAdvancement();
             BuildToolBar();
             BuildPanel();
+            InitPanelMouseControl();
+        }
+        private void InitPanelMouseControl()
+        {
+            _panelMouseControl = new TransparentPanel();
+            _panelMouseControl.Top = 0;
+            _panelMouseControl.Left = 0;
+            _panelMouseControl.MouseClick += _panelMouseControl_MouseClick;
+            _panelMouseControl.DoubleClick += _panelMouseControl_DoubleClick;
+            _panelMouseControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
         }
         private void AddMovieAdvancement()
         {
@@ -509,7 +539,6 @@ namespace Droid_video
             _panelVideo.Dock = DockStyle.Fill;
             BuildVideoFrame();
             _panelVideo.Visible = true;
-            
         }
         private void BuildVideoFrame()
         {
@@ -633,17 +662,22 @@ namespace Droid_video
         {
             LaunchFullScreen();
         }
-        private void f_Disposed(object sender, EventArgs e)
+        private void _sheet_Disposed(object sender, EventArgs e)
         {
+            _videoFrame.Dispose();
+        }
+        private void _panelMouseControl_DoubleClick(object sender, EventArgs e)
+        {
+            _videoFrame.Pause();
             LaunchDisableFullScreen();
+        }
+        private void _panelMouseControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            _videoFrame.Pause();
         }
         private void _formFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
             LaunchDisableFullScreen();
-        }
-        private void _sheet_Disposed(object sender, EventArgs e)
-        {
-            _videoFrame.Dispose();
         }
         #endregion
     }

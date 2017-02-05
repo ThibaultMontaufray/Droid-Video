@@ -24,9 +24,12 @@ namespace Droid_video
         
         private RibbonPanel _panelScreen;
         private RibbonButton _rb_full_screeen;
-        private RibbonButton _rb_16_9;
-        private RibbonButton _rb_15;
-        
+        private RibbonButton _rb_RotationScreen;
+        private RibbonButton _rb_RotationScreen0;
+        private RibbonButton _rb_RotationScreen90;
+        private RibbonButton _rb_RotationScreen180;
+        private RibbonButton _rb_RotationScreen270;
+
         private RibbonPanel _panelSubtile;
         private RibbonButton _rb_browseSubtitle;
         private RibbonButton _rb_disableSubtitle;
@@ -97,7 +100,7 @@ namespace Droid_video
             {
                 EnableMenu();
                 _rb_continueVideo.Enabled = _intVdo.IsMovieProgressionAvailable();
-                _rb_disableSubtitle.Enabled = _intVdo.CurrentVideo.Subtitle != null;
+                _rb_disableSubtitle.Enabled = !string.IsNullOrEmpty(_intVdo.CurrentVideo.CurrentSubtitlePath);
 
                 _rb_subtitleList.DropDownItems.Clear();
                 if (_intVdo.CurrentVideo.DownloadableSubtilteLanguages != null)
@@ -191,23 +194,40 @@ namespace Droid_video
             _rb_full_screeen.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.resize_picture;
             _rb_full_screeen.Click += new EventHandler(rb_full_screeen_Click);
             _rb_full_screeen.ToolTip = "Alt + Enter";
+            
+            _rb_RotationScreen0 = new RibbonButton("Position 0°");
+            _rb_RotationScreen0.Image = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation0;
+            _rb_RotationScreen0.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation0;
+            _rb_RotationScreen0.Click += _rb_RotationScreen0_Click;
 
-            _rb_16_9 = new RibbonButton("Horizontal");
-            _rb_16_9.Image = Tools4Libraries.Resources.ResourceIconSet32Default.size_horizontal;
-            _rb_16_9.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.size_horizontal;
-            _rb_16_9.Click += new EventHandler(rb_16_9_Click);
+            _rb_RotationScreen90 = new RibbonButton("Position 90°");
+            _rb_RotationScreen90.Image = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation90;
+            _rb_RotationScreen90.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation90;
+            _rb_RotationScreen90.Click += _rb_RotationScreen90_Click;
 
-            _rb_15 = new RibbonButton("Vertical");
-            _rb_15.Image = Tools4Libraries.Resources.ResourceIconSet32Default.size_vertical;
-            _rb_15.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.size_vertical;
-            _rb_15.Click += new EventHandler(rb_15_Click);
+            _rb_RotationScreen180 = new RibbonButton("Position 180°");
+            _rb_RotationScreen180.Image = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation180;
+            _rb_RotationScreen180.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation180;
+            _rb_RotationScreen180.Click += _rb_RotationScreen180_Click;
+
+            _rb_RotationScreen270 = new RibbonButton("Position 270°");
+            _rb_RotationScreen270.Image = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation270;
+            _rb_RotationScreen270.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation270;
+            _rb_RotationScreen270.Click += _rb_RotationScreen270_Click;
+
+            _rb_RotationScreen = new RibbonButton("Rotation screen");
+            _rb_RotationScreen.Image = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation;
+            _rb_RotationScreen.SmallImage = Tools4Libraries.Resources.ResourceIconSet32Default.videoRotation;
+            _rb_RotationScreen.Style = RibbonButtonStyle.DropDown;
+            _rb_RotationScreen.DropDownItems.Add(_rb_RotationScreen0);
+            _rb_RotationScreen.DropDownItems.Add(_rb_RotationScreen90);
+            _rb_RotationScreen.DropDownItems.Add(_rb_RotationScreen180);
+            _rb_RotationScreen.DropDownItems.Add(_rb_RotationScreen270);
 
             _panelScreen = new RibbonPanel("Screen");
-            _panelScreen.Items.Add(_rb_15);
-            _panelScreen.Items.Add(_rb_16_9);
             _panelScreen.Items.Add(_rb_full_screeen);
+            _panelScreen.Items.Add(_rb_RotationScreen);
             this.Panels.Add(_panelScreen);
-
         }
         private void BuildPanelOpen()
         {
@@ -398,6 +418,26 @@ namespace Droid_video
         private void _rb_serieNext_Click(object sender, EventArgs e)
         {
             ToolBarEventArgs action = new ToolBarEventArgs("serieNext");
+            OnAction(action);
+        }
+        private void _rb_RotationScreen0_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("rotationScreen0");
+            OnAction(action);
+        }
+        private void _rb_RotationScreen90_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("rotationScreen90");
+            OnAction(action);
+        }
+        private void _rb_RotationScreen180_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("rotationScreen180");
+            OnAction(action);
+        }
+        private void _rb_RotationScreen270_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("rotationScreen270");
             OnAction(action);
         }
         #endregion
