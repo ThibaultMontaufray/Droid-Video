@@ -53,7 +53,7 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\servo_icon_video.ico</ApplicationIcon>
+    <ApplicationIcon>ServoIconVideo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
@@ -224,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\servo_icon_video.ico" />
+    <Content Include="ServoIconVideo.ico" />
     <EmbeddedResource Include="Resources\IconServo.ico" />
     <None Include="Resources\transparent.png" />
     <Resource Include="Resources\x64\libgcc_s_seh-1.dll">
