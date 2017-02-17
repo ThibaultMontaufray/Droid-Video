@@ -442,8 +442,10 @@ namespace Droid_video
             if (_currentDirectory!= null) ofd.InitialDirectory = _currentDirectory;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                _videoFrame.Pause();
                 _currentVideo.CurrentSubtitlePath = ofd.FileName;
                 _tsm.UpdateVideoDetails();
+                _videoFrame.Pause();
             }
         }
         private void LaunchSetOldPosition()

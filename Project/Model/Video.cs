@@ -328,6 +328,11 @@ namespace Droid_video
                             _season = s.ToLower().Split('e')[0].Replace("s", string.Empty);
                             _episod = s.ToLower().Split('e')[1];
                         }
+                        //else if (Regex.Split(s, "^[\\[][\\d]{1,2}[X-x][\\d]{1,2}[\\]]$").Count() > 1)
+                        //{
+                        //    _season = s.ToLower().Split('[')[0].Split('x')[0];
+                        //    _episod = s.ToLower().Split('[')[0].Split('x')[1];
+                        //}
                         else
                         {
                             if (!string.IsNullOrEmpty(s)) tmpStr += ".";
