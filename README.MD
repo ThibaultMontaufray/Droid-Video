@@ -2,7 +2,7 @@
 
 Video player with some cool options like automatic detection of subtitles available
 
-[![Version Status](https://img.shields.io/nuget/v/Droid_video.svg)](https://www.nuget.org/packages/Droid_video/)
+[![Version Status](https://img.shields.io/nuget/v/Droid_Video.svg)](https://www.nuget.org/packages/Droid_Video/)
 [![License](https://img.shields.io/github/license/brandondahler/Data.HashFunction.svg)](https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/License)
 [![Build Status](https://travis-ci.org/ThibaultMontaufray/Droid-Video.svg?branch=master)](https://travis-ci.org/ThibaultMontaufray/Droid-Video) 
 [![Build status](https://ci.appveyor.com/api/projects/status/sidmejyg6biq7gkr?svg=true)](https://ci.appveyor.com/project/ThibaultMontaufray/Droid-Video)
