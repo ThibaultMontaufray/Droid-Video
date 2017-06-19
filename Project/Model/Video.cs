@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using OSDBnet;
+using Droid_web;
+using System.Drawing;
+using System.Net;
+using System.IO;
 
 namespace Droid_video
 {
@@ -34,8 +38,10 @@ namespace Droid_video
         private string _subtitleRequested;
         private double _audioAdjustment;
         private string _currentSubtitlePath;
+        private string _coverPath;
         
         private List<string[]> _lang;
+        // take this out in xml file !
         private string[] _langFr = { "fr", "Fr", "FR", "french", "FRENCH", "French" };
         private string[] _langEn = { "en", "En", "EN", "english", "ENGLISH", "English" };
         private string[] _langGe = { "ge", "Ge", "GE", "german", "GERMAN", "German" };
@@ -154,6 +160,11 @@ namespace Droid_video
             get { return _videoSubtitleLanguages; }
             set { _videoSubtitleLanguages = value; }
         }
+        public string CoverPath
+        {
+            get { return _coverPath; }
+            set { _coverPath = value; }
+        }
         #endregion
 
         #region Constructor
@@ -164,12 +175,22 @@ namespace Droid_video
         #endregion
 
         #region Methods public
+        public async void LoadWebDetails()
+        {
+            Task t = new Task( () => { DownloadCover(); });
+            t.Start();
+
+            _videoSubtitleLanguages = await DetectSubtitles();
+            if (SubtitleResearchCompleted != null) SubtitleResearchCompleted();
+
+        }
         #endregion
 
         #region Methods private
         private void Init()
         {
             _vo = false;
+            _coverPath = string.Empty;
 
             _videoSubtitleLanguages = new List<string>();
 
@@ -183,7 +204,7 @@ namespace Droid_video
             _lang.Add(_langAr);
             _lang.Add(_langCh);
         }
-        private async void CleanVideoName()
+        private void CleanVideoName()
         {
             List<string> filePart = new List<string>();
             _language = string.Empty;
@@ -201,8 +222,6 @@ namespace Droid_video
             DetectSeries(ref filePart);
             DetectSource(ref filePart);
             DetectInfo(ref filePart);
-            _videoSubtitleLanguages = await DetectSubtitles();
-            if (SubtitleResearchCompleted != null) SubtitleResearchCompleted();
         }
         private void DetectDate(ref List<string> filePart)
         {
@@ -424,6 +443,20 @@ namespace Droid_video
             {
             }
             return subList;
+        }
+        private string DownloadCover()
+        {
+            string finalPath, picPath;
+            if (!string.IsNullOrEmpty(_season)) { picPath = Web.GetLuckyImage(string.Format("cover movie {0} season {1}", _cleanName, _season)); }
+            else { picPath = Web.GetLuckyImage(string.Format("cover movie {0} {1}", _cleanName, _date)); }
+            
+            using (WebClient client = new WebClient())
+            {
+                finalPath = string.Format("{0}{1}.{2}", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Servodroid\Droid-Video\", _cleanName, picPath.Split('.')[picPath.Split('.').Length - 1]);
+                client.DownloadFileAsync(new Uri(picPath), finalPath);
+            }
+            _coverPath = finalPath;
+            return finalPath;
         }
         #endregion
     }

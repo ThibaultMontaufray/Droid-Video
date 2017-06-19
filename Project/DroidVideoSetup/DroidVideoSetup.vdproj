@@ -99,6 +99,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_08FDCAFEBC224475AB5F89C846318C0F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0951CCCC472D419DA58D37C4335EC99C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1821,12 +1827,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7E2152723FA7235BEA1A6B0C62F61636"
-        "OwnerKey" = "8:_F94DB88BDFC14396BD05D65DD17CE536"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7E3B1BDAFFC243F8BB663393EBEB74ED"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1985,6 +1985,12 @@
         {
         "MsmKey" = "8:_88C1A02874A34114A2CCB04C2BE5BBF9"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_88C35343E44DEAECC70F20E1E3F47AFC"
+        "OwnerKey" = "8:_F94DB88BDFC14396BD05D65DD17CE536"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2253,6 +2259,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9BC92CBF9D1CFADD32CF74E891564E5E"
+        "OwnerKey" = "8:_F94DB88BDFC14396BD05D65DD17CE536"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9BDEDC3AD3474C45A8855ECA84ABAE9F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2495,18 +2507,6 @@
         {
         "MsmKey" = "8:_A949DF33217845F2BF601A728C39F24F"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AAAF9909B580A863C0E4F5481098641B"
-        "OwnerKey" = "8:_F94DB88BDFC14396BD05D65DD17CE536"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AAAF9909B580A863C0E4F5481098641B"
-        "OwnerKey" = "8:_7E2152723FA7235BEA1A6B0C62F61636"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2866,12 +2866,6 @@
         "Entry"
         {
         "MsmKey" = "8:_C1FFB6836B42436A9368C4D2FCFF411A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C20A3B1DA5DA469FBEAC4442066D7A4C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3317,12 +3311,6 @@
         {
         "MsmKey" = "8:_DF29FDBA03784B808461E04EF4C85EBA"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DFC5354A9209F509EB86BED7A10BD80E"
-        "OwnerKey" = "8:_F94DB88BDFC14396BD05D65DD17CE536"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3861,12 +3849,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FCD813210AAC41299335FE6F889C6E79"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FD73BD3488D84D9298FB1D77CB31CF55"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -3916,24 +3898,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DFC5354A9209F509EB86BED7A10BD80E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AAAF9909B580A863C0E4F5481098641B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7E2152723FA7235BEA1A6B0C62F61636"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_337C2A8EAEA51C7AFC7F8BE923C221FA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3947,6 +3911,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_64404B05FD2759072C621FA2C3940976"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_88C35343E44DEAECC70F20E1E3F47AFC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9BC92CBF9D1CFADD32CF74E891564E5E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -4036,6 +4012,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -4332,6 +4316,26 @@
             "TargetName" = "8:libstream_out_rtp_plugin.dll"
             "Tag" = "8:"
             "Folder" = "8:_F62F1A843C2B48FC9FAEF05DE421B21B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_08FDCAFEBC224475AB5F89C846318C0F"
+            {
+            "SourcePath" = "8:..\\ServoIconVideo.ico"
+            "TargetName" = "8:DroidVideoIcon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -10070,37 +10074,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7E2152723FA7235BEA1A6B0C62F61636"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Droid_web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7E2152723FA7235BEA1A6B0C62F61636"
-                    {
-                    "Name" = "8:Droid_web.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Droid_web.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7E3B1BDAFFC243F8BB663393EBEB74ED"
             {
             "SourcePath" = "8:..\\lib\\4.5.1\\Resources\\x64\\plugins\\audio_filter\\libscaletempo_plugin.dll"
@@ -10639,6 +10612,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_88C35343E44DEAECC70F20E1E3F47AFC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Tools4Libraries.Slider, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_88C35343E44DEAECC70F20E1E3F47AFC"
+                    {
+                    "Name" = "8:Tools4Libraries.Slider.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Tools4Libraries.Slider.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_894C528902644D4397A8B2069C92C2EA"
@@ -11521,6 +11525,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9BC92CBF9D1CFADD32CF74E891564E5E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Tools4Libraries, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9BC92CBF9D1CFADD32CF74E891564E5E"
+                    {
+                    "Name" = "8:Tools4Libraries.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Tools4Libraries.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9BDEDC3AD3474C45A8855ECA84ABAE9F"
             {
             "SourcePath" = "8:..\\lib\\4.5.1\\Resources\\x64\\plugins\\video_output\\libdirect3d_plugin.dll"
@@ -12339,37 +12374,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AAAF9909B580A863C0E4F5481098641B"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Tools4Libraries, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_AAAF9909B580A863C0E4F5481098641B"
-                    {
-                    "Name" = "8:Tools4Libraries.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Tools4Libraries.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AAED655429DC4D44879FA3EA634BA4A5"
@@ -13549,26 +13553,6 @@
             "TargetName" = "8:libdummy_plugin.dll"
             "Tag" = "8:"
             "Folder" = "8:_4960851C1F2D42F6B0C582206135BCD4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C20A3B1DA5DA469FBEAC4442066D7A4C"
-            {
-            "SourcePath" = "8:D:\\Images\\servo_icon.ico"
-            "TargetName" = "8:DroidVideoIcon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -15061,37 +15045,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DFC5354A9209F509EB86BED7A10BD80E"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Tools4Libraries.Slider, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DFC5354A9209F509EB86BED7A10BD80E"
-                    {
-                    "Name" = "8:Tools4Libraries.Slider.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Tools4Libraries.Slider.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DFE3AE3242ADD76E0F203DAB4D0C3305"
@@ -16867,26 +16820,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FCD813210AAC41299335FE6F889C6E79"
-            {
-            "SourcePath" = "8:..\\lib\\4.5.1\\Resources\\x86\\plugins\\plugins.dat"
-            "TargetName" = "8:plugins.dat"
-            "Tag" = "8:"
-            "Folder" = "8:_36EE0BAE15324A5E991DDE4E20D41236"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FD73BD3488D84D9298FB1D77CB31CF55"
             {
             "SourcePath" = "8:..\\lib\\4.5.1\\Resources\\x86\\plugins\\access\\libshm_plugin.dll"
@@ -17678,7 +17611,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Droid_Video"
         "ProductCode" = "8:{4D732FA6-B6B0-4FE7-8114-84277AD10735}"
-        "PackageCode" = "8:{A8DB1952-8E1F-4F12-972E-CCB814B1E7BA}"
+        "PackageCode" = "8:{B7A2FCCA-4D5F-4428-A1E9-0EC3CC73444D}"
         "UpgradeCode" = "8:{D1166A16-8C3F-424C-A250-1960725DAA85}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -17809,7 +17742,7 @@
             "Target" = "8:_F94DB88BDFC14396BD05D65DD17CE536"
             "Folder" = "8:_BBF558E5A49D49FE9F04EEC5910402CB"
             "WorkingFolder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
-            "Icon" = "8:_C20A3B1DA5DA469FBEAC4442066D7A4C"
+            "Icon" = "8:_08FDCAFEBC224475AB5F89C846318C0F"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EF1C63B0168F49968338B78572771D70"
@@ -17823,7 +17756,7 @@
             "Target" = "8:_F94DB88BDFC14396BD05D65DD17CE536"
             "Folder" = "8:_7C6AD1EA555743878AEFCB7A6CEA14EF"
             "WorkingFolder" = "8:_8CE3C3E7A45143838DD2C1B8206A016A"
-            "Icon" = "8:_C20A3B1DA5DA469FBEAC4442066D7A4C"
+            "Icon" = "8:_08FDCAFEBC224475AB5F89C846318C0F"
             "Feature" = "8:"
             }
         }

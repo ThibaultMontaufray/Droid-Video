@@ -15,6 +15,7 @@ namespace Droid_video
         private Ribbon _ribbon;
         private RibbonButton _btn_open;
         private RibbonButton _btn_exit;
+        private Timer _timer;
         #endregion
 
         #region Properties
@@ -50,11 +51,21 @@ namespace Droid_video
             _intVdo.CurrentScreen = Screen.FromControl(this);
             this.LocationChanged += Demo_LocationChanged;
 
-            _intVdo.Sheet.Dock = DockStyle.Fill;
+            _intVdo.Sheet.Dock = DockStyle.None;
+            _intVdo.Sheet.Top = 125;
+            _intVdo.Sheet.Left = 0;
+            _intVdo.Sheet.Width = this.Width - 16;
+            _intVdo.Sheet.Height = this.Height - 164;
+            _intVdo.Sheet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right) | System.Windows.Forms.AnchorStyles.Bottom)));
             this.Controls.Add(_intVdo.Sheet);
             this.FormClosing += Demo_FormClosing;
+            this.Shown += Demo_Shown;
 
             InitRibbon();
+
+            _timer = new Timer();
+            _timer.Interval = 600;
+            _timer.Tick += _timer_Tick;
         }
         private void InitRibbon()
         {
@@ -67,6 +78,11 @@ namespace Droid_video
             _ribbon.QuickAccessToolbar.MenuButtonVisible = false;
             _ribbon.QuickAccessToolbar.Visible = false;
             _ribbon.QuickAccessToolbar.MinSizeMode = RibbonElementSizeMode.Compact;
+            _ribbon.Dock = DockStyle.None;
+            _ribbon.Top = -25;
+            _ribbon.Left = 0;
+            _ribbon.Width = this.Width;
+            _ribbon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             _ribbon.Tabs.Add(_intVdo.Tsm);
 
             //rb.QuickAccessToolbar.Visible = false;
@@ -178,6 +194,19 @@ namespace Droid_video
         private void Demo_LocationChanged(object sender, EventArgs e)
         {
             _intVdo.CurrentScreen = Screen.FromControl(this);
+        }
+        private void _timer_Tick(object sender, EventArgs e)
+        {
+            if (_intVdo.CurrentVideo != null && string.IsNullOrEmpty(_intVdo.CurrentVideo.CoverPath))
+            {
+                _timer.Stop();
+                _intVdo.CurrentVideo.LoadWebDetails();
+                _timer.Start();
+            }
+        }
+        private void Demo_Shown(object sender, EventArgs e)
+        {
+            _timer.Start();
         }
         #endregion
     }

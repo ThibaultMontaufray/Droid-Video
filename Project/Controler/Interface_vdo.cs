@@ -9,6 +9,9 @@ using Tools4Libraries;
 using System.Threading.Tasks;
 using System.Linq;
 using OSDBnet;
+using System.ComponentModel;
+using Droid_Image;
+using System.Text;
 
 namespace Droid_video
 {
@@ -104,6 +107,14 @@ namespace Droid_video
             //displayMode = "textbox";
             //openned = false;
             //listToolStrip = lts;
+        }
+        #endregion
+
+        #region ACTION
+        [Description("french[lancer.video(nom)];english[launch.video(name)]")]
+        public static void ACTION_130_launch_video(string objet)
+        {
+            Application.Run(new Demo(null));
         }
         #endregion
 
@@ -219,11 +230,18 @@ namespace Droid_video
                 case "rotationScreen270":
                     LaunchRotationVideo(270);
                     break;
+                case "analyse":
+                    LaunchAnalyse();
+                    break;
+                case "report an issue":
+                    LaunchReportIssue();
+                    break;
             }
         }
 
         public void Dispose()
         {
+            if (_videoFrame != null) _videoFrame.Dispose();
             if (_formFrame != null) _formFrame.Dispose();
         }
         public RibbonTab BuildToolBar()
@@ -471,6 +489,56 @@ namespace Droid_video
         private void LaunchRotationVideo(int rotation)
         {
             _videoFrame.Rotation(rotation);
+        }
+        private void LaunchReportIssue()
+        {
+
+        }
+        private void LaunchAnalyse()
+        {
+            bool alternate = true;
+            int diff;
+            StringBuilder analyseResult = new StringBuilder();
+            Image currentSnap, lastSnap = null;
+
+            if (!Directory.Exists(string.Format("VideoAnalayse_{0}", _currentVideo.NameClean.Replace(" ", "_"))))
+            {
+                Directory.CreateDirectory(string.Format("VideoAnalayse_{0}", _currentVideo.NameClean.Replace(" ", "_")));
+            }
+
+            if (_videoFrame != null)
+            {
+                VideoPlayer videoAnalyzer = new VideoPlayer(this);
+                videoAnalyzer.OpenFile(_currentVideo.Path);
+                System.Threading.Thread.Sleep(100);
+                videoAnalyzer.Mute();
+
+                analyseResult.AppendLine("<xml>");
+                for (int i = 0; i < videoAnalyzer.VideoLength / 10000; i += 100)
+                {
+                    try
+                    {
+                        alternate = !alternate;
+                        videoAnalyzer.SetPosition(i);
+                        currentSnap = videoAnalyzer.GetScreenShot(string.Format(string.Format("VideoAnalayse_{0}\\videoSnap_{1}.jpg", _currentVideo.NameClean.Replace(" ", "_"), alternate)));
+                        if (lastSnap != null)
+                        {
+                            diff = Interface_image.ACTION_139_compare(currentSnap, lastSnap);
+                            analyseResult.AppendLine(string.Format("    <moment time=\"{0}\" match=\"{1}\" />", i / 100, diff));
+                        }
+                        lastSnap = currentSnap;
+                    }
+                    catch (Exception exp)
+                    {
+                        break;
+                    }
+                }
+                analyseResult.AppendLine("</xml>");
+                using (StreamWriter sw = new StreamWriter(string.Format("VideoAnalayse_{0}\\AnalyseMovie{0}.xml", _currentVideo.NameClean.Replace(" ", "_"))))
+                {
+                    sw.Write(analyseResult.ToString());
+                }
+            }
         }
         #endregion
 
