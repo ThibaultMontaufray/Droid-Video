@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7688AEEE-6E77-4D7D-BF84-ECFD0E8FA293}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Droid_video</RootNamespace>
     <AssemblyName>Droid_video</AssemblyName>
@@ -60,8 +60,9 @@
       <HintPath>packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Droid_web">
-      <HintPath>..\..\Droid-Web\Project\lib\4.5.1\Droid_web.dll</HintPath>
+    <Reference Include="Droid_web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Droid_Web.1.0.4\lib\4.5.1\Droid_web.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Interop.QuartzTypeLib">
       <HintPath>.\Interop.QuartzTypeLib.dll</HintPath>
@@ -82,6 +83,10 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Droid_Web.1.0.4\lib\4.5.1\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceProcess" />
@@ -166,6 +171,12 @@
     <Compile Include="View\VideoPlayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\ResourceEnglish.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEnglish.Designer.cs</LastGenOutput>
@@ -192,6 +203,9 @@
     </Compile>
     <EmbeddedResource Include="View\VideoPlayer.resx">
       <DependentUpon>VideoPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -223,7 +237,6 @@
     <None Include="Resources\video_bg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\servo_icon_video.ico" />
     <Content Include="ServoIconVideo.ico" />
     <EmbeddedResource Include="Resources\IconServo.ico" />
     <None Include="Resources\transparent.png" />
@@ -2133,6 +2146,12 @@
     <Content Include="Resources\x86\plugins\visualization\libvisual_plugin.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Droid-Image\Project\Droid_Image.csproj">
+      <Project>{9fd7aaf3-3236-474a-9017-be10bf369e7e}</Project>
+      <Name>Droid_Image</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

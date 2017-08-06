@@ -1,4 +1,4 @@
-﻿// LOG 01 - 7
+﻿// LOG 01 - 25
 using System;
 using System.Drawing;
 using System.IO;
@@ -59,9 +59,15 @@ namespace Droid_video
         public event VideoPlayerEventHandler FullScreenRequested;
         public event VideoPlayerEventHandler FullScreenExit;
         private DateTime _lastFrameMove;
+        private string _coverPath;
         #endregion
 
         #region Properties
+        public string CoverPath
+        {
+            get { return _coverPath; }
+            set { _coverPath = value; }
+        }
         public bool FullScreen
         {
             get { return _fullScreen; }
@@ -77,6 +83,10 @@ namespace Droid_video
         public SliderTrackBar TrackBarSound
         {
             get { return _trackBarSound; }
+        }
+        public long VideoLength
+        {
+            get { return _vlcControl == null ? 0 : _vlcControl.GetCurrentMedia().Duration.Ticks; }
         }
         #endregion
 
@@ -120,10 +130,10 @@ namespace Droid_video
                 case (char)Keys.Space:
                     Pause();
                     break;
-                //case (char)Keys.Enter:
-                //    if (_quickAccessHidden) ShowQuickControl();
-                //    else HideQuickControl();
-                //    break;
+                    //case (char)Keys.Enter:
+                    //    if (_quickAccessHidden) ShowQuickControl();
+                    //    else HideQuickControl();
+                    //    break;
             }
         }
         public void Play()
@@ -147,17 +157,23 @@ namespace Droid_video
         public void Stop()
         {
             _vlcControl.Stop();
+            //_vlcControl.Pause();
             _myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
-            _openned = false;
+            //_openned = false;
             _trackBar.Value = 0;
             _vlcControl.Time = 0;
-            _intVdo.CurrentVideo = null;
-            _intVdo.Tsm.UpdateVideoDetails();
+            //_intVdo.CurrentVideo = null;
+            //_intVdo.Tsm.UpdateVideoDetails();
+            //SetPosition(0);
         }
         public void Pause()
         {
             _vlcControl.Pause();
             _myBtnPlayPause.BackgroundImage = Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
+        }
+        public void Mute()
+        {
+            _vlcControl.Audio.Volume = 0;
         }
         public void HideQuickControl()
         {
@@ -186,6 +202,27 @@ namespace Droid_video
                 Log.Write("[ ERR : 0123 ] Cannot load the position of the movie \n\n" + exp.Message);
             }
             _myBtnPlayPause.BackgroundImage = _vlcControl.IsPlaying ? Tools4Libraries.Resources.ResourceIconSet32Default.control_pause : Tools4Libraries.Resources.ResourceIconSet32Default.control_play;
+        }
+        public void SetPosition(float position)
+        {
+            try
+            {
+                if (_vlcControl.GetCurrentMedia() != null)
+                {
+                    var time = _vlcControl.GetCurrentMedia().Duration.Ticks * position;
+                    myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)time).ToString("T"));
+                    if (!_mouseDown) _trackBar.InvokeIfRequired(l => l.Value = (int)_vlcControl.Time);
+                    _intVdo.CurrentVideo.Time = _vlcControl.Time;
+
+                    myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - (long)time).Ticks).ToString("T"));
+                    _vlcControl.Audio.Volume = _trackBarSound.Value;
+                    //_vlcControl.Update();
+                }
+            }
+            catch (Exception exp)
+            {
+                Log.Write(string.Format("[CRT: 0108] : Critical exception in movie progression update./n Exception {0}", exp.Message));
+            }
         }
         public void Rotation(int rotation)
         {
@@ -217,12 +254,29 @@ namespace Droid_video
             _vlcControl.Time = _intVdo.CurrentVideo.Time;
             Pause();
         }
+        public Image GetScreenShot(string filePath)
+        {
+            try
+            {
+                if (_vlcControl != null)
+                {
+                    _vlcControl.TakeSnapshot(filePath);
+                    Image img = Image.FromFile(filePath);
+                    return img;
+                }
+            }
+            catch (Exception exp)
+            {
+                Log.Write(string.Format("[CRT: 0108] : Error while getting the screenshot./n Exception {0}", exp.Message));
+            }
+            return null;
+        }
         #endregion
 
         #region Methods protected
         protected override void Dispose(bool disposing)
         {
-            _intVdo.Close();
+            //_intVdo.Close();
 
             if (disposing && (components != null))
             {
@@ -250,6 +304,7 @@ namespace Droid_video
         }
         private void Init()
         {
+            _coverPath = string.Empty;
             _openned = false;
             _lastFrameMove = DateTime.MinValue;
             _hidding = false;
@@ -292,8 +347,8 @@ namespace Droid_video
                 this._vlcControl.TabStop = false;
                 if (!string.IsNullOrEmpty(_vlcCommandTransformOrientation) && _intVdo.CurrentVideo != null && _intVdo.CurrentVideo.CurrentSubtitlePath != null) this._vlcControl.VlcMediaplayerOptions = new[] { _vlcCommandQuiet, _vlcCommandTransform, _vlcCommandTransformOrientation, _vlcCommandSubtitle + _intVdo.CurrentVideo.Subtitle.SubtitleFileName };
                 else if (!string.IsNullOrEmpty(_vlcCommandTransformOrientation)) this._vlcControl.VlcMediaplayerOptions = new[] { _vlcCommandQuiet, _vlcCommandTransform, _vlcCommandTransformOrientation };
-                else if (_intVdo.CurrentVideo != null && _intVdo.CurrentVideo.CurrentSubtitlePath != null) this._vlcControl.VlcMediaplayerOptions = new[] { _vlcCommandQuiet, _vlcCommandSubtitle + _intVdo.CurrentVideo.CurrentSubtitlePath};
-                else this._vlcControl.VlcMediaplayerOptions = new[] { _vlcCommandQuiet};
+                else if (_intVdo.CurrentVideo != null && _intVdo.CurrentVideo.CurrentSubtitlePath != null) this._vlcControl.VlcMediaplayerOptions = new[] { _vlcCommandQuiet, _vlcCommandSubtitle + _intVdo.CurrentVideo.CurrentSubtitlePath };
+                else this._vlcControl.VlcMediaplayerOptions = new[] { _vlcCommandQuiet };
                 ((System.ComponentModel.ISupportInitialize)(this._vlcControl)).EndInit();
                 this.Controls.Add(_vlcControl);
             }
@@ -434,7 +489,7 @@ namespace Droid_video
             // 
             // _panelControl
             // 
-            this._panelControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this._panelControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this._panelControl.BackColor = System.Drawing.Color.Transparent;
             this._panelControl.Controls.Add(this._panelQuickControls);
@@ -595,7 +650,7 @@ namespace Droid_video
                 }
             }
         }
-        
+
         private void VolumeScroll(int delta)
         {
             delta = _trackBarSound.Value + (delta / 120);
@@ -677,16 +732,41 @@ namespace Droid_video
         }
         private void OnVlcPositionChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs e)
         {
-            if (_vlcControl.GetCurrentMedia() != null)
-            { 
-                var time = _vlcControl.GetCurrentMedia().Duration.Ticks * e.NewPosition;
-                myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)time).ToString("T"));
-                if (!_mouseDown) _trackBar.InvokeIfRequired(l => l.Value = (int)_vlcControl.Time);
-                _intVdo.CurrentVideo.Time = _vlcControl.Time;
-
-                myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - (long)time).Ticks).ToString("T"));
-                _vlcControl.Audio.Volume = _trackBarSound.Value;
+            SetPosition(e.NewPosition);
+            if (!string.IsNullOrEmpty(_intVdo.CurrentVideo.CoverPath) && _coverPath != _intVdo.CurrentVideo.CoverPath)
+            {
+                try
+                {
+                    _vlcControl.BackgroundImage = Image.FromFile(_intVdo.CurrentVideo.CoverPath);
+                    _vlcControl.BackgroundImageLayout = ImageLayout.Zoom;
+                    _coverPath = _intVdo.CurrentVideo.CoverPath;
+                }
+                catch (Exception)
+                {
+                }
             }
+            if (e.NewPosition >= 1)
+            {
+                SetPosition(0);
+            }
+            //try
+            //{
+            //    if (_vlcControl.GetCurrentMedia() != null)
+            //    {
+            //        var time = _vlcControl.GetCurrentMedia().Duration.Ticks * e.NewPosition;
+            //        myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)time).ToString("T"));
+            //        if (!_mouseDown) _trackBar.InvokeIfRequired(l => l.Value = (int)_vlcControl.Time);
+            //        _intVdo.CurrentVideo.Time = _vlcControl.Time;
+
+            //        myLblMediaRest.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(_intVdo.CurrentVideo.Length - (long)time).Ticks).ToString("T"));
+            //        _vlcControl.Audio.Volume = _trackBarSound.Value;
+            //        //_vlcControl.Update();
+            //    }
+            //}
+            //catch (Exception exp)
+            //{
+            //    Log.Write(string.Format("[CRT: 0108] : Critical exception in movie progression update./n Exception {0}", exp.Message));
+            //}
         }
         private void _trackBar_MouseDown(object sender, MouseEventArgs e)
         {

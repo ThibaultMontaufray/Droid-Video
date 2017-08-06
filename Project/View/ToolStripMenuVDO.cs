@@ -47,6 +47,10 @@ namespace Droid_video
         private RibbonTextBox _adjustAudioTrack;
         private RibbonButton _adjustAudioValidate;
         private RibbonButton _adjustAudioReset;
+        
+        private RibbonPanel _panelPremium;
+        private RibbonButton _githubTicket;
+        private RibbonButton _analyse;
         #endregion
 
         #region Properties
@@ -70,6 +74,7 @@ namespace Droid_video
                 _intVdo = interface_video;
                 _gui = new GUI();
                 BuildPanelOpen();
+                BuildPanelPremium();
                 BuildPanelScreen();
                 BuildPanelSubtitle();
                 BuildPanelAudio();
@@ -94,8 +99,7 @@ namespace Droid_video
         {
             RibbonButton rbSubLang;
             List<string> data = new List<string>();
-
-
+            
             if (_intVdo.CurrentVideo != null)
             {
                 EnableMenu();
@@ -175,6 +179,7 @@ namespace Droid_video
             _lblSeries.Visible = false;
             _rb_seriePreview.Visible = false;
             _rb_serieNext.Visible = false;
+            _analyse.Enabled = false;
         }
         private void EnableMenu()
         {
@@ -183,6 +188,7 @@ namespace Droid_video
 
             _panelScreen.Enabled = true;
             _panelSubtile.Enabled = true;
+            _analyse.Enabled = true;
         }
         #endregion
 
@@ -300,6 +306,27 @@ namespace Droid_video
             _panelAudio.Items.Add(_adjustAudioReset);
             this.Panels.Add(_panelAudio);
         }
+        private void BuildPanelPremium()
+        {
+            _githubTicket = new RibbonButton("Report an issue");
+            _githubTicket.Image = Tools4Libraries.Resources.ResourceIconSet32Default.star;
+            _githubTicket.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.star;
+            _githubTicket.MaxSizeMode = RibbonElementSizeMode.Medium;
+            _githubTicket.TextAlignment = RibbonItem.RibbonItemTextAlignment.Center;
+            _githubTicket.Click += _githubTicket_Click;
+
+            _analyse = new RibbonButton("Analyse video");
+            _analyse.Image = Tools4Libraries.Resources.ResourceIconSet32Default.timeline_marker;
+            _analyse.SmallImage = Tools4Libraries.Resources.ResourceIconSet16Default.timeline_marker;
+            _analyse.MaxSizeMode = RibbonElementSizeMode.Medium;
+            _analyse.TextAlignment = RibbonItem.RibbonItemTextAlignment.Center;
+            _analyse.Click += _analyse_Click;
+
+            _panelPremium = new RibbonPanel("Premium");
+            _panelPremium.Items.Add(_githubTicket);
+            _panelPremium.Items.Add(_analyse);
+            this.Panels.Add(_panelPremium);
+        }
         private void BuildPanelInfo()
         {
             _lblInfo1 = new RibbonLabel();
@@ -371,6 +398,16 @@ namespace Droid_video
         private void _rb_disableSubtitle_Click(object sender, EventArgs e)
         {
             ToolBarEventArgs action = new ToolBarEventArgs("disableSubtitle");
+            OnAction(action);
+        }
+        private void _analyse_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("analyse");
+            OnAction(action);
+        }
+        private void _githubTicket_Click(object sender, EventArgs e)
+        {
+            ToolBarEventArgs action = new ToolBarEventArgs("report an issue");
             OnAction(action);
         }
         private void _adjustAudioTrack_TextBoxKeyPress(object sender, KeyPressEventArgs e)
