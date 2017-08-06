@@ -11,7 +11,7 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: zJrrM7R9VjyY0dlP0WsayJxld1FmbSTvm
 before_build:
-  - nuget restore Droid_Video.sln
+  - nuget restore .\Project\Droid_Video.sln
 build:
   project: .\Project\Droid_Video.sln
   verbosity: minimal

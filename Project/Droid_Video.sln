@@ -6,10 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid_Video", "Droid_Video.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{0AF13185-9976-437D-AEBE-E4B9E5D20DC5}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DroidVideoSetup", "DroidVideoSetup\DroidVideoSetup.vdproj", "{FB9259AF-CC94-4D17-ABEE-54A81F72C923}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid_Image", "..\..\Droid-Image\Project\Droid_Image.csproj", "{9FD7AAF3-3236-474A-9017-BE10BF369E7E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
