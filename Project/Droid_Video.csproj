@@ -171,6 +171,12 @@
     <Compile Include="View\VideoPlayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\ResourceEnglish.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceEnglish.Designer.cs</LastGenOutput>
@@ -197,6 +203,9 @@
     </Compile>
     <EmbeddedResource Include="View\VideoPlayer.resx">
       <DependentUpon>VideoPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

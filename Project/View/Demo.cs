@@ -62,7 +62,7 @@ namespace Droid_video
             this.Shown += Demo_Shown;
 
             InitRibbon();
-
+            
             _timer = new Timer();
             _timer.Interval = 600;
             _timer.Tick += _timer_Tick;
@@ -157,7 +157,7 @@ namespace Droid_video
         }
         private void LoadArgs(string[] args)
         {
-            if (args.Length > 0 && !string.IsNullOrEmpty(args[0]))
+            if (args != null &&  args.Length > 0 && !string.IsNullOrEmpty(args[0]))
             {
                 _intVdo.Open(args[0]);
             }

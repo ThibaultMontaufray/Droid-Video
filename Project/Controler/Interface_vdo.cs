@@ -38,6 +38,7 @@ namespace Droid_video
         private List<string> _moviesProgression;
         private Screen _currentScreen;
         private TransparentPanel _panelMouseControl;
+        private Welcome _welcome;
         #endregion
 
         #region Properties
@@ -114,7 +115,8 @@ namespace Droid_video
         [Description("french[lancer.video(nom)];english[launch.video(name)]")]
         public static void ACTION_130_launch_video(string objet)
         {
-            Application.Run(new Demo(null));
+            Demo d = new Demo(null);
+            d.Show();
         }
         #endregion
 
@@ -256,6 +258,10 @@ namespace Droid_video
             _sheet = new Panel();
             _sheet.Controls.Add(_panelVideo);
             _sheet.Disposed += _sheet_Disposed;
+
+            _welcome = new Welcome();
+            _welcome.Dock = DockStyle.Fill;
+            //_sheet.Controls.Add(_welcome);
         }
         public long GetMovieAdvancement(string movieTitle)
         {
@@ -540,6 +546,16 @@ namespace Droid_video
                 }
             }
         }
+        private void LaunchWelcomeView()
+        {
+            _sheet.Controls.Clear();
+            _sheet.Controls.Add(_welcome);
+        }
+        private void LaunchVideoPlayView()
+        {
+            _sheet.Controls.Clear();
+            _sheet.Controls.Add(_videoFrame);
+        }
         #endregion
 
         #region Methods	private
@@ -735,6 +751,7 @@ namespace Droid_video
         private void _sheet_Disposed(object sender, EventArgs e)
         {
             _videoFrame.Dispose();
+            Close();
         }
         private void _panelMouseControl_DoubleClick(object sender, EventArgs e)
         {
